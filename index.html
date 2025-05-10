@@ -66,15 +66,6 @@
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
       });
-
-    document.addEventListener('click', function (event) {
-      const header = document.getElementById('header-placeholder');
-      const dropdown = header.querySelector('#dropdownMenu');
-      const button = header.querySelector('.menu-button');
-      if (dropdown && !button.contains(event.target) && !dropdown.contains(event.target)) {
-        dropdown.style.display = 'none';
-      }
-    });
   </script>
 </body>
 </html>
