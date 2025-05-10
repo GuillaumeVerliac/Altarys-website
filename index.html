@@ -8,8 +8,8 @@
   <style>
     :root {
       --primary-color: #b3001b;
-      --background-color: #0d0d0d;
-      --card-background: #1a1a1a;
+      --background-color: #000000;
+      --card-background: #111111;
       --text-color: #e0e0e0;
       --accent-color: #b3001b;
     }
@@ -32,7 +32,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 10%;
-      border-bottom: 1px solid #333;
+      background-color: var(--background-color);
+      border-bottom: 1px solid #222;
     }
 
     header img {
@@ -54,7 +55,7 @@
     section.hero {
       padding: 100px 10%;
       text-align: center;
-      background: linear-gradient(145deg, #1a1a1a, #111);
+      background-color: var(--background-color);
     }
 
     .hero h1 {
@@ -66,7 +67,7 @@
     .hero p {
       font-size: 1.2em;
       max-width: 800px;
-      margin: 0 auto 40px;
+      margin: 0 auto 30px;
       color: #ccc;
     }
 
@@ -75,6 +76,7 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     .cta-buttons a {
@@ -138,7 +140,7 @@
       Notre moteur quantitatif vous permet de créer des solutions différenciantes ou de sélectionner des stratégies prêtes à l’emploi.
     </p>
     <div class="cta-buttons">
-      <a href="solutions.html">Créer une solution sur-mesure</a>
+      <a href="contact.html">Créer une solution sur-mesure</a>
       <a href="solutions.html#selection">Parcourir la sélection</a>
     </div>
   </section>
