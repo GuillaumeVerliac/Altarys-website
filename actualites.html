@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Actualités – Atlas Capital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #ff6b00;
+      --background-color: #0d0d0d;
+      --card-background: #1a1a1a;
+      --text-color: #ffffff;
+      --accent-color: #ff6b00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: var(--background-color);
+      border-bottom: 1px solid #333;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .card {
+      background-color: var(--card-background);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(255, 107, 0, 0.3);
+    }
+
+    .card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95em;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      font-size: 0.9em;
+      padding: 30px 10%;
+      color: #888;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Atlas Capital" />
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="equipe.html">Équipe</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2 class="section-title">Actualités</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>La Fed maintient ses taux inchangés</h3>
+        <p>Lors de sa dernière réunion, la Réserve fédérale américaine a décidé de laisser ses taux directeurs inchangés. Les marchés anticipent une baisse possible au second semestre 2025.</p>
+      </div>
+
+      <div class="card">
+        <h3>Le Bitcoin franchit les 70 000 $</h3>
+        <p>Le BTC a atteint un nouveau sommet, porté par l'intérêt croissant des investisseurs institutionnels et l'adoption des ETF Spot aux États-Unis.</p>
+      </div>
+
+      <div class="card">
+        <h3>L’économie américaine ralentit</h3>
+        <p>Le PIB américain a enregistré une croissance plus faible que prévu au premier trimestre, alimentant les spéculations sur un pivot de politique monétaire.</p>
+      </div>
+
+      <div class="card">
+        <h3>BlackRock lance un fonds crypto tokenisé</h3>
+        <p>Le géant de la gestion d’actifs propose désormais une exposition directe via un fonds adossé à des actifs numériques tokenisés sur Ethereum.</p>
+      </div>
+
+      <div class="card">
+        <h3>Ethereum : vers une adoption institutionnelle accrue</h3>
+        <p>Les récentes annonces de JP Morgan et Goldman Sachs confirment l’intérêt croissant pour les solutions basées sur Ethereum, notamment dans le domaine des smart contracts.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
+  </footer>
+</body>
+</html>
