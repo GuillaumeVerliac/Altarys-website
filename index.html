@@ -28,28 +28,45 @@
     }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 10%;
+      position: relative;
       background-color: var(--background-color);
+      padding: 20px 10%;
       border-bottom: 1px solid #333;
     }
 
-    header img {
-      height: 60px;
+    .menu-button {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: var(--text-color);
+      background: none;
+      border: none;
+      cursor: pointer;
     }
 
-    nav a {
+    .dropdown {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 10%;
+      background-color: var(--card-background);
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 10px 0;
+      width: 200px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
       color: var(--text-color);
       text-decoration: none;
-      margin-left: 30px;
-      font-weight: 600;
-      transition: color 0.3s;
+      padding: 10px 20px;
+      transition: background 0.3s;
     }
 
-    nav a:hover {
-      color: var(--accent-color);
+    .dropdown a:hover {
+      background-color: var(--accent-color);
+      color: #000;
     }
 
     section {
@@ -71,28 +88,18 @@
       color: #888;
       margin-top: 60px;
     }
-
-    @media (max-width: 768px) {
-      nav a {
-        margin-left: 15px;
-      }
-
-      .section-title {
-        font-size: 2em;
-      }
-    }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Atlas Capital" />
-    <nav>
+    <button class="menu-button" onclick="toggleMenu()">Menu</button>
+    <div class="dropdown" id="dropdownMenu">
       <a href="index.html">Accueil</a>
       <a href="equipe.html">Équipe</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
-    </nav>
+    </div>
   </header>
 
   <section>
@@ -103,6 +110,20 @@
   <footer>
     <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
   </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    document.addEventListener('click', function (event) {
+      const isClickInside = document.querySelector('header').contains(event.target);
+      if (!isClickInside) {
+        document.getElementById('dropdownMenu').style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
 
