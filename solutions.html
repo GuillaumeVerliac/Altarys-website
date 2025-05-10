@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos solutions – Atlas Capital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #ff6b00;
+      --background-color: #0d0d0d;
+      --card-background: #1a1a1a;
+      --text-color: #ffffff;
+      --accent-color: #ff6b00;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: var(--background-color);
+      border-bottom: 1px solid #333;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    section {
+      padding: 60px 10%;
+    }
+
+    .section-title {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: var(--accent-color);
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+
+    .card {
+      background-color: var(--card-background);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(255, 107, 0, 0.3);
+    }
+
+    .card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #ccc;
+      font-size: 0.95em;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      font-size: 0.9em;
+      padding: 30px 10%;
+      color: #888;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Atlas Capital" />
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="equipe.html">Équipe</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2 class="section-title">Nos solutions</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Autocall Bitcoin</h3>
+        <p>Produit structuré à coupon conditionnel, indexé sur le Bitcoin. Remboursement anticipé automatique si les conditions sont réunies à chaque date d'observation.</p>
+      </div>
+
+      <div class="card">
+        <h3>Reverse Convertible Ethereum</h3>
+        <p>Produit à rendement élevé exposé à Ethereum avec barrière de protection du capital. Idéal pour un marché latéral ou faiblement baissier.</p>
+      </div>
+
+      <div class="card">
+        <h3>Digital Option Solana</h3>
+        <p>Option digitale à payoff binaire sur Solana. Permet de capter un rendement attractif si un seuil est atteint à l'échéance.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dual Currency avec USDT</h3>
+        <p>Permet de générer du rendement sur stablecoins avec un risque de conversion en crypto à maturité selon l'évolution des cours.</p>
+      </div>
+
+      <div class="card">
+        <h3>Stratégie sur mesure</h3>
+        <p>Nous concevons des produits structurés personnalisés selon vos objectifs : rendement, protection, exposition à des actifs variés.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
+  </footer>
+</body>
+</html>
