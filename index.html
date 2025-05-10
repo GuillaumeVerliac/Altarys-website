@@ -9,7 +9,6 @@
     :root {
       --primary-color: #b3001b;
       --background-color: #000000;
-      --card-background: #111111;
       --text-color: #e0e0e0;
       --accent-color: #b3001b;
     }
@@ -52,23 +51,31 @@
       color: var(--accent-color);
     }
 
-    section.hero {
-      padding: 100px 10%;
-      text-align: center;
-      background-color: var(--background-color);
+    section {
+      padding: 80px 10%;
     }
 
-    .hero h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
+    h1, h2 {
+      text-align: center;
       color: var(--accent-color);
     }
 
-    .hero p {
-      font-size: 1.2em;
-      max-width: 800px;
-      margin: 0 auto 30px;
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2.4em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1em;
       color: #ccc;
+      text-align: center;
     }
 
     .cta-buttons {
@@ -76,7 +83,7 @@
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      margin-top: 30px;
+      margin-top: 40px;
     }
 
     .cta-buttons a {
@@ -103,11 +110,15 @@
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
+      h1 {
         font-size: 2.2em;
       }
 
-      .hero p {
+      h2 {
+        font-size: 2em;
+      }
+
+      p {
         font-size: 1em;
       }
 
@@ -129,15 +140,11 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <!-- Accroche principale -->
+  <section>
     <h1>Trouvez l’investissement qui match.</h1>
     <p>
-      Gestionnaires de fortune, family offices, banques privées, asset managers :
-      Atlas Capital est votre partenaire technologique pour concevoir des produits structurés crypto sur-mesure.
-    </p>
-    <p>
-      Choisissez vos sous-jacents, ajustez la durée, calibrez le rendement, maîtrisez le risque. 
-      Notre moteur quantitatif vous permet de créer des solutions différenciantes ou de sélectionner des stratégies prêtes à l’emploi.
+      Gestionnaires de fortune, family offices, banques privées, asset managers : Atlas Capital vous donne accès à une technologie de structuration de produits financiers sur crypto-actifs pensée pour vos exigences.
     </p>
     <div class="cta-buttons">
       <a href="contact.html">Créer une solution sur-mesure</a>
@@ -145,7 +152,46 @@
     </div>
   </section>
 
+  <!-- Présentation d'Atlas -->
+  <section style="background-color: #0d0d0d;">
+    <h2>Atlas Capital, infrastructure pour l’investissement structuré crypto</h2>
+    <p>
+      Atlas Capital est une plateforme technologique B2B dédiée à la conception de produits structurés sur actifs numériques.
+      Nous permettons à des institutions financières – banques privées, family offices, exchanges régulés ou courtiers – de concevoir des instruments d’investissement sophistiqués, sans internaliser l’ingénierie financière ni les risques opérationnels.
+    </p>
+    <br>
+    <p>
+      En tant que fournisseur d’infrastructure, nous ne détenons ni les flux, ni les actifs, et ne distribuons aucun produit. 
+      Nous mettons à disposition une technologie de structuration intégrant les spécificités des marchés crypto : forte volatilité, liquidité fragmentée, absence de marché de taux. 
+      Notre moteur quantitatif propriétaire permet de modéliser des stratégies complexes (reverse convertible, autocall, options digitales ou barrières) de manière rapide, précise et 100% personnalisable.
+    </p>
+    <br>
+    <p>
+      Grâce à Atlas Capital, nos partenaires peuvent proposer à leurs clients des produits différenciants, calibrés selon leurs propres exigences de rendement, de protection et de risque, sans dépendre d’acteurs traditionnels.
+    </p>
+    <div class="cta-buttons">
+      <a href="equipe.html">Découvrez Atlas</a>
+    </div>
+  </section>
+
+  <!-- Produits structurés -->
+  <section>
+    <h2>Nos produits structurés sur crypto-actifs</h2>
+    <p>
+      Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
+      Personnalisez vos produits ou explorez des stratégies déjà calibrées.
+    </p>
+    <div class="cta-buttons">
+      <a href="solutions.html">Voir les produits</a>
+    </div>
+  </section>
+
   <footer>
+    <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
+  </footer>
+</body>
+</html>
+
     <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
   </footer>
 </body>
