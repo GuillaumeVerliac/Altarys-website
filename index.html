@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary-color: #ff6b00;
+      --primary-color: #b3001b;
       --background-color: #0d0d0d;
       --card-background: #1a1a1a;
-      --text-color: #ffffff;
-      --accent-color: #ff6b00;
+      --text-color: #e0e0e0;
+      --accent-color: #b3001b;
     }
 
     * {
@@ -32,7 +32,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 10%;
-      background-color: var(--background-color);
       border-bottom: 1px solid #333;
     }
 
@@ -52,15 +51,44 @@
       color: var(--accent-color);
     }
 
-    section {
-      padding: 60px 10%;
+    section.hero {
+      padding: 100px 10%;
+      text-align: center;
+      background: linear-gradient(145deg, #1a1a1a, #111);
     }
 
-    .section-title {
-      font-size: 2.5em;
-      margin-bottom: 40px;
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
       color: var(--accent-color);
-      text-align: center;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      color: #ccc;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      padding: 14px 28px;
+      background-color: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+
+    .cta-buttons a:hover {
+      background-color: #800013;
     }
 
     footer {
@@ -73,12 +101,16 @@
     }
 
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 15px;
+      .hero h1 {
+        font-size: 2.2em;
       }
 
-      .section-title {
-        font-size: 2em;
+      .hero p {
+        font-size: 1em;
+      }
+
+      nav a {
+        margin-left: 15px;
       }
     }
   </style>
@@ -95,9 +127,20 @@
     </nav>
   </header>
 
-  <section>
-    <h2 class="section-title">Bienvenue sur Atlas Capital</h2>
-    <p style="text-align:center">Plateforme technologique indépendante pour la structuration de produits financiers sur crypto-actifs.</p>
+  <section class="hero">
+    <h1>Trouvez l’investissement qui match.</h1>
+    <p>
+      Gestionnaires de fortune, family offices, banques privées, asset managers :
+      Atlas Capital est votre partenaire technologique pour concevoir des produits structurés crypto sur-mesure.
+    </p>
+    <p>
+      Choisissez vos sous-jacents, ajustez la durée, calibrez le rendement, maîtrisez le risque. 
+      Notre moteur quantitatif vous permet de créer des solutions différenciantes ou de sélectionner des stratégies prêtes à l’emploi.
+    </p>
+    <div class="cta-buttons">
+      <a href="solutions.html">Créer une solution sur-mesure</a>
+      <a href="solutions.html#selection">Parcourir la sélection</a>
+    </div>
   </section>
 
   <footer>
@@ -105,5 +148,3 @@
   </footer>
 </body>
 </html>
-
-
