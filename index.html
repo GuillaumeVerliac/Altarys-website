@@ -27,6 +27,31 @@
       line-height: 1.6;
     }
 
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: var(--background-color);
+      border-bottom: 1px solid #333;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin-left: 30px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
     section {
       padding: 60px 10%;
     }
@@ -46,10 +71,29 @@
       color: #888;
       margin-top: 60px;
     }
+
+    @media (max-width: 768px) {
+      nav a {
+        margin-left: 15px;
+      }
+
+      .section-title {
+        font-size: 2em;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="header-placeholder"></div>
+  <header>
+    <img src="logo.png" alt="Logo Atlas Capital" />
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="equipe.html">Équipe</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
+  </header>
 
   <section>
     <h2 class="section-title">Bienvenue sur Atlas Capital</h2>
@@ -59,14 +103,6 @@
   <footer>
     <p>&copy; 2025 Atlas Capital — Plateforme technologique indépendante</p>
   </footer>
-
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
-  </script>
 </body>
 </html>
 
