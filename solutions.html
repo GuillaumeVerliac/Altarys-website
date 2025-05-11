@@ -109,11 +109,17 @@
       border-top: 1px solid #333;
     }
 
-    .example-section img {
-      width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      display: block;
+    .scenario-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .scenario-grid img {
+      width: 45%;
+      max-width: 400px;
       border: 1px solid #333;
       border-radius: 8px;
     }
@@ -144,6 +150,10 @@
 
       .section-title {
         font-size: 2em;
+      }
+
+      .scenario-grid img {
+        width: 100%;
       }
     }
   </style>
@@ -225,10 +235,12 @@
       <li>Coupon mensuel = 2,5%</li>
     </ul>
 
-    <img src="scenario_1.jpeg" alt="Scénario 1 : AutoCall M3" />
-    <img src="scenario_2.jpeg" alt="Scénario 2 : Coupons jusqu'à M12" />
-    <img src="scenario_3.jpeg" alt="Scénario 3 : Barrière touchée puis rebond" />
-    <img src="scenario_4.jpeg" alt="Scénario 4 : ETH sous barrière finale" />
+    <div class="scenario-grid">
+      <img src="scenario1.jpeg" alt="Scénario 1" />
+      <img src="scenario2.jpeg" alt="Scénario 2" />
+      <img src="scenario3.jpeg" alt="Scénario 3" />
+      <img src="scenario4.jpeg" alt="Scénario 4" />
+    </div>
 
     <p><strong>Avantages :</strong></p>
     <ul>
@@ -261,4 +273,3 @@
   </script>
 </body>
 </html>
-
