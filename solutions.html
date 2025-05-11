@@ -119,9 +119,13 @@
     }
 
     ul {
-      margin-top: 15px;
-      margin-bottom: 30px;
-      padding-left: 20px;
+      margin: 16px 0 32px 30px;
+      text-align: justify;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 20px;
     }
 
     footer {
@@ -177,13 +181,14 @@
     <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
 
     <p><strong>Présentation technique :</strong></p>
+
     <p>
       Le produit est une note à capital conditionnel, indexée sur l’évolution d’Ethereum (ETH), intégrant un mécanisme d’autocall et des coupons mensuels conditionnels.
       Cette structure permet de capter un rendement élevé tout en bénéficiant de possibilités de remboursement anticipé si le sous-jacent évolue favorablement.
     </p>
     <p>
-      L’Autocall Phoenix est particulièrement adapté à des anticipations de marché modérément haussières à latéralement stables. Il permet à l’investisseur de percevoir des coupons réguliers,
-      même si le sous-jacent connaît une légère baisse, tant que celui-ci reste au-dessus d’une barrière prédéfinie.
+      L’Autocall Phoenix est particulièrement adapté à des anticipations de marché modérément haussières à latéralement stables.
+      Il permet à l’investisseur de percevoir des coupons réguliers, même si le sous-jacent connaît une légère baisse, tant que celui-ci reste au-dessus d’une barrière prédéfinie.
     </p>
     <p>
       Le produit repose sur la combinaison d’une option de remboursement anticipé automatique (autocall) et d’options digitales mensuelles permettant de verser un coupon si les conditions sont réunies.
@@ -209,7 +214,7 @@
     <p><strong>Payoff à maturité :</strong></p>
     <ul>
       <li>ETH ≥ 60% → 100% du capital + coupons mensuels</li>
-      <li>ETH &lt; 60% → remboursement proportionnel à la baisse (ex : ETH à 50% → 50% remboursé)</li>
+      <li>ETH &lt; 60% → remboursement proportionnel à la baisse</li>
     </ul>
 
     <p><strong>Scénarios :</strong></p>
@@ -219,10 +224,10 @@
       <li>Coupon mensuel = 2,5%</li>
     </ul>
 
-    <img src="scenario_1.png" alt="Scénario 1 : AutoCall M3" />
-    <img src="scenario_2.png" alt="Scénario 2 : Coupons jusqu'à M12" />
-    <img src="scenario_3.png" alt="Scénario 3 : Barrière touchée puis rebond" />
-    <img src="scenario_4.png" alt="Scénario 4 : ETH sous barrière finale" />
+    <img src="scenario_1.jpeg" alt="Scénario 1 : AutoCall M3" />
+    <img src="scenario_2.jpeg" alt="Scénario 2 : Coupons jusqu'à M12" />
+    <img src="scenario_3.jpeg" alt="Scénario 3 : Barrière touchée puis rebond" />
+    <img src="scenario_4.jpeg" alt="Scénario 4 : ETH sous barrière finale" />
 
     <p><strong>Avantages :</strong></p>
     <ul>
@@ -255,3 +260,4 @@
   </script>
 </body>
 </html>
+
