@@ -75,8 +75,7 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      color: inherit;
+      cursor: pointer;
     }
 
     .card:hover {
@@ -94,14 +93,35 @@
       font-size: 0.95em;
     }
 
-    a.card-link {
+    .card-link {
       text-decoration: none;
       color: inherit;
-      display: block;
     }
 
-    a.card-link:visited {
-      color: inherit;
+    .hidden {
+      display: none;
+    }
+
+    .example-section {
+      background-color: #111;
+      padding: 60px 10%;
+      margin-top: 40px;
+      border-top: 1px solid #333;
+    }
+
+    .example-section img {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      display: block;
+      border: 1px solid #333;
+      border-radius: 8px;
+    }
+
+    ul {
+      margin-top: 15px;
+      margin-bottom: 30px;
+      padding-left: 20px;
     }
 
     footer {
@@ -139,28 +159,99 @@
   <section>
     <h2 class="section-title">Nos solutions</h2>
     <div class="grid">
-      <div class="card">
-        <h3>Autocall Bitcoin</h3>
-        <p>
-          Produit structuré à coupon conditionnel, indexé sur le Bitcoin. Il permet un remboursement anticipé automatique à chaque date d'observation si les conditions sont réunies, tout en offrant un rendement régulier.
-        </p>
+      <div class="card" onclick="toggleDetail()">
+        <h3>Stratégie Autocall</h3>
+        <p>Produit structuré à coupon mensuel conditionnel et remboursement automatique si les marchés évoluent favorablement.</p>
       </div>
 
       <a href="contact.html" class="card-link">
         <div class="card">
           <h3>Stratégie sur mesure</h3>
-          <p>
-            Nous concevons des produits structurés entièrement personnalisés selon vos objectifs : rendement, protection du capital, exposition à différentes cryptomonnaies ou stablecoins.
-          </p>
+          <p>Nous concevons des solutions personnalisées selon vos objectifs : rendement, protection ou exposition à différents actifs.</p>
         </div>
       </a>
     </div>
   </section>
 
+  <section id="autocall-detail" class="example-section hidden">
+    <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
+
+    <p><strong>Présentation technique :</strong></p>
+    <p>
+      Le produit est une note à capital conditionnel, indexée sur l’évolution d’Ethereum (ETH), intégrant un mécanisme d’autocall et des coupons mensuels conditionnels.
+      Cette structure permet de capter un rendement élevé tout en bénéficiant de possibilités de remboursement anticipé si le sous-jacent évolue favorablement.
+    </p>
+    <p>
+      L’Autocall Phoenix est particulièrement adapté à des anticipations de marché modérément haussières à latéralement stables. Il permet à l’investisseur de percevoir des coupons réguliers,
+      même si le sous-jacent connaît une légère baisse, tant que celui-ci reste au-dessus d’une barrière prédéfinie.
+    </p>
+    <p>
+      Le produit repose sur la combinaison d’une option de remboursement anticipé automatique (autocall) et d’options digitales mensuelles permettant de verser un coupon si les conditions sont réunies.
+      En cas de scénario défavorable à maturité (ETH en forte baisse), le capital n’est pas garanti, et l’investisseur est exposé à la baisse du sous-jacent.
+    </p>
+
+    <ul>
+      <li><strong>Sous-jacent :</strong> Ethereum (ETH)</li>
+      <li><strong>Durée :</strong> 12 mois</li>
+      <li><strong>Coupon conditionnel :</strong> 2,5% par mois si ETH ≥ 70% du niveau initial</li>
+      <li><strong>Autocall mensuel :</strong> dès le mois 3 si ETH ≥ 100%</li>
+      <li><strong>Barrière de protection :</strong> 60% (observée à maturité)</li>
+      <li><strong>Paiement du coupon :</strong> à maturité</li>
+    </ul>
+
+    <p><strong>Capital remboursé :</strong></p>
+    <ul>
+      <li>ETH ≥ 100% à une date d’observation → 100% + coupons accumulés</li>
+      <li>ETH &lt; 100% mais ≥ 60% à maturité → 100% du nominal</li>
+      <li>ETH &lt; 60% à maturité → remboursement = performance d’ETH + coupons versés</li>
+    </ul>
+
+    <p><strong>Payoff à maturité :</strong></p>
+    <ul>
+      <li>ETH ≥ 60% → 100% du capital + coupons mensuels</li>
+      <li>ETH &lt; 60% → remboursement proportionnel à la baisse (ex : ETH à 50% → 50% remboursé)</li>
+    </ul>
+
+    <p><strong>Scénarios :</strong></p>
+    <ul>
+      <li>Niveau initial ETH = 3 000 USD</li>
+      <li>Notional investi = 20 000 USD</li>
+      <li>Coupon mensuel = 2,5%</li>
+    </ul>
+
+    <img src="scenario_1.png" alt="Scénario 1 : AutoCall M3" />
+    <img src="scenario_2.png" alt="Scénario 2 : Coupons jusqu'à M12" />
+    <img src="scenario_3.png" alt="Scénario 3 : Barrière touchée puis rebond" />
+    <img src="scenario_4.png" alt="Scénario 4 : ETH sous barrière finale" />
+
+    <p><strong>Avantages :</strong></p>
+    <ul>
+      <li>Rendement élevé (jusqu’à 30%/an)</li>
+      <li>Protection du capital jusqu’à -40%</li>
+      <li>Remboursement anticipé dès le mois 3</li>
+      <li>Coupons versés même en cas de stagnation</li>
+    </ul>
+
+    <p><strong>Inconvénients :</strong></p>
+    <ul>
+      <li>Capital à risque en cas de chute d’ETH</li>
+      <li>Coupons non garantis</li>
+      <li>Pas de remboursement anticipé si ETH &lt; 100%</li>
+    </ul>
+  </section>
+
   <footer>
     <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
   </footer>
+
+  <script>
+    function toggleDetail() {
+      const section = document.getElementById('autocall-detail');
+      section.classList.toggle('hidden');
+      if (!section.classList.contains('hidden')) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  </script>
 </body>
 </html>
-
-
