@@ -75,6 +75,8 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: inherit;
     }
 
     .card:hover {
@@ -92,10 +94,14 @@
       font-size: 0.95em;
     }
 
-    .card a {
+    a.card-link {
       text-decoration: none;
       color: inherit;
       display: block;
+    }
+
+    a.card-link:visited {
+      color: inherit;
     }
 
     footer {
@@ -135,13 +141,17 @@
     <div class="grid">
       <div class="card">
         <h3>Autocall Bitcoin</h3>
-        <p>Produit structuré à coupon conditionnel, indexé sur le Bitcoin. Remboursement anticipé automatique si les conditions sont réunies à chaque date d'observation.</p>
+        <p>
+          Produit structuré à coupon conditionnel, indexé sur le Bitcoin. Il permet un remboursement anticipé automatique à chaque date d'observation si les conditions sont réunies, tout en offrant un rendement régulier.
+        </p>
       </div>
 
-      <a href="contact.html">
+      <a href="contact.html" class="card-link">
         <div class="card">
           <h3>Stratégie sur mesure</h3>
-          <p>Nous concevons des produits structurés personnalisés selon vos objectifs : rendement, protection, exposition à des actifs variés.</p>
+          <p>
+            Nous concevons des produits structurés entièrement personnalisés selon vos objectifs : rendement, protection du capital, exposition à différentes cryptomonnaies ou stablecoins.
+          </p>
         </div>
       </a>
     </div>
@@ -152,4 +162,5 @@
   </footer>
 </body>
 </html>
+
 
