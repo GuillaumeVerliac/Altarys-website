@@ -1,4 +1,4 @@
-tr<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -141,7 +141,6 @@ tr<!DOCTYPE html>
 
       .mobile-only {
         display: block;
-        padding: 0;
       }
 
       .mobile-header {
@@ -196,6 +195,16 @@ tr<!DOCTYPE html>
       .mobile-only .intro {
         font-size: 1em;
       }
+
+      .mobile-only .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .mobile-only .card {
+        padding: 20px;
+      }
     }
   </style>
 </head>
@@ -222,23 +231,20 @@ tr<!DOCTYPE html>
 
       <h2 class="section-title">Les fondateurs</h2>
       <div class="grid">
-        <!-- Guillaume -->
         <div class="card">
           <img src="Guillaume.jpg" alt="Guillaume" />
           <h3>Guillaume</h3>
           <div class="role">Cofondateur – Stratégie & Produits</div>
           <p>
-            Ingénieur diplômé de Centrale Meditéranée et titulaire d’un master en mathématiques financières de l'AMSE, Guillaume a travaillé en structuration chez Natixis avant de co-créer Altarys. Passionné par les marchés dérivés et les modèles quantitatifs.
+            Ingénieur diplômé de Centrale Méditerranée et titulaire d’un master en mathématiques financières de l'AMSE, Guillaume a travaillé en structuration chez Natixis avant de co-créer Altarys. Passionné par les marchés dérivés et les modèles quantitatifs.
           </p>
         </div>
-
-        <!-- Antoine -->
         <div class="card">
           <img src="Antoine.jpg" alt="Antoine" />
           <h3>Antoine</h3>
           <div class="role">Cofondateur – Développement & Technologie</div>
           <p>
-            Ingénieur diplômé de Centrale Meditéranée, Antoine a mené des projets blockchain pour plusieurs fintechs avant de s’associer à Guillaume. Expert en architecture logicielle et infrastructures Web3, il conçoit les briques techniques d’Altarys.
+            Ingénieur diplômé de Centrale Méditerranée, Antoine a mené des projets blockchain pour plusieurs fintechs avant de s’associer à Guillaume. Expert en architecture logicielle et infrastructures Web3, il conçoit les briques techniques d’Altarys.
           </p>
         </div>
       </div>
@@ -277,7 +283,7 @@ tr<!DOCTYPE html>
           <h3>Guillaume</h3>
           <div class="role">Cofondateur</div>
           <p>
-            Centrale Meditéranée et AMSE. Ex-BNP Paribas, structuration produits dérivés. En charge des modèles et produits.
+            Centrale Méditerranée & AMSE. Ex-Natixis structuration. En charge des modèles et produits.
           </p>
         </div>
         <div class="card">
@@ -285,7 +291,7 @@ tr<!DOCTYPE html>
           <h3>Antoine</h3>
           <div class="role">Cofondateur</div>
           <p>
-            Centrale Meditéranée et Taiwan National Shcool. Spécialiste blockchain et infrastructures Web3. En charge du développement technique.
+            Centrale Méditerranée. Spécialiste blockchain et Web3. En charge du développement technique.
           </p>
         </div>
       </div>
@@ -303,3 +309,4 @@ tr<!DOCTYPE html>
   </script>
 </body>
 </html>
+
