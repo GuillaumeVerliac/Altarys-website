@@ -281,7 +281,7 @@
     </ul>
   </section>
 
-  <section class="example-section show" id="autocall-related">
+  <section class="example-section" id="autocall-related">
     <h2 class="section-title">Voir les autres stratégies</h2>
     <div class="grid">
       <div class="card" onclick="toggleDetail('hybride-detail')">
@@ -327,7 +327,7 @@
     </ul>
   </section>
 
-  <section class="example-section show" id="hybride-related">
+  <section class="example-section" id="hybride-related">
     <h2 class="section-title">Voir les autres stratégies</h2>
     <div class="grid">
       <div class="card" onclick="toggleDetail('autocall-detail')">
@@ -354,9 +354,19 @@
       document.querySelectorAll('.example-section').forEach(section => section.classList.remove('show'));
       const target = document.getElementById(id);
       target.classList.add('show');
+
+      // Afficher la section "voir les autres stratégies" correspondante
+      if (id === 'autocall-detail') {
+        document.getElementById('autocall-related').classList.add('show');
+        document.getElementById('hybride-related').classList.remove('show');
+      } else if (id === 'hybride-detail') {
+        document.getElementById('hybride-related').classList.add('show');
+        document.getElementById('autocall-related').classList.remove('show');
+      }
+
       target.scrollIntoView({ behavior: 'smooth' });
+    });
     }
   </script>
 </body>
 </html>
-
