@@ -27,6 +27,14 @@
       line-height: 1.6;
     }
 
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -75,7 +83,6 @@
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
 
     .card:hover {
@@ -91,15 +98,27 @@
     .card p {
       color: #ccc;
       font-size: 0.95em;
+      margin-bottom: 20px;
     }
 
-    .card-link {
+    .card button,
+    .card a.button-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      font-weight: 600;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
       text-decoration: none;
-      color: inherit;
+      transition: background-color 0.3s;
     }
 
-    .hidden {
-      display: none;
+    .card button:hover,
+    .card a.button-link:hover {
+      background-color: #800013;
     }
 
     .example-section {
@@ -107,19 +126,19 @@
       padding: 60px 10%;
       margin-top: 40px;
       border-top: 1px solid #333;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.6s ease, max-height 0.6s ease;
     }
 
-    .scenario-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
+    .example-section.show {
+      opacity: 1;
+      max-height: 2000px; /* arbitrarily large */
     }
 
-    .scenario-grid img {
-      width: 45%;
-      max-width: 400px;
+    .example-section img {
+      width: 22%;
       border: 1px solid #333;
       border-radius: 8px;
     }
@@ -144,134 +163,142 @@
     }
 
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 15px;
+      .desktop-only {
+        display: none !important;
       }
 
-      .section-title {
-        font-size: 2em;
+      .mobile-only {
+        display: block;
       }
 
-      .scenario-grid img {
+      .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #222;
+        background-color: var(--background-color);
+      }
+
+      .mobile-header img {
+        height: 45px;
+      }
+
+      .menu-toggle {
+        font-size: 26px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        padding: 15px 20px;
+      }
+
+      .mobile-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+
+      .mobile-only section {
+        padding: 40px 20px;
+      }
+
+      .example-section img {
         width: 100%;
+        margin-bottom: 10px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav>
+
+  <!-- Header desktop -->
+  <div class="desktop-only">
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="equipe.html">À propos</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
+  </div>
+
+  <!-- Header mobile -->
+  <div class="mobile-only">
+    <header class="mobile-header">
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+    <nav id="mobileNav" class="mobile-nav">
       <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
+      <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-  </header>
+  </div>
 
+  <!-- Contenu principal -->
   <section>
     <h2 class="section-title">Nos solutions</h2>
     <div class="grid">
-      <div class="card" onclick="toggleDetail()">
+      <!-- Autocall -->
+      <div class="card">
         <h3>Stratégie Autocall</h3>
-        <p>Structure d’investissement à échéance fixe, offrant des coupons mensuels conditionnels et la possibilité de remboursement automatique si certaines performances de marché sont atteintes.
-          Cette stratégie permet de générer du rendement dans des marchés haussiers, stables, voire modérément baissiers.</p>
+        <p>Structure avec coupons mensuels conditionnels + possibilité de remboursement anticipé selon la performance du marché.</p>
+        <button onclick="toggleDetail()">En savoir plus</button>
       </div>
 
-      <a href="contact.html" class="card-link">
-        <div class="card">
-          <h3>Stratégie sur mesure</h3>
-          <p>Nous concevons des produits structurés personnalisés selon votre profil de risque et vos objectifs : génération de rendement, protection partielle du capital,
-            exposition ciblée à certains actifs (crypto, taux, indices, etc.). Un accompagnement sur-mesure, de la conception à la simulation.</p>
-        </div>
-      </a>
+      <!-- Sur-mesure -->
+      <div class="card">
+        <h3>Stratégie sur mesure</h3>
+        <p>Solutions conçues selon vos objectifs : rendement, protection, exposition ciblée à certains actifs (crypto, taux, indices…).</p>
+        <a href="contact.html" class="button-link">Nous contacter pour en savoir plus</a>
+      </div>
     </div>
   </section>
 
-  <section id="autocall-detail" class="example-section hidden">
+  <!-- Détail stratégie autocall -->
+  <section id="autocall-detail" class="example-section">
     <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
+    <p>Produit structuré indexé sur Ethereum, combinant coupons conditionnels et remboursement anticipé possible dès le 3ᵉ mois.</p>
 
-    <p><strong>Présentation technique :</strong></p>
-
-    <p>
-      Le produit est une note à capital conditionnel, indexée sur l’évolution d’Ethereum (ETH), intégrant un mécanisme d’autocall et des coupons mensuels conditionnels.
-      Cette structure permet de capter un rendement élevé tout en bénéficiant de possibilités de remboursement anticipé si le sous-jacent évolue favorablement.
-    </p>
-    <p>
-      L’Autocall Phoenix est particulièrement adapté à des anticipations de marché modérément haussières à latéralement stables.
-      Il permet à l’investisseur de percevoir des coupons réguliers, même si le sous-jacent connaît une légère baisse, tant que celui-ci reste au-dessus d’une barrière prédéfinie.
-    </p>
-    <p>
-      Le produit repose sur la combinaison d’une option de remboursement anticipé automatique (autocall) et d’options digitales mensuelles permettant de verser un coupon si les conditions sont réunies.
-      En cas de scénario défavorable à maturité (ETH en forte baisse), le capital n’est pas garanti, et l’investisseur est exposé à la baisse du sous-jacent.
-    </p>
-
-    <p><strong>Exemple concret :</strong></p>
     <ul>
       <li><strong>Sous-jacent :</strong> Ethereum (ETH)</li>
       <li><strong>Durée :</strong> 12 mois</li>
-      <li><strong>Coupon conditionnel :</strong> 2,5% par mois si ETH ≥ 70% du niveau initial</li>
-      <li><strong>Autocall mensuel :</strong> dès le mois 3 si ETH ≥ 100%</li>
-      <li><strong>Barrière de protection :</strong> 60% (observée à maturité)</li>
-      <li><strong>Paiement du coupon :</strong> à maturité</li>
+      <li><strong>Coupon mensuel :</strong> 2,5% si ETH ≥ 70%</li>
+      <li><strong>Autocall :</strong> mensuel dès le mois 3 si ETH ≥ 100%</li>
+      <li><strong>Barrière de protection :</strong> 60%</li>
     </ul>
 
-    <p><strong>Capital remboursé :</strong></p>
+    <p><strong>Exemples :</strong></p>
     <ul>
-      <li>ETH ≥ 100% à une date d’observation → 100% + coupons accumulés</li>
-      <li>ETH &lt; 100% mais ≥ 60% à maturité → 100% du nominal</li>
-      <li>ETH &lt; 60% à maturité → remboursement = performance d’ETH + coupons versés</li>
+      <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
+      <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
+      <li>ETH < 60% à maturité → perte partielle du capital</li>
     </ul>
 
-    <p><strong>Payoff à maturité :</strong></p>
-    <ul>
-      <li>ETH ≥ 60% → 100% du capital + coupons mensuels</li>
-      <li>ETH &lt; 60% → remboursement proportionnel à la baisse</li>
-    </ul>
-
-    <p><strong>Scénarios :</strong></p>
-    <ul>
-      <li>Niveau initial ETH = 3 000 USD</li>
-      <li>Notional investi = 20 000 USD</li>
-      <li>Coupon mensuel = 2,5%</li>
-    </ul>
-
-    <p><strong>Scénarios :</strong></p>
-    <p>
-      Voici quatre scénarios illustrant le comportement de l’Autocall Phoenix ETH dans différents contextes de marché. 
-      Chaque graphique représente l’évolution du prix de l’Ethereum (ETH), la barrière de protection à 60 %, 
-      et la valeur de remboursement ou des coupons selon les performances observées.
-    </p>
-    <ul style="margin-left: 60px; text-align: justify;">
-      <li><strong>Scénario 1 :</strong> ETH dépasse 100 % du niveau initial dès le mois 3 → remboursement anticipé + coupons accumulés.</li>
-      <li><strong>Scénario 2 :</strong> ETH reste stable au-dessus de 70 % → coupons mensuels versés jusqu’à l’échéance.</li>
-      <li><strong>Scénario 3 :</strong> ETH touche la barrière puis rebondit → capital intégralement remboursé.</li>
-      <li><strong>Scénario 4 :</strong> ETH termine sous la barrière finale → capital remboursé partiellement selon la performance.</li>
-    </ul>
-    
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
-      <img src="scenario1.jpeg" alt="Scénario 1" style="width: 22%; border: 1px solid #333; border-radius: 8px;" />
-      <img src="scenario2.jpeg" alt="Scénario 2" style="width: 22%; border: 1px solid #333; border-radius: 8px;" />
-      <img src="scenario3.jpeg" alt="Scénario 3" style="width: 22%; border: 1px solid #333; border-radius: 8px;" />
-      <img src="scenario4.jpeg" alt="Scénario 4" style="width: 22%; border: 1px solid #333; border-radius: 8px;" />
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <img src="scenario1.jpeg" alt="Scénario 1">
+      <img src="scenario2.jpeg" alt="Scénario 2">
+      <img src="scenario3.jpeg" alt="Scénario 3">
+      <img src="scenario4.jpeg" alt="Scénario 4">
     </div>
-    <p>
-
-    <p><strong>Avantages :</strong></p>
-    <ul>
-      <li>Rendement élevé (jusqu’à 30%/an)</li>
-      <li>Protection du capital jusqu’à -40%</li>
-      <li>Remboursement anticipé dès le mois 3</li>
-      <li>Coupons versés même en cas de stagnation</li>
-    </ul>
-
-    <p><strong>Inconvénients :</strong></p>
-    <ul>
-      <li>Capital à risque en cas de chute d’ETH</li>
-      <li>Coupons non garantis</li>
-      <li>Pas de remboursement anticipé si ETH &lt; 100%</li>
-    </ul>
   </section>
 
   <footer>
@@ -279,12 +306,14 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('show');
+    }
+
     function toggleDetail() {
       const section = document.getElementById('autocall-detail');
-      section.classList.toggle('hidden');
-      if (!section.classList.contains('hidden')) {
-        section.scrollIntoView({ behavior: 'smooth' });
-      }
+      section.classList.toggle('show');
+      section.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
