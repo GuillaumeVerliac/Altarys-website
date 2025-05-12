@@ -26,6 +26,15 @@
       line-height: 1.6;
     }
 
+    /* Version desktop */
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -109,69 +118,165 @@
       margin-top: 60px;
     }
 
+    /* Responsive mobile version */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.2em;
+      .desktop-only {
+        display: none !important;
       }
 
-      h2 {
-        font-size: 2em;
+      .mobile-only {
+        display: block;
+        padding: 20px;
       }
 
-      p {
+      .mobile-only header,
+      .mobile-only section,
+      .mobile-only footer {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .mobile-only header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-bottom: 1px solid #222;
+      }
+
+      .mobile-only img {
+        height: 50px;
+        margin-bottom: 10px;
+      }
+
+      .mobile-only nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .mobile-only nav a {
+        color: var(--text-color);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .mobile-only h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+        color: var(--accent-color);
+      }
+
+      .mobile-only p {
         font-size: 1em;
+        color: #ccc;
       }
 
-      nav a {
-        margin-left: 15px;
+      .mobile-only .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .mobile-only .cta-buttons a {
+        padding: 12px;
+        border-radius: 6px;
+      }
+
+      .mobile-only footer {
+        font-size: 0.85em;
+        color: #888;
+        background-color: #111;
+        margin-top: 40px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
-      <a href="solutions.html">Nos solutions</a>
-      <a href="actualites.html">Actualités</a>
-      <a href="contact.html">Nous contacter</a>
-    </nav>
-  </header>
+  <!-- Version ordinateur -->
+  <div class="desktop-only">
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
 
-  <!-- Présentation d'Altarys -->
-  <section style="background-color: #0d0d0d;">
-    <h2>Altarys Capital, infrastructure pour l’investissement structuré crypto</h2>
-    <p>
-      Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques.
-      Nous vous permettons, gestionnaire de fortunes, banques privées, family offices, ou asset manager indépendant, de concevoir des instruments d’investissement sophistiqués, sans internaliser l’ingénierie financière ni les risques opérationnels.
-    </p>
-    <br>
-    <p>
-      Nous vous mettons à disposition une technologie de structuration intégrant les spécificités des marchés crypto : forte volatilité, liquidité fragmentée, absence de marché de taux.
-      En vous appuyant sur Altarys Capital, vous gardez le contrôle total sur votre offre d’investissement : concevez des produits différenciants, personnalisés selon vos objectifs de rendement, de protection et d’exposition, sans dépendre d’acteurs traditionnels ni mobiliser de ressources internes.
-    </p>
-    <div class="cta-buttons">
-      <a href="equipe.html">Découvrez Altarys</a>
-    </div>
-  </section>
+    <section style="background-color: #0d0d0d;">
+      <h2>Altarys Capital, infrastructure pour l’investissement structuré crypto</h2>
+      <p>
+        Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques.
+        Nous vous permettons, gestionnaire de fortunes, banques privées, family offices, ou asset manager indépendant, de concevoir des instruments d’investissement sophistiqués, sans internaliser l’ingénierie financière ni les risques opérationnels.
+      </p>
+      <br>
+      <p>
+        Nous vous mettons à disposition une technologie de structuration intégrant les spécificités des marchés crypto : forte volatilité, liquidité fragmentée, absence de marché de taux.
+        En vous appuyant sur Altarys Capital, vous gardez le contrôle total sur votre offre d’investissement : concevez des produits différenciants, personnalisés selon vos objectifs de rendement, de protection et d’exposition, sans dépendre d’acteurs traditionnels ni mobiliser de ressources internes.
+      </p>
+      <div class="cta-buttons">
+        <a href="equipe.html">Découvrez Altarys</a>
+      </div>
+    </section>
 
-  <section>
-    <h2>Nos produits structurés sur crypto-actifs</h2>
-    <p>
-      Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
-      Personnalisez vos produits ou explorez des stratégies déjà calibrées.
-    </p>
-    <div class="cta-buttons">
-      <a href="contact.html">Créer une solution sur-mesure</a>
-      <a href="solutions.html#selection">Parcourir la sélection</a>
-    </div>
-  </section>
+    <section>
+      <h2>Nos produits structurés sur crypto-actifs</h2>
+      <p>
+        Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
+        Personnalisez vos produits ou explorez des stratégies déjà calibrées.
+      </p>
+      <div class="cta-buttons">
+        <a href="contact.html">Créer une solution sur-mesure</a>
+        <a href="solutions.html#selection">Parcourir la sélection</a>
+      </div>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+    </footer>
+  </div>
+
+  <!-- Version mobile -->
+  <div class="mobile-only">
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="equipe.html">Équipe</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
+
+    <section style="background-color: #0d0d0d;">
+      <h2>Altarys Capital</h2>
+      <p>
+        Plateforme technologique pour créer vos produits d’investissement crypto personnalisés, sans complexité ni dépendance.
+      </p>
+      <div class="cta-buttons">
+        <a href="equipe.html">Découvrir Altarys</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Produits structurés</h2>
+      <p>
+        Autocall, reverse convertible, digital option : des solutions calibrées pour le marché crypto.
+      </p>
+      <div class="cta-buttons">
+        <a href="contact.html">Créer une solution</a>
+        <a href="solutions.html#selection">Voir la sélection</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme indépendante</p>
+    </footer>
+  </div>
 </body>
 </html>
-
