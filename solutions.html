@@ -66,6 +66,10 @@
     }
 
     .card {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
       background-color: var(--card-background);
       padding: 25px;
       border-radius: 16px;
@@ -176,6 +180,16 @@
         margin-bottom: 10px;
       }
     }
+  @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -267,6 +281,20 @@
     </ul>
   </section>
 
+  <section class="example-section show" id="autocall-related">
+    <h2 class="section-title">Voir les autres stratégies</h2>
+    <div class="grid">
+      <div class="card" onclick="toggleDetail('hybride-detail')">
+        <h3>Stratégie Hybride de taux</h3>
+        <p>Structure liée à un taux de référence (CMS 5Y), avec coupon dépendant du niveau de taux à chaque échéance.</p>
+      </div>
+      <div class="card">
+        <a href="contact.html" class="button-link">Stratégie sur mesure</a>
+        <p>Solutions personnalisées selon vos objectifs d’investissement, rendement ou protection.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="hybride-detail" class="example-section">
     <h2 class="section-title">Exemple : Hybride CMS 5Y / Coupon Variable</h2>
     <p>Ce produit structuré verse un coupon annuel variable indexé sur le niveau du CMS 5Y (Constant Maturity Swap 5 ans), avec un plancher garanti. Il permet à l’investisseur de bénéficier d’une hausse potentielle des taux tout en protégeant partiellement son capital.</p>
@@ -297,6 +325,20 @@
       <li>Coupon plafonné si les taux ne montent pas</li>
       <li>Capital non garanti en cas de baisse durable des taux</li>
     </ul>
+  </section>
+
+  <section class="example-section show" id="hybride-related">
+    <h2 class="section-title">Voir les autres stratégies</h2>
+    <div class="grid">
+      <div class="card" onclick="toggleDetail('autocall-detail')">
+        <h3>Stratégie Autocall</h3>
+        <p>Coupons mensuels conditionnels et possibilité de remboursement anticipé selon la performance du marché.</p>
+      </div>
+      <div class="card">
+        <a href="contact.html" class="button-link">Stratégie sur mesure</a>
+        <p>Solutions personnalisées selon vos objectifs d’investissement, rendement ou protection.</p>
+      </div>
+    </div>
   </section>
 
   <footer>
