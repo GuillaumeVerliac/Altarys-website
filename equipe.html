@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Équipe – Altarys Capital</title>
+  <title>À propos – Altarys Capital</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -25,6 +25,14 @@
       background-color: var(--background-color);
       color: var(--text-color);
       line-height: 1.6;
+    }
+
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-only {
+      display: none;
     }
 
     header {
@@ -63,6 +71,14 @@
       text-align: center;
     }
 
+    .intro {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      font-size: 1.1em;
+      text-align: center;
+      color: #ccc;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -76,8 +92,6 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       text-align: center;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
-      position: relative;
-      overflow: hidden;
     }
 
     .card:hover {
@@ -119,57 +133,173 @@
       margin-top: 60px;
     }
 
+    /* Mobile responsive */
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 15px;
+      .desktop-only {
+        display: none !important;
       }
 
-      .section-title {
+      .mobile-only {
+        display: block;
+        padding: 0;
+      }
+
+      .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #222;
+        background-color: var(--background-color);
+      }
+
+      .mobile-header img {
+        height: 45px;
+      }
+
+      .menu-toggle {
+        font-size: 26px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        padding: 15px 20px;
+      }
+
+      .mobile-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+
+      .mobile-only section {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .mobile-only .section-title {
         font-size: 2em;
+      }
+
+      .mobile-only .intro {
+        font-size: 1em;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav>
+  <!-- Version desktop -->
+  <div class="desktop-only">
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="equipe.html">À propos</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2 class="section-title">À propos d'Altarys Capital</h2>
+      <p class="intro">
+        Altarys Capital est née de la conviction qu’un nouveau paradigme d’investissement était nécessaire pour répondre aux spécificités du marché des crypto-actifs. 
+        En alliant expertise en ingénierie financière et innovation technologique, nous permettons aux professionnels de concevoir des produits structurés adaptés à cet univers encore peu exploré.
+      </p>
+
+      <h2 class="section-title">Les fondateurs</h2>
+      <div class="grid">
+        <!-- Guillaume -->
+        <div class="card">
+          <img src="guillaumre.jpg" alt="Guillaume" />
+          <h3>Guillaume Lefèvre</h3>
+          <div class="role">Cofondateur – Stratégie & Produits</div>
+          <p>
+            Diplômé de l’ESCP Business School et titulaire d’un master en mathématiques financières de l’Université Paris-Dauphine, Guillaume a travaillé en structuration chez BNP Paribas avant de co-créer Altarys. Passionné par les marchés dérivés et les modèles quantitatifs.
+          </p>
+        </div>
+
+        <!-- Antoine -->
+        <div class="card">
+          <img src="antoinre.jpeg" alt="Antoine" />
+          <h3>Antoine Durand</h3>
+          <div class="role">Cofondateur – Développement & Technologie</div>
+          <p>
+            Ingénieur diplômé de CentraleSupélec, Antoine a mené des projets blockchain pour plusieurs fintechs avant de s’associer à Guillaume. Expert en architecture logicielle et infrastructures Web3, il conçoit les briques techniques d’Altarys.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+    </footer>
+  </div>
+
+  <!-- Version mobile -->
+  <div class="mobile-only">
+    <header class="mobile-header">
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <nav id="mobileNav" class="mobile-nav">
       <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
+      <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-  </header>
 
-  <section id="equipe">
-    <h2 class="section-title">Notre Équipe</h2>
-    <div class="grid">
-      <!-- Guillaume -->
-      <div class="card">
-        <img src="guillaumre.jpg" alt="Guillaume" />
-        <h3>Guillaume</h3>
-        <div class="role">Président & Fondateur</div>
-        <p>
-          Guillaume
-        </p>
+    <section>
+      <h2 class="section-title">À propos</h2>
+      <p class="intro">
+        Altarys Capital conçoit des produits structurés sur crypto-actifs pour les professionnels de l’investissement. Nous construisons une infrastructure technologique adaptée à un marché en mutation.
+      </p>
+
+      <h2 class="section-title">Les fondateurs</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="guillaumre.jpg" alt="Guillaume" />
+          <h3>Guillaume Lefèvre</h3>
+          <div class="role">Cofondateur</div>
+          <p>
+            ESCP & Paris-Dauphine. Ex-BNP Paribas, structuration produits dérivés. En charge des modèles et produits.
+          </p>
+        </div>
+        <div class="card">
+          <img src="antoinre.jpeg" alt="Antoine" />
+          <h3>Antoine Durand</h3>
+          <div class="role">Cofondateur</div>
+          <p>
+            CentraleSupélec. Spécialiste blockchain et infrastructures Web3. En charge du développement technique.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <!-- Antoine -->
-      <div class="card">
-        <img src="antoinre.jpeg" alt="Antoine" />
-        <h3>Antoine</h3>
-        <div class="role">Président & Fondateur</div>
-        <p>
-          Antoine
-        </p>
-      </div>
-    </div>
-  </section>
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme indépendante</p>
+    </footer>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
-  </footer>
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
-
