@@ -212,8 +212,15 @@
       <div class="card">
         <h3>Stratégie Autocall</h3>
         <p>Structure avec coupons mensuels conditionnels et possibilité de remboursement anticipé.</p>
-        <button onclick="toggleDetail()">Voir sur un exemple</button>
+        <button onclick="toggleDetail('autocall-detail')">Voir sur un exemple</button>
       </div>
+
+      <div class="card">
+        <h3>Stratégie Hybride de taux</h3>
+        <p>Structure liée à un taux d’intérêt de référence (ex : CMS 5Y). Le coupon dépend du niveau du taux au fil du temps, permettant de capter un potentiel de hausse des taux sans exposition directe au marché obligataire.</p>
+        <button onclick="toggleDetail('hybride-detail')">Voir sur un exemple</button>
+      </div>
+
       <div class="card">
         <h3>Stratégie sur mesure</h3>
         <p>Solutions personnalisées selon vos objectifs : rendement, protection, exposition ciblée.</p>
@@ -224,10 +231,7 @@
 
   <section id="autocall-detail" class="example-section">
     <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
-    <p>
-      Ce produit structuré permet de générer un rendement mensuel de 2,5 % si l'actif sous-jacent (ici Ethereum) reste au-dessus d'un certain niveau. Il comporte un mécanisme d'autocall qui peut déclencher un remboursement anticipé si les conditions sont remplies. À maturité, le capital est protégé jusqu'à un certain seuil (barrière de protection), au-delà duquel l'investisseur subit une perte proportionnelle à la baisse de l'actif.
-    </p>
-
+    <p>Ce produit structuré permet de générer un rendement mensuel de 2,5 % si l'actif sous-jacent (ici Ethereum) reste au-dessus d'un certain niveau...</p>
     <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
     <strong>Durée :</strong> 12 mois<br>
     <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
@@ -263,6 +267,38 @@
     </ul>
   </section>
 
+  <section id="hybride-detail" class="example-section">
+    <h2 class="section-title">Exemple : Hybride CMS 5Y / Coupon Variable</h2>
+    <p>Ce produit structuré verse un coupon annuel variable indexé sur le niveau du CMS 5Y (Constant Maturity Swap 5 ans), avec un plancher garanti. Il permet à l’investisseur de bénéficier d’une hausse potentielle des taux tout en protégeant partiellement son capital.</p>
+    <ul>
+      <li><strong>Sous-jacent :</strong> Taux CMS 5Y</li>
+      <li><strong>Durée :</strong> 5 ans</li>
+      <li><strong>Coupon :</strong> max(CMS 5Y - 1%, 2%) chaque année</li>
+      <li><strong>Capital :</strong> 100% garanti si CMS > 1% en moyenne</li>
+      <li><strong>Sinon :</strong> remboursement à 90%</li>
+    </ul>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+      <img src="scenario1.jpeg" alt="Scénario 1">
+      <img src="scenario2.jpeg" alt="Scénario 2">
+      <img src="scenario3.jpeg" alt="Scénario 3">
+      <img src="scenario4.jpeg" alt="Scénario 4">
+    </div>
+
+    <h3 style="color: var(--accent-color); margin-top: 40px;">Avantages</h3>
+    <ul>
+      <li>Possibilité de capter la hausse des taux</li>
+      <li>Coupon garanti minimum</li>
+      <li>Exposition simple aux taux sans duration</li>
+    </ul>
+
+    <h3 style="color: var(--accent-color);">Inconvénients</h3>
+    <ul>
+      <li>Coupon plafonné si les taux ne montent pas</li>
+      <li>Capital non garanti en cas de baisse durable des taux</li>
+    </ul>
+  </section>
+
   <footer>
     <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
   </footer>
@@ -272,10 +308,11 @@
       document.getElementById('mobileNav').classList.toggle('show');
     }
 
-    function toggleDetail() {
-      const section = document.getElementById('autocall-detail');
-      section.classList.toggle('show');
-      section.scrollIntoView({ behavior: 'smooth' });
+    function toggleDetail(id) {
+      document.querySelectorAll('.example-section').forEach(section => section.classList.remove('show'));
+      const target = document.getElementById(id);
+      target.classList.add('show');
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
