@@ -27,6 +27,14 @@
       line-height: 1.6;
     }
 
+    .desktop-only {
+      display: block;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
     header {
       display: flex;
       justify-content: space-between;
@@ -102,60 +110,176 @@
     }
 
     @media (max-width: 768px) {
-      nav a {
-        margin-left: 15px;
+      .desktop-only {
+        display: none !important;
       }
 
-      .section-title {
+      .mobile-only {
+        display: block;
+      }
+
+      .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #222;
+        background-color: var(--background-color);
+      }
+
+      .mobile-header img {
+        height: 45px;
+      }
+
+      .menu-toggle {
+        font-size: 26px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        padding: 15px 20px;
+      }
+
+      .mobile-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .mobile-nav.show {
+        display: flex;
+      }
+
+      .mobile-only section {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .mobile-only .section-title {
         font-size: 2em;
+        margin-bottom: 30px;
+      }
+
+      .mobile-only .grid {
+        gap: 30px;
+      }
+
+      .mobile-only .card {
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .mobile-only footer {
+        font-size: 0.85em;
+        color: #888;
+        background-color: #111;
+        margin-top: 40px;
+        padding: 30px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav>
+
+  <!-- Version ordinateur -->
+  <div class="desktop-only">
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="equipe.html">À propos</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
+
+    <section>
+      <h2 class="section-title">Actualités</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>La Fed maintient ses taux inchangés</h3>
+          <p>Le 7 mai 2025, la Réserve fédérale américaine a décidé de maintenir ses taux directeurs entre 4,25 % et 4,5 %, adoptant une approche prudente face aux incertitudes économiques liées aux politiques tarifaires de l'administration Trump.</p>
+        </div>
+        <div class="card">
+          <h3>Le Bitcoin dépasse les 100 000 $</h3>
+          <p>Le 8 mai 2025, le Bitcoin a franchi la barre des 100 000 $, atteignant 101 329,97 $, stimulé par un nouvel accord commercial entre les États-Unis et le Royaume-Uni.</p>
+        </div>
+        <div class="card">
+          <h3>BlackRock lance un fonds tokenisé sur Ethereum</h3>
+          <p>En mars 2024, BlackRock a lancé son premier fonds tokenisé sur Ethereum. Il investit dans des bons du Trésor et marque une avancée majeure pour la blockchain dans la finance traditionnelle.</p>
+        </div>
+        <div class="card">
+          <h3>Optimisme sur les marchés asiatiques</h3>
+          <p>Le 9 mai 2025, les marchés asiatiques ont progressé, tirés par l'accord commercial entre les États-Unis et le Royaume-Uni. Le Nikkei et Taïwan Tech en tête.</p>
+        </div>
+        <div class="card">
+          <h3>Ethereum en forte progression</h3>
+          <p>Le 8 mai 2025, l’Ether a bondi de 14 % pour dépasser 2 050 $, porté par le regain d'intérêt pour les actifs numériques dans un contexte géopolitique incertain.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+    </footer>
+  </div>
+
+  <!-- Version mobile -->
+  <div class="mobile-only">
+    <header class="mobile-header">
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <nav id="mobileNav" class="mobile-nav">
       <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
+      <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-  </header>
 
-  <section>
-    <h2 class="section-title">Actualités</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>La Fed maintient ses taux inchangés</h3>
-        <p>Le 7 mai 2025, la Réserve fédérale américaine a décidé de maintenir ses taux directeurs entre 4,25 % et 4,5 %, adoptant une approche prudente face aux incertitudes économiques liées aux politiques tarifaires de l'administration Trump. Les analystes soulignent les risques croissants de stagflation, combinant inflation élevée et ralentissement de la croissance. :contentReference[oaicite:1]{index=1}</p>
+    <section>
+      <h2 class="section-title">Actualités</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>La Fed maintient ses taux</h3>
+          <p>Approche prudente face à l’incertitude. Les marchés restent volatils.</p>
+        </div>
+        <div class="card">
+          <h3>Bitcoin à 100 000 $</h3>
+          <p>Un nouveau sommet atteint le 8 mai, porté par un accord UK-USA.</p>
+        </div>
+        <div class="card">
+          <h3>BlackRock tokenise</h3>
+          <p>Un fonds sur Ethereum : innovation majeure pour la finance trad.</p>
+        </div>
+        <div class="card">
+          <h3>Rebond en Asie</h3>
+          <p>Les bourses japonaises et taïwanaises réagissent positivement.</p>
+        </div>
+        <div class="card">
+          <h3>Ethereum bondit</h3>
+          <p>+14 % pour ETH, qui dépasse les 2 000 $ dans un contexte tendu.</p>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Le Bitcoin dépasse les 100 000 $</h3>
-        <p>Le 8 mai 2025, le Bitcoin a franchi la barre des 100 000 $, atteignant 101 329,97 $, stimulé par l'optimisme entourant un nouvel accord commercial entre les États-Unis et le Royaume-Uni. Cette hausse reflète une confiance renouvelée des investisseurs envers les actifs numériques. :contentReference[oaicite:2]{index=2}</p>
-      </div>
+    <footer>
+      <p>&copy; 2025 Altarys Capital — Plateforme indépendante</p>
+    </footer>
+  </div>
 
-      <div class="card">
-        <h3>BlackRock lance un fonds tokenisé sur Ethereum</h3>
-        <p>En mars 2024, BlackRock a lancé son premier fonds tokenisé, le BlackRock USD Institutional Digital Liquidity Fund (BUIDL), sur le réseau Ethereum. Ce fonds représente des investissements dans des bons du Trésor américain et des accords de rachat, marquant une avancée significative dans l'intégration de la blockchain dans la finance traditionnelle. :contentReference[oaicite:3]{index=3}</p>
-      </div>
+  <script>
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle
 
-      <div class="card">
-        <h3>Optimisme sur les marchés asiatiques</h3>
-        <p>Le 9 mai 2025, les marchés asiatiques, notamment au Japon et à Taïwan, ont connu une hausse significative, portés par l'optimisme suscité par l'accord commercial entre les États-Unis et le Royaume-Uni. Le Nikkei a augmenté de 1,7 %, tandis que le marché taïwanais a progressé de 1,8 %, principalement grâce aux actions technologiques. :contentReference[oaicite:4]{index=4}</p>
-      </div>
-
-      <div class="card">
-        <h3>Ethereum en forte progression</h3>
-        <p>Le 8 mai 2025, l'Ether (ETH) a enregistré une hausse de plus de 14 %, atteignant 2 050,46 $, suite à l'annonce de l'accord commercial entre les États-Unis et le Royaume-Uni. Cette progression souligne l'intérêt croissant des investisseurs pour les actifs numériques en période d'incertitude économique. :contentReference[oaicite:5]{index=5}</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
-  </footer>
-</body>
-</html>
