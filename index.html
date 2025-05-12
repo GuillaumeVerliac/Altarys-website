@@ -26,7 +26,6 @@
       line-height: 1.6;
     }
 
-    /* Version desktop */
     .desktop-only {
       display: block;
     }
@@ -118,7 +117,6 @@
       margin-top: 60px;
     }
 
-    /* Responsive mobile version */
     @media (max-width: 768px) {
       .desktop-only {
         display: none !important;
@@ -214,7 +212,7 @@
       <img src="logo.png" alt="Logo Altarys Capital" />
       <nav>
         <a href="index.html">Accueil</a>
-        <a href="equipe.html">Équipe</a>
+        <a href="equipe.html">À propos</a>
         <a href="solutions.html">Nos solutions</a>
         <a href="actualites.html">Actualités</a>
         <a href="contact.html">Nous contacter</a>
@@ -263,7 +261,7 @@
 
     <nav id="mobileNav" class="mobile-nav">
       <a href="index.html">Accueil</a>
-      <a href="equipe.html">Équipe</a>
+      <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
@@ -297,8 +295,7 @@
 
   <script>
     function toggleMenu() {
-      const nav = document.getElementById('mobileNav');
-      nav.classList.toggle('show');
+      document.getElementById('mobileNav').classList.toggle('show');
     }
   </script>
 </body>
