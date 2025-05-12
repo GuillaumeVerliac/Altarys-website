@@ -126,39 +126,53 @@
 
       .mobile-only {
         display: block;
-        padding: 20px;
+        padding: 0;
       }
 
-      .mobile-only header,
-      .mobile-only section,
-      .mobile-only footer {
-        padding: 20px;
-        text-align: center;
-      }
-
-      .mobile-only header {
+      .mobile-header {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #222;
+        background-color: var(--background-color);
+      }
+
+      .mobile-header img {
+        height: 45px;
+      }
+
+      .menu-toggle {
+        font-size: 26px;
+        background: none;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+      }
+
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        padding: 15px 20px;
+      }
+
+      .mobile-nav a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 0;
         border-bottom: 1px solid #222;
       }
 
-      .mobile-only img {
-        height: 50px;
-        margin-bottom: 10px;
-      }
-
-      .mobile-only nav {
+      .mobile-nav.show {
         display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 10px;
       }
 
-      .mobile-only nav a {
-        color: var(--text-color);
-        font-weight: 600;
-        text-decoration: none;
+      .mobile-only section,
+      .mobile-only footer {
+        padding: 30px 20px;
+        text-align: center;
       }
 
       .mobile-only h2 {
@@ -242,16 +256,18 @@
 
   <!-- Version mobile -->
   <div class="mobile-only">
-    <header>
+    <header class="mobile-header">
       <img src="logo.png" alt="Logo Altarys Capital" />
-      <nav>
-        <a href="index.html">Accueil</a>
-        <a href="equipe.html">Équipe</a>
-        <a href="solutions.html">Nos solutions</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="contact.html">Nous contacter</a>
-      </nav>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     </header>
+
+    <nav id="mobileNav" class="mobile-nav">
+      <a href="index.html">Accueil</a>
+      <a href="equipe.html">Équipe</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
 
     <section style="background-color: #0d0d0d;">
       <h2>Altarys Capital</h2>
@@ -278,5 +294,13 @@
       <p>&copy; 2025 Altarys Capital — Plateforme indépendante</p>
     </footer>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
+
