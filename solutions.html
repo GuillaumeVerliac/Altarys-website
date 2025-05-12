@@ -27,13 +27,8 @@
       line-height: 1.6;
     }
 
-    .desktop-only {
-      display: block;
-    }
-
-    .mobile-only {
-      display: none;
-    }
+    .desktop-only { display: block; }
+    .mobile-only { display: none; }
 
     header {
       display: flex;
@@ -44,9 +39,7 @@
       border-bottom: 1px solid #222;
     }
 
-    header img {
-      height: 60px;
-    }
+    header img { height: 60px; }
 
     nav a {
       color: var(--text-color);
@@ -55,14 +48,9 @@
       font-weight: 600;
       transition: color 0.3s;
     }
+    nav a:hover { color: var(--accent-color); }
 
-    nav a:hover {
-      color: var(--accent-color);
-    }
-
-    section {
-      padding: 80px 10%;
-    }
+    section { padding: 80px 10%; }
 
     .section-title {
       font-size: 2.5em;
@@ -84,22 +72,12 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 12px 30px rgba(179, 0, 27, 0.3);
     }
-
-    .card h3 {
-      color: var(--accent-color);
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 0.95em;
-      margin-bottom: 20px;
-    }
+    .card h3 { color: var(--accent-color); margin-bottom: 10px; }
+    .card p { color: #ccc; font-size: 0.95em; margin-bottom: 20px; }
 
     .card button,
     .card a.button-link {
@@ -115,7 +93,6 @@
       text-decoration: none;
       transition: background-color 0.3s;
     }
-
     .card button:hover,
     .card a.button-link:hover {
       background-color: #800013;
@@ -131,12 +108,10 @@
       overflow: hidden;
       transition: opacity 0.6s ease, max-height 0.6s ease;
     }
-
     .example-section.show {
       opacity: 1;
-      max-height: 2000px; /* arbitrarily large */
+      max-height: 4000px;
     }
-
     .example-section img {
       width: 22%;
       border: 1px solid #333;
@@ -147,7 +122,6 @@
       margin: 16px 0 32px 60px;
       text-align: justify;
     }
-
     p {
       text-align: justify;
       margin-bottom: 20px;
@@ -163,13 +137,8 @@
     }
 
     @media (max-width: 768px) {
-      .desktop-only {
-        display: none !important;
-      }
-
-      .mobile-only {
-        display: block;
-      }
+      .desktop-only { display: none !important; }
+      .mobile-only { display: block; }
 
       .mobile-header {
         display: flex;
@@ -179,11 +148,7 @@
         border-bottom: 1px solid #222;
         background-color: var(--background-color);
       }
-
-      .mobile-header img {
-        height: 45px;
-      }
-
+      .mobile-header img { height: 45px; }
       .menu-toggle {
         font-size: 26px;
         background: none;
@@ -191,14 +156,12 @@
         color: var(--text-color);
         cursor: pointer;
       }
-
       .mobile-nav {
         display: none;
         flex-direction: column;
         background-color: #111;
         padding: 15px 20px;
       }
-
       .mobile-nav a {
         color: var(--text-color);
         text-decoration: none;
@@ -206,25 +169,16 @@
         padding: 10px 0;
         border-bottom: 1px solid #222;
       }
-
-      .mobile-nav.show {
-        display: flex;
-      }
-
-      .mobile-only section {
-        padding: 40px 20px;
-      }
+      .mobile-nav.show { display: flex; }
 
       .example-section img {
-        width: 100%;
+        width: 45%;
         margin-bottom: 10px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header desktop -->
   <div class="desktop-only">
     <header>
       <img src="logo.png" alt="Logo Altarys Capital" />
@@ -238,7 +192,6 @@
     </header>
   </div>
 
-  <!-- Header mobile -->
   <div class="mobile-only">
     <header class="mobile-header">
       <img src="logo.png" alt="Logo Altarys Capital" />
@@ -253,40 +206,30 @@
     </nav>
   </div>
 
-  <!-- Contenu principal -->
   <section>
     <h2 class="section-title">Nos solutions</h2>
     <div class="grid">
-      <!-- Autocall -->
       <div class="card">
         <h3>Stratégie Autocall</h3>
-        <p>Structure avec coupons mensuels conditionnels + possibilité de remboursement anticipé selon la performance du marché.</p>
-        <button onclick="toggleDetail()">En savoir plus</button>
+        <p>Structure avec coupons mensuels conditionnels et possibilité de remboursement anticipé.</p>
+        <button onclick="toggleDetail()">Voir sur un exemple</button>
       </div>
-
-      <!-- Sur-mesure -->
       <div class="card">
         <h3>Stratégie sur mesure</h3>
-        <p>Solutions conçues selon vos objectifs : rendement, protection, exposition ciblée à certains actifs (crypto, taux, indices…).</p>
+        <p>Solutions personnalisées selon vos objectifs : rendement, protection, exposition ciblée.</p>
         <a href="contact.html" class="button-link">Nous contacter pour en savoir plus</a>
       </div>
     </div>
   </section>
 
-  <!-- Détail stratégie autocall -->
   <section id="autocall-detail" class="example-section">
     <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
-    <p>Produit structuré indexé sur Ethereum, combinant coupons conditionnels et remboursement anticipé possible dès le 3ᵉ mois.</p>
+    <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
+    <strong>Durée :</strong> 12 mois<br>
+    <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
+    <strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%<br>
+    <strong>Barrière protection :</strong> 60%</p>
 
-    <ul>
-      <li><strong>Sous-jacent :</strong> Ethereum (ETH)</li>
-      <li><strong>Durée :</strong> 12 mois</li>
-      <li><strong>Coupon mensuel :</strong> 2,5% si ETH ≥ 70%</li>
-      <li><strong>Autocall :</strong> mensuel dès le mois 3 si ETH ≥ 100%</li>
-      <li><strong>Barrière de protection :</strong> 60%</li>
-    </ul>
-
-    <p><strong>Exemples :</strong></p>
     <ul>
       <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
       <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
@@ -299,6 +242,21 @@
       <img src="scenario3.jpeg" alt="Scénario 3">
       <img src="scenario4.jpeg" alt="Scénario 4">
     </div>
+
+    <h3 style="color: var(--accent-color); margin-top: 40px;">Avantages</h3>
+    <ul>
+      <li>Rendement élevé (jusqu’à 30%/an)</li>
+      <li>Protection du capital jusqu’à -40%</li>
+      <li>Remboursement anticipé dès le mois 3</li>
+      <li>Coupons versés même si le marché stagne</li>
+    </ul>
+
+    <h3 style="color: var(--accent-color);">Inconvénients</h3>
+    <ul>
+      <li>Capital à risque en cas de forte baisse d’ETH</li>
+      <li>Coupons non garantis</li>
+      <li>Pas de remboursement anticipé si ETH < 100%</li>
+    </ul>
   </section>
 
   <footer>
