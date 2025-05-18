@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nos solutions – Altarys Capital</title>
-  <link rel="icon" href="logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -136,7 +135,10 @@
     }
 
     .example-section.show {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: calc(100vh - 100px);
       opacity: 1;
     }
 
@@ -167,6 +169,7 @@
       font-size: 0.95em;
       transition: all 0.3s ease;
       margin-top: 30px;
+      align-self: center;
     }
 
     .scroll-top-button:hover {
@@ -180,7 +183,7 @@
       font-size: 0.9em;
       padding: 30px 10%;
       color: #888;
-      margin-top: 60px;
+      margin-top: 0;
     }
 
     @media (max-width: 768px) {
@@ -245,7 +248,6 @@
 
   <section id="autocall" class="example-section">
     <h2>Exemple : Autocall Phoenix ETH</h2>
-    <p>Ce produit structuré permet de générer un rendement mensuel de 2,5 % si l'actif sous-jacent (ici Ethereum) reste au-dessus d'un certain niveau. Il comporte un mécanisme d'autocall qui peut déclencher un remboursement anticipé si les conditions sont remplies. À maturité, le capital est protégé jusqu'à un certain seuil (barrière de protection), au-delà duquel l'investisseur subit une perte proportionnelle à la baisse de l'actif.</p>
     <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
       <strong>Durée :</strong> 12 mois<br>
       <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
@@ -275,33 +277,25 @@
       <li>Coupons non garantis</li>
       <li>Pas de remboursement anticipé si ETH < 100%</li>
     </ul>
-    <div style="text-align: center;">
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
-    </div>
+    <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
   </section>
 
   <section id="strategie2" class="example-section">
     <h2>Exemple : Stratégie 2</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center;">
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
-    </div>
+    <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
   </section>
 
   <section id="strategie3" class="example-section">
     <h2>Exemple : Stratégie 3</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center;">
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
-    </div>
+    <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
   </section>
 
   <section id="strategie4" class="example-section">
     <h2>Exemple : Stratégie 4</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center;">
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
-    </div>
+    <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
   </section>
 
   <footer>
@@ -326,5 +320,6 @@
   </script>
 </body>
 </html>
+
 
 
