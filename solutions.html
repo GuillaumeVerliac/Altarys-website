@@ -12,13 +12,11 @@
       --background-color: #000000;
       --text-color: #ffffff;
     }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
@@ -29,7 +27,6 @@
       color: var(--text-color);
       line-height: 1.6;
     }
-
     header {
       position: fixed;
       width: 100%;
@@ -43,11 +40,9 @@
       align-items: center;
       border-bottom: 1px solid #222;
     }
-
     header img {
       height: 50px;
     }
-
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -55,57 +50,50 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-
     nav a:hover {
       color: var(--primary-color);
     }
-
     section {
       padding: 140px 10% 80px;
     }
-
     h2 {
       font-size: 2.5em;
       color: var(--primary-color);
       text-align: center;
       margin-bottom: 40px;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
     }
-
     .card {
       background-color: rgba(0, 0, 0, 0.85);
       padding: 25px;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 229, 255, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(0, 229, 255, 0.2);
-    }
-
     .card h3 {
       color: var(--primary-color);
       margin-bottom: 10px;
     }
-
     .card p {
       color: #ccc;
       font-size: 0.95em;
       margin-bottom: 20px;
     }
-
-    .card button,
-    .card a.button-link {
-      display: inline-block;
-      margin-top: 10px;
+    .card-button {
+      text-align: right;
+      margin-top: auto;
+    }
+    .card-button button,
+    .card-button a {
+      min-width: 180px;
       padding: 12px 20px;
+      font-size: 0.9em;
       font-weight: 700;
       background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: white;
@@ -115,13 +103,11 @@
       cursor: pointer;
       transition: transform 0.3s, filter 0.3s;
     }
-
-    .card button:hover,
-    .card a.button-link:hover {
+    .card-button button:hover,
+    .card-button a:hover {
       filter: brightness(1.2);
       transform: translateY(-4px);
     }
-
     .example-section {
       background-color: rgba(0, 0, 0, 0.85);
       padding: 60px 10%;
@@ -131,28 +117,37 @@
       opacity: 0;
       transition: opacity 0.6s ease;
     }
-
     .example-section.show {
       display: block;
       opacity: 1;
     }
-
     .example-section img {
       width: 22%;
       border: 1px solid #333;
       border-radius: 8px;
     }
-
     ul {
       margin: 16px 0 32px 60px;
       text-align: justify;
     }
-
     p {
       text-align: justify;
       margin-bottom: 20px;
     }
-
+    .scroll-top-button {
+      background: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      border: 2px solid var(--primary-color);
+      border-radius: 30px;
+      padding: 10px 28px;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
+    }
+    .scroll-top-button:hover {
+      background: var(--primary-color);
+      color: #000;
+    }
     footer {
       background: rgba(0, 0, 0, 0.8);
       text-align: center;
@@ -160,17 +155,6 @@
       padding: 30px 10%;
       color: #888;
       margin-top: 60px;
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 120px 5% 60px;
-      }
-
-      .example-section img {
-        width: 45%;
-        margin-bottom: 10px;
-      }
     }
   </style>
 </head>
@@ -192,30 +176,53 @@
       <div class="card">
         <h3>Stratégie Autocall</h3>
         <p>Structure avec coupons mensuels conditionnels et possibilité de remboursement anticipé.</p>
-        <button onclick="toggleDetail('autocall-detail')">Voir sur un exemple</button>
+        <div class="card-button">
+          <button onclick="toggleDetail('autocall')">Voir sur un exemple</button>
+        </div>
       </div>
       <div class="card">
-        <h3>Stratégie Hybride de taux</h3>
-        <p>Structure liée à un taux d’intérêt de référence (ex : CMS 5Y). Le coupon dépend du niveau du taux au fil du temps, permettant de capter un potentiel de hausse des taux sans exposition directe au marché obligataire.</p>
-        <button onclick="toggleDetail('hybride-detail')">Voir sur un exemple</button>
+        <h3>Stratégie 2</h3>
+        <p>Insérer description pour stratégie 2.</p>
+        <div class="card-button">
+          <button onclick="toggleDetail('strategie2')">Voir sur un exemple</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Stratégie 3</h3>
+        <p>Insérer description pour stratégie 3.</p>
+        <div class="card-button">
+          <button onclick="toggleDetail('strategie3')">Voir sur un exemple</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Stratégie 4</h3>
+        <p>Insérer description pour stratégie 4.</p>
+        <div class="card-button">
+          <button onclick="toggleDetail('strategie4')">Voir sur un exemple</button>
+        </div>
       </div>
       <div class="card">
         <h3>Stratégie sur mesure</h3>
         <p>Solutions personnalisées selon vos objectifs : rendement, protection, exposition ciblée.</p>
-        <a href="contact.html" class="button-link">Nous contacter pour en savoir plus</a>
+        <div class="card-button">
+          <a href="contact.html">Nous contacter</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="autocall-detail" class="example-section">
+  <section id="autocall" class="example-section">
     <h2>Exemple : Autocall Phoenix ETH</h2>
     <p>Ce produit structuré permet de générer un rendement mensuel de 2,5 % si l'actif sous-jacent (ici Ethereum) reste au-dessus d'un certain niveau. Il comporte un mécanisme d'autocall qui peut déclencher un remboursement anticipé si les conditions sont remplies. À maturité, le capital est protégé jusqu'à un certain seuil (barrière de protection), au-delà duquel l'investisseur subit une perte proportionnelle à la baisse de l'actif.</p>
+    <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
+      <strong>Durée :</strong> 12 mois<br>
+      <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
+      <strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%<br>
+      <strong>Barrière protection :</strong> 60%</p>
     <ul>
-      <li><strong>Sous-jacent :</strong> Ethereum (ETH)</li>
-      <li><strong>Durée :</strong> 12 mois</li>
-      <li><strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%</li>
-      <li><strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%</li>
-      <li><strong>Barrière protection :</strong> 60%</li>
+      <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
+      <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
+      <li>ETH < 60% à maturité → perte partielle du capital</li>
     </ul>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
       <img src="scenario1.jpeg" alt="Scénario 1">
@@ -237,39 +244,31 @@
       <li>Pas de remboursement anticipé si ETH < 100%</li>
     </ul>
     <div style="text-align: center; margin-top: 40px;">
-      <button onclick="scrollToTop()" class="button-link">Revenir aux stratégies</button>
+      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
 
-  <section id="hybride-detail" class="example-section">
-    <h2>Exemple : Hybride CMS 5Y / Coupon Variable</h2>
-    <p>Ce produit structuré verse un coupon annuel variable indexé sur le niveau du CMS 5Y (Constant Maturity Swap 5 ans), avec un plancher garanti. Il permet à l’investisseur de bénéficier d’une hausse potentielle des taux tout en protégeant partiellement son capital.</p>
-    <ul>
-      <li><strong>Sous-jacent :</strong> Taux CMS 5Y</li>
-      <li><strong>Durée :</strong> 5 ans</li>
-      <li><strong>Coupon :</strong> max(CMS 5Y - 1%, 2%) chaque année</li>
-      <li><strong>Capital :</strong> 100% garanti si CMS > 1% en moyenne</li>
-      <li><strong>Sinon :</strong> remboursement à 90%</li>
-    </ul>
-    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-      <img src="scenario1.jpeg" alt="Scénario 1">
-      <img src="scenario2.jpeg" alt="Scénario 2">
-      <img src="scenario3.jpeg" alt="Scénario 3">
-      <img src="scenario4.jpeg" alt="Scénario 4">
-    </div>
-    <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-    <ul>
-      <li>Possibilité de capter la hausse des taux</li>
-      <li>Coupon garanti minimum</li>
-      <li>Exposition simple aux taux sans duration</li>
-    </ul>
-    <h3 style="color: var(--primary-color);">Inconvénients</h3>
-    <ul>
-      <li>Coupon plafonné si les taux ne montent pas</li>
-      <li>Capital non garanti en cas de baisse durable des taux</li>
-    </ul>
+  <section id="strategie2" class="example-section">
+    <h2>Exemple : Stratégie 2</h2>
+    <p>Exemple à détailler.</p>
     <div style="text-align: center; margin-top: 40px;">
-      <button onclick="scrollToTop()" class="button-link">Revenir aux stratégies</button>
+      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
+    </div>
+  </section>
+
+  <section id="strategie3" class="example-section">
+    <h2>Exemple : Stratégie 3</h2>
+    <p>Exemple à détailler.</p>
+    <div style="text-align: center; margin-top: 40px;">
+      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
+    </div>
+  </section>
+
+  <section id="strategie4" class="example-section">
+    <h2>Exemple : Stratégie 4</h2>
+    <p>Exemple à détailler.</p>
+    <div style="text-align: center; margin-top: 40px;">
+      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
 
@@ -279,10 +278,14 @@
 
   <script>
     function toggleDetail(id) {
-      document.querySelectorAll('.example-section').forEach(section => section.classList.remove('show'));
-      const target = document.getElementById(id);
-      target.classList.add('show');
-      target.scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.example-section').forEach(section => {
+        section.classList.remove('show');
+      });
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('show');
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
     function scrollToTop() {
@@ -291,4 +294,5 @@
   </script>
 </body>
 </html>
+
 
