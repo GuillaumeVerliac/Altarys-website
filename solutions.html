@@ -1,153 +1,172 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nos solutions – Altarys Capital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #b3001b;
+      --primary-color: #00e5ff;
+      --secondary-color: #8a2be2;
       --background-color: #000000;
-      --card-background: #1a1a1a;
-      --text-color: #e0e0e0;
-      --accent-color: #b3001b;
+      --text-color: #ffffff;
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
+
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
+      background-image: url('fondetoile.jpg');
+      background-size: cover;
+      background-attachment: scroll;
+      background-position: center;
       color: var(--text-color);
       line-height: 1.6;
     }
-    header, .mobile-header {
+
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px 10%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 10%;
-      background-color: var(--background-color);
       border-bottom: 1px solid #222;
     }
-    header img, .mobile-header img { height: 60px; }
-    nav a, .mobile-nav a {
+
+    header img {
+      height: 50px;
+    }
+
+    nav a {
       color: var(--text-color);
       text-decoration: none;
+      margin-left: 30px;
       font-weight: 600;
-      padding: 10px;
+      transition: color 0.3s;
     }
-    nav a:hover, .mobile-nav a:hover {
-      color: var(--accent-color);
+
+    nav a:hover {
+      color: var(--primary-color);
     }
-    .mobile-only { display: none; }
-    .section-title {
+
+    section {
+      padding: 140px 10% 80px;
+    }
+
+    h2 {
       font-size: 2.5em;
-      color: var(--accent-color);
+      color: var(--primary-color);
       text-align: center;
       margin-bottom: 40px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
     }
+
     .card {
-      background-color: var(--card-background);
+      background-color: rgba(0, 0, 0, 0.85);
       padding: 25px;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 8px 20px rgba(0, 229, 255, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 30px rgba(179, 0, 27, 0.3);
+      box-shadow: 0 12px 30px rgba(0, 229, 255, 0.2);
     }
+
     .card h3 {
-      color: var(--accent-color);
+      color: var(--primary-color);
       margin-bottom: 10px;
     }
+
     .card p {
       color: #ccc;
       font-size: 0.95em;
       margin-bottom: 20px;
     }
+
     .card button,
-    .card a.button-link,
-    .scroll-top-button {
+    .card a.button-link {
       display: inline-block;
       margin-top: 10px;
-      padding: 10px 16px;
-      font-weight: 600;
-      background-color: var(--accent-color);
+      padding: 12px 20px;
+      font-weight: 700;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: white;
       border: none;
-      border-radius: 6px;
-      cursor: pointer;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s;
+      cursor: pointer;
+      transition: transform 0.3s, filter 0.3s;
     }
+
     .card button:hover,
-    .card a.button-link:hover,
-    .scroll-top-button:hover {
-      background-color: #800013;
+    .card a.button-link:hover {
+      filter: brightness(1.2);
+      transform: translateY(-4px);
     }
-    section { padding: 80px 10%; }
+
     .example-section {
-      background-color: #111;
+      background-color: rgba(0, 0, 0, 0.85);
       padding: 60px 10%;
       margin-top: 40px;
-      border-top: 1px solid #333;
+      border-radius: 16px;
+      display: none;
       opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: opacity 0.6s ease, max-height 0.6s ease;
+      transition: opacity 0.6s ease;
     }
+
     .example-section.show {
+      display: block;
       opacity: 1;
-      max-height: 4000px;
     }
+
     .example-section img {
       width: 22%;
       border: 1px solid #333;
       border-radius: 8px;
     }
+
     ul {
       margin: 16px 0 32px 60px;
       text-align: justify;
     }
+
     p {
       text-align: justify;
       margin-bottom: 20px;
     }
+
     footer {
-      background: #111;
+      background: rgba(0, 0, 0, 0.8);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
       color: #888;
       margin-top: 60px;
     }
+
     @media (max-width: 768px) {
-      .desktop-only { display: none !important; }
-      .mobile-only { display: block; }
-      .mobile-header img { height: 45px; }
-      .menu-toggle {
-        font-size: 26px;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
+      section {
+        padding: 120px 5% 60px;
       }
-      .mobile-nav {
-        display: none;
-        flex-direction: column;
-        background-color: #111;
-        padding: 15px 20px;
-      }
-      .mobile-nav.show { display: flex; }
+
       .example-section img {
         width: 45%;
         margin-bottom: 10px;
@@ -156,35 +175,19 @@
   </style>
 </head>
 <body>
-  <div class="desktop-only">
-    <header>
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <nav>
-        <a href="index.html">Accueil</a>
-        <a href="equipe.html">À propos</a>
-        <a href="solutions.html">Nos solutions</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="contact.html">Nous contacter</a>
-      </nav>
-    </header>
-  </div>
-
-  <div class="mobile-only">
-    <header class="mobile-header">
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    </header>
-    <nav id="mobileNav" class="mobile-nav">
+  <header>
+    <img src="logo.png" alt="Logo Altarys Capital">
+    <nav>
       <a href="index.html">Accueil</a>
       <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
-      <a href="actualites.html">Actualités</a>
+      <a href="actualites.html">Recherche</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-  </div>
+  </header>
 
   <section>
-    <h2 class="section-title">Nos solutions</h2>
+    <h2>Nos solutions</h2>
     <div class="grid">
       <div class="card">
         <h3>Stratégie Autocall</h3>
@@ -205,17 +208,14 @@
   </section>
 
   <section id="autocall-detail" class="example-section">
-    <h2 class="section-title">Exemple : Autocall Phoenix ETH</h2>
+    <h2>Exemple : Autocall Phoenix ETH</h2>
     <p>Ce produit structuré permet de générer un rendement mensuel de 2,5 % si l'actif sous-jacent (ici Ethereum) reste au-dessus d'un certain niveau. Il comporte un mécanisme d'autocall qui peut déclencher un remboursement anticipé si les conditions sont remplies. À maturité, le capital est protégé jusqu'à un certain seuil (barrière de protection), au-delà duquel l'investisseur subit une perte proportionnelle à la baisse de l'actif.</p>
-    <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
-      <strong>Durée :</strong> 12 mois<br>
-      <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
-      <strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%<br>
-      <strong>Barrière protection :</strong> 60%</p>
     <ul>
-      <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
-      <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
-      <li>ETH < 60% à maturité → perte partielle du capital</li>
+      <li><strong>Sous-jacent :</strong> Ethereum (ETH)</li>
+      <li><strong>Durée :</strong> 12 mois</li>
+      <li><strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%</li>
+      <li><strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%</li>
+      <li><strong>Barrière protection :</strong> 60%</li>
     </ul>
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
       <img src="scenario1.jpeg" alt="Scénario 1">
@@ -223,26 +223,26 @@
       <img src="scenario3.jpeg" alt="Scénario 3">
       <img src="scenario4.jpeg" alt="Scénario 4">
     </div>
-    <h3 style="color: var(--accent-color); margin-top: 40px;">Avantages</h3>
+    <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
     <ul>
       <li>Rendement élevé (jusqu’à 30%/an)</li>
       <li>Protection du capital jusqu’à -40%</li>
       <li>Remboursement anticipé dès le mois 3</li>
       <li>Coupons versés même si le marché stagne</li>
     </ul>
-    <h3 style="color: var(--accent-color);">Inconvénients</h3>
+    <h3 style="color: var(--primary-color);">Inconvénients</h3>
     <ul>
       <li>Capital à risque en cas de forte baisse d’ETH</li>
       <li>Coupons non garantis</li>
       <li>Pas de remboursement anticipé si ETH < 100%</li>
     </ul>
     <div style="text-align: center; margin-top: 40px;">
-      <button onclick="scrollToTop()" class="scroll-top-button">Revenir  aux stratégies</button>
+      <button onclick="scrollToTop()" class="button-link">Revenir aux stratégies</button>
     </div>
   </section>
 
   <section id="hybride-detail" class="example-section">
-    <h2 class="section-title">Exemple : Hybride CMS 5Y / Coupon Variable</h2>
+    <h2>Exemple : Hybride CMS 5Y / Coupon Variable</h2>
     <p>Ce produit structuré verse un coupon annuel variable indexé sur le niveau du CMS 5Y (Constant Maturity Swap 5 ans), avec un plancher garanti. Il permet à l’investisseur de bénéficier d’une hausse potentielle des taux tout en protégeant partiellement son capital.</p>
     <ul>
       <li><strong>Sous-jacent :</strong> Taux CMS 5Y</li>
@@ -257,31 +257,27 @@
       <img src="scenario3.jpeg" alt="Scénario 3">
       <img src="scenario4.jpeg" alt="Scénario 4">
     </div>
-    <h3 style="color: var(--accent-color); margin-top: 40px;">Avantages</h3>
+    <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
     <ul>
       <li>Possibilité de capter la hausse des taux</li>
       <li>Coupon garanti minimum</li>
       <li>Exposition simple aux taux sans duration</li>
     </ul>
-    <h3 style="color: var(--accent-color);">Inconvénients</h3>
+    <h3 style="color: var(--primary-color);">Inconvénients</h3>
     <ul>
       <li>Coupon plafonné si les taux ne montent pas</li>
       <li>Capital non garanti en cas de baisse durable des taux</li>
     </ul>
     <div style="text-align: center; margin-top: 40px;">
-      <button onclick="scrollToTop()" class="scroll-top-button">Revenir aux stratégies</button>
+      <button onclick="scrollToTop()" class="button-link">Revenir aux stratégies</button>
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+    &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('show');
-    }
-
     function toggleDetail(id) {
       document.querySelectorAll('.example-section').forEach(section => section.classList.remove('show'));
       const target = document.getElementById(id);
@@ -295,3 +291,4 @@
   </script>
 </body>
 </html>
+
