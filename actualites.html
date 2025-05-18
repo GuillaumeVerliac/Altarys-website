@@ -74,10 +74,26 @@
       background-color: rgba(0, 0, 0, 0.85);
       padding: 40px;
       border-radius: 16px;
+      opacity: 0;
+    }
+
+    .news-item.left {
+      animation: fadeInLeft 1s ease-out forwards;
     }
 
     .news-item.right {
       flex-direction: row-reverse;
+      animation: fadeInRight 1s ease-out forwards;
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .news-text {
@@ -177,7 +193,7 @@
   </header>
 
   <main class="news-section">
-    <div class="news-item">
+    <div class="news-item left">
       <div class="news-text">
         <h2>Économie française : croissance fragile</h2>
         <p>La Banque de France prévoit une croissance modeste de 0,1 % au T2 2025. Cette dynamique lente est influencée par les jours fériés du mois de mai et les tensions commerciales persistantes. Les secteurs industriels et des services affichent une reprise modérée, mais l’incertitude sur les exportations reste élevée, notamment dans l’agroalimentaire.</p>
@@ -197,7 +213,7 @@
       </div>
     </div>
 
-    <div class="news-item">
+    <div class="news-item left">
       <div class="news-text">
         <h2>Coinbase et la sécurité des plateformes</h2>
         <p>Coinbase a récemment déjoué une tentative d’extorsion de 20 millions de dollars. Suite à l’implication d’un prestataire externe, l’entreprise a lancé une opération d’investigation interne et renforcé ses mesures de cybersécurité. Cette affaire illustre les nouveaux enjeux de confiance dans les plateformes Web3.</p>
