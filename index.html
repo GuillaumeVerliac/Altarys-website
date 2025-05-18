@@ -23,10 +23,6 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
-      background-image: url('fondetoile.jpg');
-      background-size: cover;
-      background-attachment: fixed;
-      background-position: center;
       color: var(--text-color);
       line-height: 1.6;
       overflow-x: hidden;
@@ -156,8 +152,21 @@
 
     .split .background {
       flex: 1;
-      background: none;
+      background-size: cover;
+      background-position: center;
       height: 100%;
+    }
+
+    .background1 {
+      background-image: url('fondetoile.jpg');
+    }
+
+    .background2 {
+      background-image: url('fondetoile2.jpg');
+    }
+
+    .background3 {
+      background-image: url('fondetoile3.jpg');
     }
 
     @media (max-width: 768px) {
@@ -198,7 +207,7 @@
         <a href="equipe.html">Découvrez Altarys</a>
       </div>
     </div>
-    <div class="background"></div>
+    <div class="background background1"></div>
   </section>
 
   <section class="split right">
@@ -215,7 +224,7 @@
         <a href="contact.html">Créer une solution sur-mesure</a>
       </div>
     </div>
-    <div class="background"></div>
+    <div class="background background2"></div>
   </section>
 
   <section class="split left">
@@ -228,7 +237,7 @@
         <a href="actualites.html">Accédez à notre recherche</a>
       </div>
     </div>
-    <div class="background"></div>
+    <div class="background background3"></div>
   </section>
 
   <footer>
@@ -251,6 +260,7 @@
   </script>
 </body>
 </html>
+
 
 
 
