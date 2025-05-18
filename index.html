@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0055cc; /* Bleu roi foncé */
-      --secondary-color: #4b0082; /* Violet profond */
+      --primary-color: #0055cc;
+      --secondary-color: #4b0082;
       --background-color: #000000;
       --text-color: #ffffff;
     }
@@ -24,7 +24,7 @@
       background-color: var(--background-color);
       background-image: url('fondetoile.jpg');
       background-size: cover;
-      background-attachment: scroll;
+      background-attachment: fixed;
       background-position: center;
       color: var(--text-color);
       line-height: 1.6;
@@ -37,7 +37,7 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.9); /* plus opaque */
+      background-color: rgba(0, 0, 0, 0.9);
       padding: 20px 10%;
       display: flex;
       justify-content: space-between;
@@ -105,7 +105,7 @@
     }
 
     footer {
-      background: rgba(0, 0, 0, 0.9); /* plus opaque */
+      background: rgba(0, 0, 0, 0.9);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
@@ -148,16 +148,14 @@
       flex-direction: column;
       justify-content: center;
       padding: 80px;
-      background-color: rgba(0, 0, 0, 0.9); /* plus opaque */
+      background-color: rgba(0, 0, 0, 0.9);
       height: 100%;
       z-index: 2;
     }
 
     .split .background {
       flex: 1;
-      background-image: url('fondetoile.jpg');
-      background-size: cover;
-      background-position: center;
+      background: none;
       height: 100%;
     }
 
@@ -252,6 +250,7 @@
   </script>
 </body>
 </html>
+
 
 
 
