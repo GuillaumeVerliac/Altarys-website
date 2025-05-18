@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nous contacter – Altarys Capital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #b3001b;
+      --primary-color: #00e5ff;
       --secondary-color: #8a2be2;
       --background-color: #000000;
       --text-color: #ffffff;
@@ -32,9 +32,9 @@
 
     header {
       position: fixed;
+      width: 100%;
       top: 0;
       left: 0;
-      width: 100%;
       z-index: 1000;
       background-color: rgba(0, 0, 0, 0.85);
       padding: 20px 10%;
@@ -60,19 +60,28 @@
       color: var(--primary-color);
     }
 
-    section {
-      padding: 140px 10% 80px;
-      background-color: rgba(0, 0, 0, 0.85);
-      max-width: 1000px;
-      margin: 0 auto;
-      border-radius: 12px;
+    main {
+      min-height: 100vh;
+      padding-top: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .section-title {
-      font-size: 2.5em;
-      margin-bottom: 40px;
-      color: var(--primary-color);
+    .contact-container {
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 60px 40px;
+      border-radius: 16px;
+      max-width: 700px;
+      width: 90%;
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.1);
+    }
+
+    h1 {
       text-align: center;
+      font-size: 2.5em;
+      color: var(--primary-color);
+      margin-bottom: 40px;
     }
 
     form {
@@ -82,12 +91,17 @@
     }
 
     input, textarea {
-      padding: 15px;
-      border-radius: 8px;
+      padding: 16px;
       border: none;
-      background-color: #1a1a1a;
+      border-radius: 8px;
+      background-color: #111;
       color: var(--text-color);
       font-size: 1em;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #888;
     }
 
     textarea {
@@ -96,13 +110,14 @@
     }
 
     button {
+      align-self: flex-start;
       background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-      color: #fff;
-      padding: 15px;
+      color: white;
+      padding: 14px 28px;
+      font-weight: 700;
       border: none;
       border-radius: 8px;
       font-size: 1em;
-      font-weight: bold;
       cursor: pointer;
       transition: transform 0.3s, filter 0.3s;
     }
@@ -135,14 +150,17 @@
         gap: 10px;
       }
 
-      section {
-        padding: 120px 5% 60px;
+      .contact-container {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 2em;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <img src="logo.png" alt="Logo Altarys Capital" />
     <nav>
@@ -154,20 +172,22 @@
     </nav>
   </header>
 
-  <section>
-    <h2 class="section-title">Nous contacter</h2>
-    <form>
-      <input type="text" name="nom" placeholder="Votre nom" required />
-      <input type="email" name="email" placeholder="Votre adresse email" required />
-      <textarea name="message" placeholder="Votre message..." required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+  <main>
+    <div class="contact-container">
+      <h1>Nous contacter</h1>
+      <form>
+        <input type="text" name="nom" placeholder="Votre nom" required />
+        <input type="email" name="email" placeholder="Votre adresse email" required />
+        <textarea name="message" placeholder="Votre message..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </main>
 
   <footer>
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
-
 </body>
 </html>
+
 
