@@ -4,13 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accueil – Altarys Capital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <style>
     :root {
-      --primary-color: #b3001b;
+      --primary-color: #0ff;
+      --secondary-color: #8a2be2;
       --background-color: #000000;
-      --text-color: #e0e0e0;
-      --accent-color: #b3001b;
+      --text-color: #ffffff;
+      --blur-color: rgba(255, 255, 255, 0.05);
     }
 
     * {
@@ -20,31 +22,35 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
+      background-image: url('fondetoile.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
       color: var(--text-color);
       line-height: 1.6;
-    }
-
-    .desktop-only {
-      display: block;
-    }
-
-    .mobile-only {
-      display: none;
+      overflow-x: hidden;
     }
 
     header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background-color: var(--blur-color);
+      border-bottom: 1px solid #222;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 10%;
-      background-color: var(--background-color);
-      border-bottom: 1px solid #222;
+      animation: fadeIn 1s ease-in;
     }
 
     header img {
-      height: 60px;
+      height: 50px;
     }
 
     nav a {
@@ -56,34 +62,39 @@
     }
 
     nav a:hover {
-      color: var(--accent-color);
+      color: var(--primary-color);
     }
 
-    section {
-      padding: 80px 10%;
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 120px 10% 80px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
     }
 
     h1, h2 {
-      text-align: center;
-      color: var(--accent-color);
+      color: var(--primary-color);
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
+      font-size: 3.2em;
     }
 
     h2 {
       font-size: 2.4em;
-      margin-bottom: 20px;
     }
 
     p {
       max-width: 900px;
-      margin: 0 auto;
-      font-size: 1.1em;
+      margin: 0 auto 20px;
+      font-size: 1.15em;
       color: #ccc;
-      text-align: center;
     }
 
     .cta-buttons {
@@ -96,207 +107,129 @@
 
     .cta-buttons a {
       padding: 14px 28px;
-      background-color: var(--accent-color);
+      background: linear-gradient(to right, #0ff, #8a2be2);
       color: white;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background-color 0.3s;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: all 0.3s ease;
     }
 
     .cta-buttons a:hover {
-      background-color: #800013;
+      filter: brightness(1.2);
+      transform: translateY(-4px);
+    }
+
+    section {
+      padding: 100px 10% 60px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      animation: fadeUp 1s ease-out;
     }
 
     footer {
-      background: #111;
+      background: rgba(17, 17, 17, 0.9);
       text-align: center;
       font-size: 0.9em;
-      padding: 30px 10%;
+      padding: 40px 10%;
       color: #888;
-      margin-top: 60px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
-      .desktop-only {
-        display: none !important;
+      h1 {
+        font-size: 2.4em;
       }
 
-      .mobile-only {
-        display: block;
-        padding: 0;
-      }
-
-      .mobile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 20px;
-        border-bottom: 1px solid #222;
-        background-color: var(--background-color);
-      }
-
-      .mobile-header img {
-        height: 45px;
-      }
-
-      .menu-toggle {
-        font-size: 26px;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
-      }
-
-      .mobile-nav {
-        display: none;
-        flex-direction: column;
-        background-color: #111;
-        padding: 15px 20px;
-      }
-
-      .mobile-nav a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
-        padding: 10px 0;
-        border-bottom: 1px solid #222;
-      }
-
-      .mobile-nav.show {
-        display: flex;
-      }
-
-      .mobile-only section,
-      .mobile-only footer {
-        padding: 30px 20px;
-        text-align: center;
-      }
-
-      .mobile-only h2 {
+      h2 {
         font-size: 1.8em;
-        margin-bottom: 15px;
-        color: var(--accent-color);
       }
 
-      .mobile-only p {
-        font-size: 1em;
-        color: #ccc;
-      }
-
-      .mobile-only .cta-buttons {
-        display: flex;
+      .cta-buttons {
         flex-direction: column;
-        gap: 15px;
-        margin-top: 30px;
       }
 
-      .mobile-only .cta-buttons a {
-        padding: 12px;
-        border-radius: 6px;
-      }
-
-      .mobile-only footer {
-        font-size: 0.85em;
-        color: #888;
-        background-color: #111;
-        margin-top: 40px;
+      nav a {
+        margin-left: 15px;
+        font-size: 0.9em;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Version ordinateur -->
-  <div class="desktop-only">
-    <header>
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <nav>
-        <a href="index.html">Accueil</a>
-        <a href="equipe.html">À propos</a>
-        <a href="solutions.html">Nos solutions</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="contact.html">Nous contacter</a>
-      </nav>
-    </header>
-
-    <section style="background-color: #0d0d0d;">
-      <h2>Altarys Capital, infrastructure pour l’investissement structuré crypto</h2>
-      <p>
-        Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques.
-        Nous vous permettons, gestionnaire de fortunes, banques privées, family offices, ou asset manager indépendant, de concevoir des instruments d’investissement sophistiqués, sans internaliser l’ingénierie financière ni les risques opérationnels.
-      </p>
-      <br>
-      <p>
-        Nous vous mettons à disposition une technologie de structuration intégrant les spécificités des marchés crypto : forte volatilité, liquidité fragmentée, absence de marché de taux.
-        En vous appuyant sur Altarys Capital, vous gardez le contrôle total sur votre offre d’investissement : concevez des produits différenciants, personnalisés selon vos objectifs de rendement, de protection et d’exposition, sans dépendre d’acteurs traditionnels ni mobiliser de ressources internes.
-      </p>
-      <div class="cta-buttons">
-        <a href="equipe.html">Découvrez Altarys</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>Nos produits structurés sur crypto-actifs</h2>
-      <p>
-        Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
-        Personnalisez vos produits ou explorez des stratégies déjà calibrées.
-      </p>
-      <div class="cta-buttons">
-        <a href="solutions.html#selection">Parcourir la sélection</a>
-        <a href="contact.html">Créer une solution sur-mesure</a>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
-    </footer>
-  </div>
-
-  <!-- Version mobile -->
-  <div class="mobile-only">
-    <header class="mobile-header">
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    </header>
-
-    <nav id="mobileNav" class="mobile-nav">
+  <header>
+    <img src="logo.png" alt="Logo Altarys Capital" />
+    <nav>
       <a href="index.html">Accueil</a>
       <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="actualites.html">Actualités</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
+  </header>
 
-    <section style="background-color: #0d0d0d;">
-      <h2>Altarys Capital</h2>
-      <p>
-        Plateforme technologique pour créer vos produits d’investissement crypto personnalisés, sans complexité ni dépendance.
-      </p>
-      <div class="cta-buttons">
-        <a href="equipe.html">Découvrir Altarys</a>
-      </div>
-    </section>
+  <section class="hero">
+    <h1>Altarys Capital</h1>
+    <h2>Infrastructure pour l’investissement structuré crypto</h2>
+    <p>
+      Plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
+    </p>
+    <p>
+      Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
+    </p>
+    <div class="cta-buttons">
+      <a href="equipe.html">Découvrez Altarys</a>
+    </div>
+  </section>
 
-    <section>
-      <h2>Produits structurés</h2>
-      <p>
-        Autocall, reverse convertible, digital option : des solutions calibrées pour le marché crypto.
-      </p>
-      <div class="cta-buttons">
-        <a href="solutions.html#selection">Voir la sélection</a>
-        <a href="contact.html">Créer une solution</a>
-      </div>
-    </section>
+  <section>
+    <h2>Nos produits structurés sur crypto-actifs</h2>
+    <p>
+      Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
+    </p>
+    <p>
+      Personnalisez vos produits ou explorez des stratégies déjà calibrées.
+    </p>
+    <div class="cta-buttons">
+      <a href="solutions.html#selection">Parcourir la sélection</a>
+      <a href="contact.html">Créer une solution sur-mesure</a>
+    </div>
+  </section>
 
-    <footer>
-      <p>&copy; 2025 Altarys Capital — Plateforme indépendante</p>
-    </footer>
-  </div>
+  <footer>
+    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+  </footer>
 
   <script>
-    function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('show');
-    }
+    const sections = document.querySelectorAll("section");
+    const options = {
+      threshold: 0.2
+    };
+
+    const reveal = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animation = "fadeUp 1s ease-out forwards";
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(reveal, options);
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      observer.observe(section);
+    });
   </script>
 </body>
 </html>
