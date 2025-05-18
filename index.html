@@ -83,7 +83,7 @@
 
     .cta-buttons {
       display: flex;
-      justify-content: center;
+      justify-content: start;
       gap: 20px;
       flex-wrap: wrap;
       margin-top: 30px;
@@ -105,53 +105,41 @@
     }
 
     footer {
-  background: rgba(0, 0, 0, 0.8);
-  text-align: center;
-  font-size: 0.9em;
-  padding: 30px 10%;
-  color: #888;
-}
-
-    @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-  to { opacity: 1; transform: translateX(0); }
-}
-      to { opacity: 1; transform: translateY(0); }
+      background: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      font-size: 0.9em;
+      padding: 30px 10%;
+      color: #888;
     }
 
-    section.split.left {
-  opacity: 0;
-  animation: fadeInRight 1s ease-out forwards;
-}
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
 
-section.split.right {
-  opacity: 0;
-  animation: fadeInLeft 1s ease-out forwards;
-}
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
 
     .split {
       display: flex;
       width: 100%;
       height: 100vh;
-      padding: 0;
-      margin: 0;
       overflow: hidden;
       position: relative;
     }
 
     .split.left {
       flex-direction: row;
+      opacity: 0;
+      animation: fadeInRight 1s ease-out forwards;
     }
 
     .split.right {
       flex-direction: row-reverse;
+      opacity: 0;
+      animation: fadeInLeft 1s ease-out forwards;
     }
 
     .split .content {
@@ -165,10 +153,6 @@ section.split.right {
       z-index: 2;
     }
 
-    .split.right .content {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
     .split .background {
       flex: 1;
       background-image: url('fondetoile.jpg');
@@ -177,33 +161,13 @@ section.split.right {
       height: 100%;
     }
 
-    .content h1, .content h2 {
-      color: var(--primary-color);
-      margin-bottom: 20px;
-    }
-
-    .content p {
-      max-width: 700px;
-      margin: 0 auto 20px;
-      font-size: 1.1em;
-      color: #ccc;
-    }
-
-    .content .cta-buttons {
-      display: flex;
-      justify-content: start;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
     @media (max-width: 768px) {
       .split {
         flex-direction: column !important;
       }
+
       .split .content, .split .background {
         width: 100%;
-        flex: unset;
         height: auto;
       }
     }
@@ -255,31 +219,22 @@ section.split.right {
     <div class="background"></div>
   </section>
 
-  <section class="split right">
+  <section class="split left">
     <div class="content">
       <h2>Accédez à notre recherche</h2>
       <p>
-        Consultez nos publications, analyses de marché et points de vue sur les produits structurés crypto. Notre équipe met à votre disposition un contenu expert pour éclairer vos décisions d'investissement.
+        Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
       </p>
       <div class="cta-buttons">
         <a href="actualites.html">Accédez à notre recherche</a>
       </div>
     </div>
     <div class="background"></div>
-  $1<section class="split left">
-  <div class="content">
-    <h2>Accès à notre recherche</h2>
-    <p>
-      Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
-    </p>
-    <div class="cta-buttons">
-      <a href="actualites.html">Accédez à notre recherche</a>
-    </div>
-  </div>
-  <div class="background"></div>
-</section>
+  </section>
 
-<footer>
+  <footer>
+    &copy; 2025 Altarys Capital. Tous droits réservés.
+  </footer>
 
   <script>
     const sections = document.querySelectorAll(".split.left, .split.right");
@@ -297,6 +252,7 @@ section.split.right {
   </script>
 </body>
 </html>
+
 
 
 
