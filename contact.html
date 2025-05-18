@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nous contacter – Altarys Capital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary-color: #b3001b;
+      --secondary-color: #8a2be2;
       --background-color: #000000;
-      --card-background: #1a1a1a;
-      --text-color: #e0e0e0;
-      --accent-color: #b3001b;
+      --text-color: #ffffff;
     }
 
     * {
@@ -21,31 +20,32 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
+      background-image: url('fondetoile.jpg');
+      background-size: cover;
+      background-attachment: scroll;
+      background-position: center;
       color: var(--text-color);
       line-height: 1.6;
     }
 
-    .desktop-only {
-      display: block;
-    }
-
-    .mobile-only {
-      display: none;
-    }
-
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 20px 10%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 10%;
-      background-color: var(--background-color);
       border-bottom: 1px solid #222;
     }
 
     header img {
-      height: 60px;
+      height: 50px;
     }
 
     nav a {
@@ -57,23 +57,25 @@
     }
 
     nav a:hover {
-      color: var(--accent-color);
+      color: var(--primary-color);
     }
 
     section {
-      padding: 80px 10%;
+      padding: 140px 10% 80px;
+      background-color: rgba(0, 0, 0, 0.85);
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 12px;
     }
 
     .section-title {
       font-size: 2.5em;
       margin-bottom: 40px;
-      color: var(--accent-color);
+      color: var(--primary-color);
       text-align: center;
     }
 
     form {
-      max-width: 600px;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -83,7 +85,7 @@
       padding: 15px;
       border-radius: 8px;
       border: none;
-      background-color: #222;
+      background-color: #1a1a1a;
       color: var(--text-color);
       font-size: 1em;
     }
@@ -94,7 +96,7 @@
     }
 
     button {
-      background-color: var(--accent-color);
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: #fff;
       padding: 15px;
       border: none;
@@ -102,109 +104,56 @@
       font-size: 1em;
       font-weight: bold;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: transform 0.3s, filter 0.3s;
     }
 
     button:hover {
-      background-color: #800013;
+      filter: brightness(1.2);
+      transform: translateY(-4px);
     }
 
     footer {
-      background: #111;
+      background: rgba(0, 0, 0, 0.8);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
       color: #888;
-      margin-top: 60px;
+      margin-top: 80px;
     }
 
     @media (max-width: 768px) {
-      .desktop-only {
-        display: none !important;
-      }
-
-      .mobile-only {
-        display: block;
-      }
-
-      .mobile-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 20px;
-        border-bottom: 1px solid #222;
-        background-color: var(--background-color);
-      }
-
-      .mobile-header img {
-        height: 45px;
-      }
-
-      .menu-toggle {
-        font-size: 26px;
-        background: none;
-        border: none;
-        color: var(--text-color);
-        cursor: pointer;
-      }
-
-      .mobile-nav {
-        display: none;
+      header {
         flex-direction: column;
-        background-color: #111;
-        padding: 15px 20px;
+        align-items: flex-start;
+        padding: 20px;
       }
 
-      .mobile-nav a {
-        color: var(--text-color);
-        text-decoration: none;
-        font-weight: 600;
-        padding: 10px 0;
-        border-bottom: 1px solid #222;
-      }
-
-      .mobile-nav.show {
+      nav {
+        margin-top: 10px;
         display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .mobile-only section {
-        padding: 40px 20px;
+      section {
+        padding: 120px 5% 60px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Desktop Header -->
-  <div class="desktop-only">
-    <header>
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <nav>
-        <a href="index.html">Accueil</a>
-        <a href="equipe.html">À propos</a>
-        <a href="solutions.html">Nos solutions</a>
-        <a href="actualites.html">Actualités</a>
-        <a href="contact.html">Nous contacter</a>
-      </nav>
-    </header>
-  </div>
-
-  <!-- Mobile Header -->
-  <div class="mobile-only">
-    <header class="mobile-header">
-      <img src="logo.png" alt="Logo Altarys Capital" />
-      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    </header>
-    <nav id="mobileNav" class="mobile-nav">
+  <header>
+    <img src="logo.png" alt="Logo Altarys Capital" />
+    <nav>
       <a href="index.html">Accueil</a>
       <a href="equipe.html">À propos</a>
       <a href="solutions.html">Nos solutions</a>
-      <a href="actualites.html">Actualités</a>
+      <a href="actualites.html">Recherche</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-  </div>
+  </header>
 
-  <!-- Section de contact -->
   <section>
     <h2 class="section-title">Nous contacter</h2>
     <form>
@@ -216,14 +165,9 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Altarys Capital — Plateforme technologique indépendante</p>
+    &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('mobileNav').classList.toggle('show');
-    }
-  </script>
 </body>
 </html>
 
