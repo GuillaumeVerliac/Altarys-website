@@ -40,8 +40,7 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      backdrop-filter: blur(10px);
-      background-color: var(--blur-color);
+      background-color: #000000;
       border-bottom: 1px solid #222;
       display: flex;
       justify-content: space-between;
@@ -165,7 +164,43 @@
         font-size: 0.9em;
       }
     }
-  </style>
+      .hero {
+      min-height: 100vh;
+      padding-top: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+    }
+
+    .hero-content {
+      display: flex;
+      width: 100%;
+      max-width: 1400px;
+      height: 80vh;
+      margin: auto;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    }
+
+    .hero-left, .hero-right {
+      flex: 1;
+    }
+
+    .hero-left {
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(6px);
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+
+    .hero-right {
+      background-image: url('fondetoile.jpg');
+      background-size: cover;
+      background-position: center;
+    }
 </head>
 <body>
   <header>
@@ -180,16 +215,21 @@
   </header>
 
   <section class="hero">
-    <h1>Altarys Capital</h1>
-    <h2>Infrastructure pour l’investissement structuré crypto</h2>
-    <p>
-      Plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
-    </p>
-    <p>
-      Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
-    </p>
-    <div class="cta-buttons">
-      <a href="equipe.html">Découvrez Altarys</a>
+    <div class="hero-content">
+      <div class="hero-left">
+        <h1>Altarys Capital</h1>
+        <h2>Infrastructure pour l’investissement structuré crypto</h2>
+        <p>
+          Plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
+        </p>
+        <p>
+          Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
+        </p>
+        <div class="cta-buttons">
+          <a href="equipe.html">Découvrez Altarys</a>
+        </div>
+      </div>
+      <div class="hero-right"></div>
     </div>
   </section>
 
@@ -234,5 +274,6 @@
   </script>
 </body>
 </html>
+
 
 
