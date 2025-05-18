@@ -7,42 +7,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #00e5ff;
-      --secondary-color: #8a2be2;
+      --primary-color: #0055cc;
+      --secondary-color: #4b0082;
       --background-color: #000000;
       --text-color: #ffffff;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
       background-image: url('fondetoile.jpg');
       background-size: cover;
-      background-attachment: scroll;
+      background-attachment: fixed;
       background-position: center;
       color: var(--text-color);
       line-height: 1.6;
     }
+
     header {
       position: fixed;
       width: 100%;
       top: 0;
       left: 0;
       z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(0, 0, 0, 0.9);
       padding: 20px 10%;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #222;
     }
+
     header img {
       height: 50px;
     }
+
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -50,45 +55,54 @@
       font-weight: 600;
       transition: color 0.3s;
     }
+
     nav a:hover {
       color: var(--primary-color);
     }
+
     section {
       padding: 140px 10% 80px;
     }
+
     h2 {
       font-size: 2.5em;
       color: var(--primary-color);
       text-align: center;
       margin-bottom: 40px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
     }
+
     .card {
-      background-color: rgba(0, 0, 0, 0.85);
+      background-color: rgba(0, 0, 0, 0.9);
       padding: 25px;
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 229, 255, 0.1);
+      box-shadow: 0 8px 20px rgba(0, 85, 204, 0.15);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
+
     .card h3 {
       color: var(--primary-color);
       margin-bottom: 10px;
     }
+
     .card p {
       color: #ccc;
       font-size: 0.95em;
       margin-bottom: 20px;
     }
+
     .card-button {
       text-align: right;
       margin-top: auto;
     }
+
     .card-button button,
     .card-button a {
       min-width: 180px;
@@ -103,37 +117,45 @@
       cursor: pointer;
       transition: transform 0.3s, filter 0.3s;
     }
+
     .card-button button:hover,
     .card-button a:hover {
       filter: brightness(1.2);
       transform: translateY(-4px);
     }
+
     .example-section {
-      background-color: rgba(0, 0, 0, 0.85);
-      padding: 60px 10%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 60px 10% 80px;
       margin-top: 40px;
       border-radius: 16px;
       display: none;
       opacity: 0;
       transition: opacity 0.6s ease;
     }
+
     .example-section.show {
       display: block;
       opacity: 1;
     }
+
     .example-section img {
       width: 22%;
       border: 1px solid #333;
       border-radius: 8px;
     }
+
     ul {
       margin: 16px 0 32px 60px;
       text-align: justify;
     }
+
     p {
       text-align: justify;
       margin-bottom: 20px;
+      color: #ccc;
     }
+
     .scroll-top-button {
       background: none;
       color: var(--primary-color);
@@ -143,18 +165,27 @@
       padding: 10px 28px;
       font-size: 0.95em;
       transition: all 0.3s ease;
+      margin-top: 30px;
     }
+
     .scroll-top-button:hover {
       background: var(--primary-color);
       color: #000;
     }
+
     footer {
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.9);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
       color: #888;
       margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .example-section img {
+        width: 45%;
+      }
     }
   </style>
 </head>
@@ -243,7 +274,7 @@
       <li>Coupons non garantis</li>
       <li>Pas de remboursement anticipé si ETH < 100%</li>
     </ul>
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center;">
       <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
@@ -251,7 +282,7 @@
   <section id="strategie2" class="example-section">
     <h2>Exemple : Stratégie 2</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center;">
       <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
@@ -259,7 +290,7 @@
   <section id="strategie3" class="example-section">
     <h2>Exemple : Stratégie 3</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center;">
       <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
@@ -267,7 +298,7 @@
   <section id="strategie4" class="example-section">
     <h2>Exemple : Stratégie 4</h2>
     <p>Exemple à détailler.</p>
-    <div style="text-align: center; margin-top: 40px;">
+    <div style="text-align: center;">
       <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
     </div>
   </section>
