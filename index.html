@@ -20,12 +20,24 @@
       padding: 0;
     }
 
-    body {
+    html, body {
+      height: 100%;
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      scroll-behavior: smooth;
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      line-height: 1.6;
+    }
+
+    body {
       overflow-x: hidden;
+    }
+
+    section {
+      height: 100vh;
+      width: 100%;
+      scroll-snap-align: start;
     }
 
     header {
@@ -56,10 +68,6 @@
 
     nav a:hover {
       color: var(--primary-color);
-    }
-
-    main {
-      padding-top: 100px;
     }
 
     h1, h2 {
@@ -118,8 +126,7 @@
     .split {
       display: flex;
       width: 100%;
-      min-height: 100vh;
-      position: relative;
+      height: 100%;
       background-color: var(--background-color);
     }
 
@@ -183,8 +190,8 @@
 
       .split .content, .split .background {
         width: 100%;
+        height: 50%;
         padding: 40px 5%;
-        height: auto;
       }
 
       .products-section {
@@ -194,6 +201,10 @@
 
       .cta-links {
         justify-content: center;
+      }
+
+      section {
+        height: 100vh;
       }
     }
   </style>
@@ -263,7 +274,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
@@ -287,6 +297,7 @@
   </script>
 </body>
 </html>
+
 
 
 
