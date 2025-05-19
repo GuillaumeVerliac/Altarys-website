@@ -41,12 +41,12 @@
 
     section {
       scroll-snap-align: start;
-      min-height: calc(100vh - var(--header-height));
+      height: calc(100vh - var(--header-height));
       display: flex;
-      align-items: center;
+      align-items: stretch;
       justify-content: center;
-      padding: 40px 10%;
       position: relative;
+      width: 100%;
     }
 
     header {
@@ -137,7 +137,7 @@
 
     .split-section {
       display: flex;
-      flex-direction: row;
+      flex: 1;
       width: 100%;
     }
 
@@ -146,7 +146,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px;
+      padding: 40px 10%;
+      z-index: 2;
       opacity: 0;
       transition: all 1s ease-out;
     }
@@ -177,6 +178,9 @@
     .products-section {
       flex-direction: column;
       text-align: center;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 10%;
       opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease-out;
@@ -187,6 +191,10 @@
       transform: translateY(0);
     }
 
+    .products-section p {
+      text-align: center;
+    }
+
     @media (max-width: 768px) {
       .split-section {
         flex-direction: column;
@@ -194,17 +202,21 @@
 
       .split-section .content, .split-section .background {
         width: 100%;
-        height: auto;
+        height: 50%;
         padding: 20px;
       }
 
       .products-section {
-        padding: 40px 5%;
-        align-items: center;
+        padding: 60px 5%;
       }
 
       .cta-links {
         justify-content: center;
+      }
+
+      section {
+        height: auto;
+        min-height: calc(100vh - var(--header-height));
       }
     }
   </style>
@@ -222,24 +234,26 @@
   </header>
 
   <main>
-    <section class="split-section">
-      <div class="content animate-left justify">
-        <h1>Altarys Capital</h1>
-        <h2 style="font-size: 1.8em;"><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
-        <p>
-          Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
-        </p>
-        <p>
-          Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
-        </p>
-        <p>
-          Vous gardez le contrôle, nous fournissons l’intelligence.
-        </p>
-        <div class="cta-links">
-          <a href="equipe.html">Découvrez Altarys</a>
+    <section>
+      <div class="split-section">
+        <div class="content animate-left justify">
+          <h1>Altarys Capital</h1>
+          <h2 style="font-size: 1.8em;"><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
+          <p>
+            Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
+          </p>
+          <p>
+            Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
+          </p>
+          <p>
+            Vous gardez le contrôle, nous fournissons l’intelligence.
+          </p>
+          <div class="cta-links">
+            <a href="equipe.html">Découvrez Altarys</a>
+          </div>
         </div>
+        <div class="background background1"></div>
       </div>
-      <div class="background background1"></div>
     </section>
 
     <section class="products-section">
@@ -259,18 +273,20 @@
       </div>
     </section>
 
-    <section class="split-section">
-      <div class="background background3"></div>
-      <div class="content animate-right justify">
-        <h2>Comprendre les marchés, anticiper les tendances</h2>
-        <p>
-          Notre espace <strong>Recherche</strong> vous donne accès à des analyses pointues sur les crypto-actifs : points hebdomadaires, suivi de la volatilité, signaux techniques, tendances émergentes.
-        </p>
-        <p>
-          Que vous soyez en phase de veille ou d’exécution, nos insights vous aident à structurer vos offres avec précision.
-        </p>
-        <div class="cta-links">
-          <a href="actualites.html">Accéder à la recherche</a>
+    <section>
+      <div class="split-section">
+        <div class="background background3"></div>
+        <div class="content animate-right justify">
+          <h2>Comprendre les marchés, anticiper les tendances</h2>
+          <p>
+            Notre espace <strong>Recherche</strong> vous donne accès à des analyses pointues sur les crypto-actifs : points hebdomadaires, suivi de la volatilité, signaux techniques, tendances émergentes.
+          </p>
+          <p>
+            Que vous soyez en phase de veille ou d’exécution, nos insights vous aident à structurer vos offres avec précision.
+          </p>
+          <div class="cta-links">
+            <a href="actualites.html">Accéder à la recherche</a>
+          </div>
         </div>
       </div>
     </section>
@@ -297,6 +313,7 @@
   </script>
 </body>
 </html>
+
 
 
 
