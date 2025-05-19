@@ -66,25 +66,12 @@
     }
 
     section {
-      scroll-snap-align: start;
+      height: 100vh;
       width: 100%;
+      scroll-snap-align: start;
       display: flex;
       align-items: stretch;
       justify-content: center;
-    }
-
-    .section1,
-    .section3 {
-      height: 110vh;
-    }
-
-    .section2 {
-      height: 100vh;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 10%;
-      text-align: center;
     }
 
     .split {
@@ -115,6 +102,22 @@
 
     .background3 {
       background-image: url('fondetoile2.jpg');
+    }
+
+    .section2 {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    .section2.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h1, h2 {
@@ -178,17 +181,6 @@
       opacity: 1;
     }
 
-    .products-section {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease-out;
-    }
-
-    .products-section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     footer {
       background: var(--background-color);
       text-align: center;
@@ -232,7 +224,7 @@
   </header>
 
   <main>
-    <section class="section1">
+    <section>
       <div class="split">
         <div class="content animate-left justify">
           <h1>Altarys Capital</h1>
@@ -254,7 +246,7 @@
       </div>
     </section>
 
-    <section class="section2 products-section">
+    <section class="section2">
       <h2>Nos produits structurés sur crypto-actifs</h2>
       <p>
         Ensemble, nous concevons des produits structurés sur mesure : autocalls à déclenchement conditionnel, stratégies de volatility harvesting ou encore produits à capital garanti.
@@ -271,7 +263,7 @@
       </div>
     </section>
 
-    <section class="section3">
+    <section>
       <div class="split">
         <div class="background background3"></div>
         <div class="content animate-right justify">
@@ -291,7 +283,27 @@
   </main>
 
   <footer>
-    &copy; 2025 Altarys Capital. Tous droits
+    &copy; 2025 Altarys Capital. Tous droits réservés.
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate-left, .animate-right, .section2').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
+
 
 
 
