@@ -12,6 +12,7 @@
       --secondary-color: #4b0082;
       --background-color: #000000;
       --text-color: #ffffff;
+      --overlay-color: rgba(0, 0, 0, 0.55);
     }
 
     * {
@@ -33,37 +34,42 @@
       left: 0;
       width: 100%;
       background: rgba(0, 0, 0, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
       z-index: 1000;
       border-bottom: 1px solid #111;
-      padding: 20px 0;
     }
 
     .header-container {
-      width: 100%;
-      max-width: 1200px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0 40px;
     }
 
-    .nav {
+    .nav-section {
       display: flex;
+      flex: 1;
+      justify-content: center;
       gap: 30px;
-      align-items: center;
     }
 
-    .nav a {
+    .nav-section.left {
+      justify-content: flex-end;
+    }
+
+    .nav-section.right {
+      justify-content: flex-start;
+    }
+
+    .nav-section a {
       color: var(--text-color);
       font-weight: 500;
       text-decoration: none;
       position: relative;
     }
 
-    .nav a::after {
+    .nav-section a::after {
       content: ' \2192';
       transition: opacity 0.3s;
       opacity: 0;
@@ -71,27 +77,35 @@
       right: -20px;
     }
 
-    .nav a:hover::after {
+    .nav-section a:hover::after {
       opacity: 1;
     }
 
-    .logo {
+    .logo-container {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container img {
       height: 50px;
     }
 
     section {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       min-height: 100vh;
-      align-items: center;
     }
 
     .content {
-      flex: 1 1 50%;
+      flex: 1;
       padding: 80px 10%;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: var(--overlay-color);
+      backdrop-filter: blur(8px);
     }
 
     .content h1, .content h2 {
@@ -102,7 +116,7 @@
 
     .content p {
       font-size: 1.1em;
-      color: #ccc;
+      color: #ddd;
       margin-bottom: 20px;
       max-width: 600px;
     }
@@ -127,10 +141,9 @@
     }
 
     .background {
-      flex: 1 1 50%;
+      flex: 1;
       background-size: cover;
       background-position: center;
-      min-height: 400px;
     }
 
     .background1 { background-image: url('fondetoile.jpg'); }
@@ -145,15 +158,17 @@
       color: #888;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
       .header-container {
         flex-direction: column;
         gap: 10px;
       }
 
-      .nav {
-        flex-direction: column;
-        gap: 10px;
+      .nav-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
       }
 
       section {
@@ -170,12 +185,14 @@
 <body>
   <header>
     <div class="header-container">
-      <div class="nav">
+      <div class="nav-section left">
         <a href="index.html">Accueil</a>
         <a href="solutions.html">Nos solutions</a>
       </div>
-      <img class="logo" src="logo.png" alt="Logo Altarys Capital" />
-      <div class="nav">
+      <div class="logo-container">
+        <img src="logo.png" alt="Logo Altarys Capital" />
+      </div>
+      <div class="nav-section right">
         <a href="actualites.html">Recherche</a>
         <a href="equipe.html">À propos</a>
         <a href="contact.html">Nous contacter</a>
@@ -219,4 +236,5 @@
   </footer>
 </body>
 </html>
+
 
