@@ -24,22 +24,29 @@
     html, body {
       height: 100%;
       scroll-snap-type: y mandatory;
-      overflow-y: scroll;
       scroll-behavior: smooth;
+      overflow-x: hidden;
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
     }
 
     body {
-      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    main {
+      margin-top: var(--header-height);
     }
 
     section {
-      height: calc(100vh - var(--header-height));
-      padding-top: var(--header-height);
-      width: 100%;
       scroll-snap-align: start;
+      min-height: calc(100vh - var(--header-height));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 10%;
+      position: relative;
     }
 
     header {
@@ -93,7 +100,9 @@
       color: #ccc;
     }
 
-    .justify { text-align: justify; }
+    .justify {
+      text-align: justify;
+    }
 
     .cta-links {
       margin-top: 30px;
@@ -126,52 +135,48 @@
       color: #888;
     }
 
-    .split {
+    .split-section {
       display: flex;
+      flex-direction: row;
       width: 100%;
-      height: 100%;
-      background-color: var(--background-color);
     }
 
-    .split .content {
+    .split-section .content {
       flex: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 40px 10%;
-      z-index: 2;
+      padding: 40px;
       opacity: 0;
       transition: all 1s ease-out;
     }
 
-    .split .background {
+    .split-section .background {
       flex: 1;
       background-size: cover;
       background-position: center;
     }
 
-    .background1 { background-image: url('fondetoile.jpg'); }
-    .background3 { background-image: url('fondetoile2.jpg'); }
+    .background1 {
+      background-image: url('fondetoile.jpg');
+    }
+
+    .background3 {
+      background-image: url('fondetoile2.jpg');
+    }
 
     .animate-left { transform: translateX(-40px); }
     .animate-right { transform: translateX(40px); }
-    .animate-up { transform: translateY(40px); }
 
     .visible.animate-left,
-    .visible.animate-right,
-    .visible.animate-up {
-      transform: translate(0, 0);
+    .visible.animate-right {
+      transform: translateX(0);
       opacity: 1;
     }
 
     .products-section {
-      background-color: var(--background-color);
-      text-align: center;
-      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 10%;
+      text-align: center;
       opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease-out;
@@ -182,33 +187,24 @@
       transform: translateY(0);
     }
 
-    .products-section p {
-      text-align: center;
-    }
-
     @media (max-width: 768px) {
-      .split {
+      .split-section {
         flex-direction: column;
       }
 
-      .split .content, .split .background {
+      .split-section .content, .split-section .background {
         width: 100%;
         height: auto;
-        padding: 40px 5%;
+        padding: 20px;
       }
 
       .products-section {
-        padding: 60px 5%;
+        padding: 40px 5%;
         align-items: center;
       }
 
       .cta-links {
         justify-content: center;
-      }
-
-      section {
-        height: auto;
-        min-height: calc(100vh - var(--header-height));
       }
     }
   </style>
@@ -226,7 +222,7 @@
   </header>
 
   <main>
-    <section class="split">
+    <section class="split-section">
       <div class="content animate-left justify">
         <h1>Altarys Capital</h1>
         <h2 style="font-size: 1.8em;"><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
@@ -234,7 +230,7 @@
           Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
         </p>
         <p>
-          Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité. Vous créez des solutions sécurisées et performantes avec un maximum d’agilité.
+          Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
         </p>
         <p>
           Vous gardez le contrôle, nous fournissons l’intelligence.
@@ -263,7 +259,7 @@
       </div>
     </section>
 
-    <section class="split">
+    <section class="split-section">
       <div class="background background3"></div>
       <div class="content animate-right justify">
         <h2>Comprendre les marchés, anticiper les tendances</h2>
@@ -295,7 +291,7 @@
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.animate-left, .animate-right, .animate-up, .products-section').forEach(el => {
+    document.querySelectorAll('.animate-left, .animate-right, .products-section').forEach(el => {
       observer.observe(el);
     });
   </script>
