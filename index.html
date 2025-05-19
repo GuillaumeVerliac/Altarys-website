@@ -14,7 +14,7 @@
       --text-color: #ffffff;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -51,11 +51,15 @@
       text-decoration: none;
       margin-left: 30px;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
     nav a:hover {
       color: var(--primary-color);
+    }
+
+    main {
+      padding-top: 100px;
     }
 
     h1, h2 {
@@ -73,7 +77,7 @@
 
     p {
       max-width: 900px;
-      margin: 0 auto 20px;
+      margin-bottom: 20px;
       font-size: 1.1em;
       color: #ccc;
     }
@@ -88,12 +92,11 @@
       text-decoration: underline;
       font-weight: 600;
       margin-right: 30px;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
     .cta-links a::after {
       content: " →";
-      transition: transform 0.3s;
     }
 
     .cta-links a:hover {
@@ -111,20 +114,17 @@
     .split {
       display: flex;
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
       position: relative;
+      opacity: 0;
     }
 
     .split.left {
-      flex-direction: row;
-      opacity: 0;
       animation: fadeInRight 1s ease-out forwards;
     }
 
     .split.right {
-      flex-direction: row-reverse;
-      opacity: 0;
       animation: fadeInLeft 1s ease-out forwards;
     }
 
@@ -133,9 +133,8 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 80px;
+      padding: 80px 10%;
       background-color: rgba(0, 0, 0, 0.9);
-      height: 100%;
       z-index: 2;
     }
 
@@ -143,7 +142,6 @@
       flex: 1;
       background-size: cover;
       background-position: center;
-      height: 100%;
     }
 
     .background1 { background-image: url('fondetoile.jpg'); }
@@ -161,10 +159,12 @@
 
     @media (max-width: 768px) {
       .split {
-        flex-direction: column !important;
+        flex-direction: column;
       }
+
       .split .content, .split .background {
         width: 100%;
+        padding: 40px 5%;
         height: auto;
       }
     }
@@ -182,72 +182,60 @@
     </nav>
   </header>
 
-  <section class="split left">
-    <div class="content">
-      <h1>Altarys Capital</h1>
-      <h2>Infrastructure pour l’investissement structuré crypto</h2>
-      <p>
-        Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
-      </p>
-      <p>
-        Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
-      </p>
-      <div class="cta-links">
-        <a href="equipe.html">Découvrez Altarys</a>
+  <main>
+    <section class="split left">
+      <div class="content">
+        <h1>Altarys Capital</h1>
+        <h2>Infrastructure pour l’investissement structuré crypto</h2>
+        <p>
+          Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
+        </p>
+        <p>
+          Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
+        </p>
+        <div class="cta-links">
+          <a href="equipe.html">Découvrez Altarys</a>
+        </div>
       </div>
-    </div>
-    <div class="background background1"></div>
-  </section>
+      <div class="background background1"></div>
+    </section>
 
-  <section class="split right">
-    <div class="content">
-      <h2>Nos produits structurés sur crypto-actifs</h2>
-      <p>
-        Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
-      </p>
-      <p>
-        Personnalisez vos produits ou explorez des stratégies déjà calibrées.
-      </p>
-      <div class="cta-links">
-        <a href="solutions.html#selection">Parcourir la sélection</a>
-        <a href="contact.html">Créer une solution sur-mesure</a>
+    <section class="split right">
+      <div class="content">
+        <h2>Nos produits structurés sur crypto-actifs</h2>
+        <p>
+          Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
+        </p>
+        <p>
+          Personnalisez vos produits ou explorez des stratégies déjà calibrées.
+        </p>
+        <div class="cta-links">
+          <a href="solutions.html#selection">Parcourir la sélection</a>
+          <a href="contact.html">Créer une solution sur-mesure</a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="split right">
-    <div class="content">
-      <h2>Accédez à notre recherche</h2>
-      <p>
-        Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
-      </p>
-      <div class="cta-links">
-        <a href="actualites.html">Accédez à notre recherche</a>
+    <section class="split right">
+      <div class="content">
+        <h2>Accédez à notre recherche</h2>
+        <p>
+          Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
+        </p>
+        <div class="cta-links">
+          <a href="actualites.html">Accédez à notre recherche</a>
+        </div>
       </div>
-    </div>
-    <div class="background background3"></div>
-  </section>
+      <div class="background background3"></div>
+    </section>
+  </main>
 
   <footer>
     &copy; 2025 Altarys Capital. Tous droits réservés.
   </footer>
-
-  <script>
-    const sections = document.querySelectorAll(".split.left, .split.right");
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.animation = entry.target.classList.contains('left') ? "fadeInRight 1s ease-out forwards" : "fadeInLeft 1s ease-out forwards";
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
-
-    sections.forEach(section => observer.observe(section));
-  </script>
 </body>
 </html>
+
 
 
 
