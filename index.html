@@ -12,7 +12,6 @@
       --secondary-color: #4b0082;
       --background-color: #000000;
       --text-color: #ffffff;
-      --overlay-color: rgba(0, 0, 0, 0.35);
     }
 
     * {
@@ -25,231 +24,218 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
+      line-height: 1.6;
       overflow-x: hidden;
     }
 
     header {
       position: fixed;
+      width: 100%;
       top: 0;
       left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.85);
       z-index: 1000;
-      border-bottom: 1px solid #111;
-    }
-
-    .header-container {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px 10%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 28px 60px;
-      font-size: 1.1rem;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      width: 100%;
-      max-width: 1400px;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #222;
     }
 
-    .nav-left,
-    .nav-right {
-      display: flex;
-      gap: 60px;
-      flex: 1;
+    header img {
+      height: 50px;
     }
 
-    .nav-left {
-      justify-content: flex-end;
-      padding-right: 60px;
-    }
-
-    .nav-right {
-      justify-content: flex-start;
-      padding-left: 60px;
-    }
-
-    .nav-left a,
-    .nav-right a {
+    nav a {
       color: var(--text-color);
-      font-weight: 500;
       text-decoration: none;
-      letter-spacing: 0.5px;
-      transition: color 0.3s ease;
-    }
-
-    .nav-left a:hover,
-    .nav-right a:hover {
-      color: var(--primary-color);
-    }
-
-    .logo-container {
-      flex: 0 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .logo-container img {
-      height: 56px;
-    }
-
-    section {
-      display: flex;
-      flex-wrap: nowrap;
-      min-height: 100vh;
-    }
-
-    .content {
-      flex: 1;
-      padding: 100px 12%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      background: var(--overlay-color);
-      backdrop-filter: blur(6px);
-    }
-
-    .content h1, .content h2 {
-      color: var(--primary-color);
-      font-weight: 700;
-      margin-bottom: 24px;
-    }
-
-    .content h1 {
-      font-size: 2.8rem;
-    }
-
-    .content h2 {
-      font-size: 2rem;
-    }
-
-    .content p {
-      font-size: 1.15rem;
-      color: #e0e0e0;
-      margin-bottom: 20px;
-      max-width: 640px;
-      line-height: 1.6;
-    }
-
-    .link-arrow {
+      margin-left: 30px;
       font-weight: 600;
-      text-decoration: none;
-      color: var(--text-color);
-      border-bottom: 2px solid var(--primary-color);
-      width: fit-content;
-      padding-bottom: 4px;
-      transition: all 0.3s;
-      font-size: 1rem;
+      transition: color 0.3s;
     }
 
-    .link-arrow::after {
-      content: ' \2192';
-      font-weight: normal;
-    }
-
-    .link-arrow:hover {
+    nav a:hover {
       color: var(--primary-color);
-      border-color: var(--primary-color);
     }
 
-    .background {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
+    h1, h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
     }
 
-    .background1 { background-image: url('fondetoile.jpg'); }
-    .background2 { background-image: url('fondetoile3.jpg'); }
-    .background3 { background-image: url('fondetoile2.jpg'); }
+    h1 {
+      font-size: 3em;
+    }
+
+    h2 {
+      font-size: 2.2em;
+    }
+
+    p {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      font-size: 1.1em;
+      color: #ccc;
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .cta-buttons a {
+      padding: 14px 28px;
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .cta-buttons a:hover {
+      filter: brightness(1.2);
+      transform: translateY(-4px);
+    }
 
     footer {
+      background: rgba(0, 0, 0, 0.9);
       text-align: center;
-      padding: 40px 10%;
-      font-size: 0.95em;
-      background: rgba(0, 0, 0, 0.85);
+      font-size: 0.9em;
+      padding: 30px 10%;
       color: #888;
     }
 
-    @media (max-width: 1024px) {
-      .header-container {
-        flex-direction: column;
-        gap: 20px;
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .split {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .split.left {
+      flex-direction: row;
+      opacity: 0;
+      animation: fadeInRight 1s ease-out forwards;
+    }
+
+    .split.right {
+      flex-direction: row-reverse;
+      opacity: 0;
+      animation: fadeInLeft 1s ease-out forwards;
+    }
+
+    .split .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+      background-color: rgba(0, 0, 0, 0.9);
+      height: 100%;
+      z-index: 2;
+    }
+
+    .split .background {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+    }
+
+    .background1 {
+      background-image: url('fondetoile.jpg');
+    }
+
+    .background2 {
+      background-image: url('fondetoile3.jpg');
+    }
+
+    .background3 {
+      background-image: url('fondetoile2.jpg');
+    }
+
+    @media (max-width: 768px) {
+      .split {
+        flex-direction: column !important;
       }
 
-      .nav-wrapper {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .nav-left,
-      .nav-right {
-        justify-content: center;
-        padding: 0;
-      }
-
-      section {
-        flex-direction: column;
-      }
-
-      .content, .background {
-        flex: 1 1 100%;
-        padding: 40px 5%;
+      .split .content, .split .background {
+        width: 100%;
+        height: auto;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="header-container">
-      <div class="nav-wrapper">
-        <div class="nav-left">
-          <a href="index.html">Accueil</a>
-          <a href="solutions.html">Nos solutions</a>
-        </div>
-        <div class="logo-container">
-          <img src="logo.png" alt="Logo Altarys Capital" />
-        </div>
-        <div class="nav-right">
-          <a href="actualites.html">Recherche</a>
-          <a href="equipe.html">À propos</a>
-          <a href="contact.html">Nous contacter</a>
-        </div>
-      </div>
-    </div>
+    <img src="logo.png" alt="Logo Altarys Capital" />
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Recherche</a>
+      <a href="equipe.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
   </header>
 
-  <section>
+  <section class="split left">
     <div class="content">
       <h1>Altarys Capital</h1>
       <h2>Infrastructure pour l’investissement structuré crypto</h2>
-      <p>Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.</p>
-      <p>Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.</p>
-      <a class="link-arrow" href="equipe.html">Découvrez Altarys</a>
+      <p>
+        Altarys Capital est une plateforme technologique dédiée à la conception de produits structurés sur actifs numériques. Pour gestionnaires de fortunes, banques privées, family offices, asset managers indépendants.
+      </p>
+      <p>
+        Créez vos instruments d’investissement personnalisés sans complexité technique ni risques opérationnels.
+      </p>
+      <div class="cta-buttons">
+        <a href="equipe.html">Découvrez Altarys</a>
+      </div>
     </div>
     <div class="background background1"></div>
   </section>
 
-  <section>
-    <div class="background background2"></div>
+  <section class="split right">
     <div class="content">
       <h2>Nos produits structurés sur crypto-actifs</h2>
-      <p>Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.</p>
-      <p>Personnalisez vos produits ou explorez des stratégies déjà calibrées.</p>
-      <a class="link-arrow" href="solutions.html#selection">Parcourir la sélection</a><br><br>
-      <a class="link-arrow" href="contact.html">Créer une solution sur-mesure</a>
+      <p>
+        Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
+      </p>
+      <p>
+        Personnalisez vos produits ou explorez des stratégies déjà calibrées.
+      </p>
+      <div class="cta-buttons">
+        <a href="solutions.html#selection">Parcourir la sélection</a>
+        <a href="contact.html">Créer une solution sur-mesure</a>
+      </div>
     </div>
+    <div class="background background2"></div>
   </section>
 
-  <section>
+  <section class="split left">
     <div class="content">
       <h2>Accédez à notre recherche</h2>
-      <p>Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.</p>
-      <a class="link-arrow" href="actualites.html">Accédez à notre recherche</a>
+      <p>
+        Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
+      </p>
+      <div class="cta-buttons">
+        <a href="actualites.html">Accédez à notre recherche</a>
+      </div>
     </div>
     <div class="background background3"></div>
   </section>
@@ -257,9 +243,23 @@
   <footer>
     &copy; 2025 Altarys Capital. Tous droits réservés.
   </footer>
+
+  <script>
+    const sections = document.querySelectorAll(".split.left, .split.right");
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.animation = entry.target.classList.contains('left') ? "fadeInRight 1s ease-out forwards" : "fadeInLeft 1s ease-out forwards";
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
-
 
 
 
