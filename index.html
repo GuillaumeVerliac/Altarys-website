@@ -84,22 +84,25 @@
 
     .cta-links {
       margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
     }
 
     .cta-links a {
-      display: inline-block;
+      padding: 12px 25px;
+      border: 2px solid var(--primary-color);
+      border-radius: 999px;
       color: var(--primary-color);
-      text-decoration: underline;
+      background-color: transparent;
+      text-decoration: none;
       font-weight: 600;
-      margin-right: 30px;
-      transition: color 0.3s ease;
-    }
-
-    .cta-links a::after {
-      content: " →";
+      transition: all 0.3s ease;
+      display: inline-block;
     }
 
     .cta-links a:hover {
+      border-color: var(--secondary-color);
       color: var(--secondary-color);
     }
 
@@ -117,7 +120,6 @@
       min-height: 100vh;
       overflow: hidden;
       position: relative;
-      opacity: 0;
     }
 
     .split.left {
@@ -147,6 +149,27 @@
     .background1 { background-image: url('fondetoile.jpg'); }
     .background3 { background-image: url('fondetoile2.jpg'); }
 
+    .products-section {
+      background-color: #0a0a0a;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 80px 10%;
+    }
+
+    .products-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
+
+    .products-section p {
+      font-size: 1.1em;
+      max-width: 900px;
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+
     @keyframes fadeInRight {
       from { opacity: 0; transform: translateX(40px); }
       to { opacity: 1; transform: translateX(0); }
@@ -166,6 +189,15 @@
         width: 100%;
         padding: 40px 5%;
         height: auto;
+      }
+
+      .products-section {
+        padding: 60px 5%;
+        align-items: center;
+      }
+
+      .cta-links {
+        justify-content: center;
       }
     }
   </style>
@@ -200,19 +232,17 @@
       <div class="background background1"></div>
     </section>
 
-    <section class="split right">
-      <div class="content">
-        <h2>Nos produits structurés sur crypto-actifs</h2>
-        <p>
-          Reverse convertible, autocall, digital option, barrière : notre moteur quantitatif permet de structurer des produits adaptés à la volatilité et aux dynamiques du marché crypto.
-        </p>
-        <p>
-          Personnalisez vos produits ou explorez des stratégies déjà calibrées.
-        </p>
-        <div class="cta-links">
-          <a href="solutions.html#selection">Parcourir la sélection</a>
-          <a href="contact.html">Créer une solution sur-mesure</a>
-        </div>
+    <section class="products-section">
+      <h2>Nos produits structurés sur crypto-actifs</h2>
+      <p>
+        Grâce à notre moteur quantitatif, nous structurons des produits comme les reverse convertibles, autocalls, options digitales, et barrières, adaptés à la volatilité du marché crypto.
+      </p>
+      <p>
+        Vous pouvez créer des produits sur mesure ou explorer nos stratégies prêtes à l’emploi.
+      </p>
+      <div class="cta-links">
+        <a href="solutions.html#selection">Parcourir la sélection</a>
+        <a href="contact.html">Créer une solution sur-mesure</a>
       </div>
     </section>
 
@@ -235,6 +265,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
