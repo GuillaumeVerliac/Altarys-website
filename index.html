@@ -10,7 +10,7 @@
     :root {
       --primary-color: #0055cc;
       --secondary-color: #4b0082;
-      --background-color: #000000;
+      --background-color: #0a0f1a;
       --text-color: #ffffff;
     }
 
@@ -34,7 +34,7 @@
       top: 0;
       left: 0;
       z-index: 1000;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(10, 15, 26, 0.95);
       padding: 20px 10%;
       display: flex;
       justify-content: space-between;
@@ -82,6 +82,8 @@
       color: #ccc;
     }
 
+    .justify { text-align: justify; }
+
     .cta-links {
       margin-top: 30px;
       display: flex;
@@ -106,7 +108,7 @@
     }
 
     footer {
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(10, 15, 26, 0.95);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
@@ -118,6 +120,7 @@
       width: 100%;
       min-height: 100vh;
       position: relative;
+      background-color: var(--background-color);
     }
 
     .split .content {
@@ -126,7 +129,6 @@
       flex-direction: column;
       justify-content: center;
       padding: 80px 10%;
-      background-color: rgba(0, 0, 0, 0.9);
       z-index: 2;
       opacity: 0;
       transition: all 1s ease-out;
@@ -141,7 +143,6 @@
     .background1 { background-image: url('fondetoile.jpg'); }
     .background3 { background-image: url('fondetoile2.jpg'); }
 
-    /* Animations par direction */
     .animate-left { transform: translateX(-40px); }
     .animate-right { transform: translateX(40px); }
     .animate-up { transform: translateY(40px); }
@@ -154,11 +155,12 @@
     }
 
     .products-section {
-      background-color: #0a0a0a;
+      background-color: var(--background-color);
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       padding: 80px 10%;
       opacity: 0;
       transform: translateY(40px);
@@ -168,6 +170,10 @@
     .products-section.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .products-section p {
+      text-align: center;
     }
 
     @media (max-width: 768px) {
@@ -206,7 +212,7 @@
 
   <main>
     <section class="split">
-      <div class="content animate-left">
+      <div class="content animate-left justify">
         <h1>Altarys Capital</h1>
         <h2>Infrastructure pour l’investissement structuré crypto</h2>
         <p>
@@ -238,7 +244,7 @@
 
     <section class="split">
       <div class="background background3"></div>
-      <div class="content animate-right">
+      <div class="content animate-right justify">
         <h2>Accédez à notre recherche</h2>
         <p>
           Retrouvez nos analyses de marché, nos études sur les produits structurés crypto, et nos publications stratégiques. Notre équipe publie régulièrement des contenus exclusifs pour vous aider à comprendre et anticiper les dynamiques du marché.
@@ -263,9 +269,7 @@
           entry.target.classList.remove('visible');
         }
       });
-    }, {
-      threshold: 0.2
-    });
+    }, { threshold: 0.2 });
 
     document.querySelectorAll('.animate-left, .animate-right, .animate-up, .products-section').forEach(el => {
       observer.observe(el);
@@ -273,3 +277,4 @@
   </script>
 </body>
 </html>
+
