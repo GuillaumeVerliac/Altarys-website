@@ -75,7 +75,7 @@
 
     .section1,
     .section3 {
-      height: 120vh;
+      height: 110vh;
     }
 
     .section2 {
@@ -291,26 +291,8 @@
   </main>
 
   <footer>
-    &copy; 2025 Altarys Capital. Tous droits réservés.
-  </footer>
+    &copy; 2025 Altarys Capital. Tous droits
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.animate-left, .animate-right, .products-section').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
-</body>
-</html>
 
 
 
