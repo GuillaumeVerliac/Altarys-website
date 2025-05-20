@@ -16,7 +16,7 @@
       --border-color: #333;
     }
 
-    *, *::before, *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -24,29 +24,27 @@
 
     html, body {
       font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      background-image: url('fondetoile4.jpg');
+      background: var(--background-color) url('fondetoile4.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
       color: var(--text-color);
-      scroll-behavior: smooth;
       height: 100%;
     }
 
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 10%;
-      z-index: 1000;
       border-bottom: 1px solid #222;
+      flex-shrink: 0;
     }
 
     header img {
@@ -66,23 +64,27 @@
     }
 
     main {
-      padding: 140px 5% 60px;
+      flex-grow: 1;
       display: flex;
       justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
 
     .contact-wrapper {
-      background-color: #000;
-      max-width: 900px;
+      background-color: var(--background-color);
       width: 100%;
-      padding: 60px;
+      max-width: 880px;
+      padding: 40px 50px;
       border-radius: 20px;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 1s ease-out forwards;
+      animation: fadeInUp 0.8s ease-out;
     }
 
     @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
@@ -91,15 +93,15 @@
 
     .contact-wrapper h1 {
       text-align: center;
-      font-size: 2.4em;
-      margin-bottom: 40px;
+      font-size: 2.2em;
+      margin-bottom: 30px;
       color: var(--primary-color);
     }
 
-    .form-grid {
+    form {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
 
     .form-group {
@@ -119,70 +121,87 @@
       background-color: var(--input-bg);
       border: 1px solid var(--border-color);
       border-radius: 8px;
-      padding: 14px 16px;
+      padding: 12px 14px;
       font-size: 1em;
       color: var(--text-color);
     }
 
-    .form-group select {
+    select {
       appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 12px center;
+      background-position: right 10px center;
       background-size: 16px;
     }
 
     textarea {
+      grid-column: 1 / -1;
       resize: vertical;
-      min-height: 120px;
+      min-height: 100px;
     }
 
     .submit-button {
-      margin: 30px auto 0;
-      display: block;
+      grid-column: 1 / -1;
+      margin-top: 20px;
       background: transparent;
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
-      padding: 12px 36px;
-      font-weight: bold;
+      padding: 12px 32px;
       font-size: 1em;
+      font-weight: bold;
       border-radius: 999px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s ease;
+      align-self: center;
+      justify-self: center;
     }
 
     .submit-button:hover {
-      color: var(--secondary-color);
       border-color: var(--secondary-color);
+      color: var(--secondary-color);
     }
 
     .confirmation-message {
+      grid-column: 1 / -1;
       text-align: center;
       color: #00cc88;
       font-weight: 600;
       font-size: 1.1em;
-      margin-top: 20px;
+      margin-top: 15px;
       display: none;
     }
 
     footer {
-      background: var(--background-color);
+      height: 60px;
+      background-color: var(--background-color);
       text-align: center;
       font-size: 0.9em;
-      padding: 30px 10%;
       color: #888;
-      margin-top: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 1px solid #222;
+      flex-shrink: 0;
     }
 
-    @media (max-width: 768px) {
+    @media (max-height: 720px) {
       .contact-wrapper {
-        padding: 40px 20px;
+        padding: 30px;
       }
 
       .contact-wrapper h1 {
-        font-size: 2em;
+        font-size: 1.8em;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contact-wrapper {
+        padding: 30px 20px;
+      }
+
+      form {
+        grid-template-columns: 1fr;
       }
 
       .submit-button {
@@ -207,44 +226,40 @@
     <div class="contact-wrapper">
       <h1>Nous contacter</h1>
       <form id="contact-form">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="prenom">Prénom*</label>
-            <input type="text" id="prenom" name="prenom" required />
-          </div>
-          <div class="form-group">
-            <label for="nom">Nom*</label>
-            <input type="text" id="nom" name="nom" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email*</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="telephone" />
-          </div>
-          <div class="form-group">
-            <label for="entreprise">Entreprise</label>
-            <input type="text" id="entreprise" name="entreprise" />
-          </div>
-          <div class="form-group">
-            <label for="objet">Objet*</label>
-            <select id="objet" name="objet" required>
-              <option value="" disabled selected hidden>Choisissez un objet</option>
-              <option value="produits">Produits structurés</option>
-              <option value="partenariat">Partenariat</option>
-              <option value="recherche">Recherche</option>
-              <option value="autre">Autre</option>
-            </select>
-          </div>
+        <div class="form-group">
+          <label for="prenom">Prénom*</label>
+          <input type="text" id="prenom" name="prenom" required />
         </div>
-
-        <div class="form-group" style="margin-top: 20px;">
+        <div class="form-group">
+          <label for="nom">Nom*</label>
+          <input type="text" id="nom" name="nom" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email*</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="telephone">Téléphone</label>
+          <input type="tel" id="telephone" name="telephone" />
+        </div>
+        <div class="form-group">
+          <label for="entreprise">Entreprise</label>
+          <input type="text" id="entreprise" name="entreprise" />
+        </div>
+        <div class="form-group">
+          <label for="objet">Objet*</label>
+          <select id="objet" name="objet" required>
+            <option value="" disabled selected hidden>Choisissez un objet</option>
+            <option value="produits">Produits structurés</option>
+            <option value="partenariat">Partenariat</option>
+            <option value="recherche">Recherche</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="message">Message*</label>
-          <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
+          <textarea id="message" name="message" placeholder="Votre message ici..." required></textarea>
         </div>
-
         <button type="submit" class="submit-button">Envoyer</button>
         <div class="confirmation-message" id="confirmation">Merci pour votre message. Nous vous répondrons sous peu.</div>
       </form>
@@ -264,6 +279,7 @@
   </script>
 </body>
 </html>
+
 
 
 
