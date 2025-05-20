@@ -37,7 +37,6 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
@@ -45,6 +44,7 @@
       justify-content: space-between;
       padding: 0 10%;
       border-bottom: 1px solid #222;
+      z-index: 1000;
     }
 
     header img {
@@ -71,16 +71,20 @@
       padding: 80px 10%;
       width: 100%;
       opacity: 0;
-      transform: translateY(40px);
       transition: all 1s ease-out;
     }
 
-    section.visible {
+    .visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none !important;
     }
 
-    section:nth-of-type(odd) {
+    .from-left { transform: translateX(-40px); }
+    .from-right { transform: translateX(40px); }
+    .from-top { transform: translateY(-40px); }
+    .from-bottom { transform: translateY(40px); }
+
+    section:last-of-type {
       background-color: rgba(11, 13, 18, 0.95);
     }
 
@@ -88,7 +92,7 @@
       text-align: center;
       color: var(--primary-color);
       margin-bottom: 30px;
-      font-size: 2.4em;
+      font-size: 2.6em;
     }
 
     p, blockquote {
@@ -194,10 +198,10 @@
   </header>
 
   <main>
-    <section class="section-animated">
+    <section class="from-left">
       <h1>Notre vision</h1>
       <p>
-        Altarys Capital est née de l’idée que les crypto-actifs, trop souvent considérés comme hautement spéculatifs, méritaient des outils d’investissement structurés, robustes et accessibles aux professionnels de la gestion. 
+        Altarys Capital est née de l’idée que les crypto-actifs, trop souvent considérés comme hautement spéculatifs, méritaient des outils d’investissement structurés, robustes et accessibles aux professionnels de la gestion.
         En croisant les codes de la finance dérivée avec les technologies Web3, nous proposons une nouvelle manière de concevoir la performance dans un environnement volatil.
       </p>
       <p>
@@ -205,7 +209,7 @@
       </p>
     </section>
 
-    <section class="section-animated">
+    <section class="from-top">
       <h2>Les fondateurs</h2>
       <div class="grid">
         <div class="card">
@@ -233,18 +237,21 @@
       </div>
     </section>
 
-    <section class="section-animated">
+    <section class="from-left">
       <h2>Nos engagements</h2>
       <p>
-        Nous nous engageons à garantir l’indépendance de nos outils, la transparence de nos calculs, et la neutralité de nos recommandations. Nous ne détenons ni actifs, ni flux : vous restez seul décisionnaire. 
+        Nous nous engageons à garantir l’indépendance de nos outils, la transparence de nos calculs, et la neutralité de nos recommandations. Nous ne détenons ni actifs, ni flux : vous restez seul décisionnaire.
         Nos solutions sont pensées pour renforcer votre maîtrise, pas la remplacer.
       </p>
       <p>
         Nous croyons aussi à une finance plus responsable : notre technologie vise à éviter la sur-ingénierie inutile et à optimiser le couple coût / efficacité des produits proposés à vos clients.
       </p>
+      <p>
+        Altarys Capital se positionne comme une infrastructure technologique indépendante. Elle ne commercialise pas les produits, ne détient ni actifs ni flux financiers, et ne fournit aucun conseil personnalisé. Son rôle est strictement limité à celui d’un partenaire technologique spécialisé dans l’ingénierie financière appliquée aux crypto-actifs.
+      </p>
     </section>
 
-    <section class="section-animated">
+    <section class="from-right">
       <h2>Nos solutions</h2>
       <p>
         Que vous soyez un gestionnaire privé ou une banque, Altarys vous accompagne dans la conception de produits structurés sur crypto-actifs : reverse convertibles, autocalls, produits à capital protégé, ou stratégies de harvesting de volatilité. Chaque structure est modélisée, simulée, et calibrée à vos besoins.
@@ -269,13 +276,9 @@
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.section-animated').forEach(section => {
+    document.querySelectorAll('section').forEach(section => {
       observer.observe(section);
     });
   </script>
 </body>
 </html>
-
-
-
-
