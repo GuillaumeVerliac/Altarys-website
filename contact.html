@@ -12,9 +12,7 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --field-bg: #111827;
-      --field-border: #2c2c2c;
-      --highlight: #1e40af;
+      --input-bg: rgba(255, 255, 255, 0.05);
     }
 
     *, *::before, *::after {
@@ -26,6 +24,10 @@
     html, body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
+      background-image: url('fondetoile4.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: var(--text-color);
       scroll-behavior: smooth;
     }
@@ -64,18 +66,25 @@
     main {
       padding: 140px 10% 60px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
     }
 
     .contact-wrapper {
-      max-width: 1000px;
+      max-width: 900px;
       width: 100%;
-      background-color: rgba(20, 22, 30, 0.95);
       padding: 60px;
+      background-color: rgba(0, 0, 0, 0.6);
       border-radius: 24px;
-      box-shadow: 0 0 30px rgba(0, 85, 204, 0.2);
-      backdrop-filter: blur(6px);
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .contact-wrapper h1 {
@@ -100,15 +109,14 @@
       font-size: 0.9em;
       color: #aaa;
       margin-bottom: 6px;
-      letter-spacing: 0.5px;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      background-color: var(--field-bg);
-      border: 1px solid var(--field-border);
-      border-radius: 8px;
+      background-color: var(--input-bg);
+      border: 1px solid #333;
+      border-radius: 10px;
       padding: 14px 16px;
       font-size: 1em;
       color: var(--text-color);
@@ -127,20 +135,9 @@
       min-height: 120px;
     }
 
-    .info-box {
-      background-color: #0f172a;
-      color: #ccc;
-      padding: 20px;
-      border-left: 4px solid var(--primary-color);
-      border-radius: 8px;
-      font-size: 0.95em;
-      margin: 30px 0;
-    }
-
     .submit-button {
+      margin: 30px auto 0;
       display: block;
-      margin: 0 auto;
-      margin-top: 30px;
       background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: #fff;
       padding: 14px 36px;
@@ -154,7 +151,16 @@
 
     .submit-button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 85, 204, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 85, 204, 0.3);
+    }
+
+    .confirmation-message {
+      text-align: center;
+      color: #00cc88;
+      font-weight: 600;
+      font-size: 1.1em;
+      margin-top: 20px;
+      display: none;
     }
 
     footer {
@@ -174,6 +180,10 @@
       .contact-wrapper h1 {
         font-size: 2em;
       }
+
+      .submit-button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -192,27 +202,27 @@
   <main>
     <div class="contact-wrapper">
       <h1>Nous contacter</h1>
-      <form>
+      <form id="contact-form">
         <div class="form-grid">
           <div class="form-group">
             <label for="prenom">Prénom*</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required />
+            <input type="text" id="prenom" name="prenom" required />
           </div>
           <div class="form-group">
             <label for="nom">Nom*</label>
-            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required />
+            <input type="text" id="nom" name="nom" required />
           </div>
           <div class="form-group">
             <label for="email">Email*</label>
-            <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required />
+            <input type="email" id="email" name="email" required />
           </div>
           <div class="form-group">
             <label for="telephone">Téléphone</label>
-            <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre téléphone" />
+            <input type="tel" id="telephone" name="telephone" />
           </div>
           <div class="form-group">
             <label for="entreprise">Entreprise</label>
-            <input type="text" id="entreprise" name="entreprise" placeholder="Entrez le nom de votre entreprise" />
+            <input type="text" id="entreprise" name="entreprise" />
           </div>
           <div class="form-group">
             <label for="objet">Objet*</label>
@@ -220,22 +230,19 @@
               <option value="" disabled selected hidden>Choisissez un objet</option>
               <option value="produits">Produits structurés</option>
               <option value="partenariat">Partenariat</option>
-              <option value="recherche">Recherche & veille</option>
-              <option value="autre">Autre demande</option>
+              <option value="recherche">Recherche</option>
+              <option value="autre">Autre</option>
             </select>
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 20px;">
           <label for="message">Message*</label>
-          <textarea id="message" name="message" placeholder="Décrivez la raison pour laquelle vous nous contactez..." required></textarea>
+          <textarea id="message" name="message" placeholder="Écrivez votre message ici..." required></textarea>
         </div>
 
-        <div class="info-box">
-          Pour toute question liée aux candidatures ou aux stages, merci de consulter notre site carrière ou de contacter directement le service RH.
-        </div>
-
-        <button type="submit" class="submit-button">Envoyer ma demande</button>
+        <button type="submit" class="submit-button">Envoyer</button>
+        <div class="confirmation-message" id="confirmation">Merci pour votre message. Nous vous répondrons sous peu.</div>
       </form>
     </div>
   </main>
@@ -243,10 +250,15 @@
   <footer>
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
-</body>
-</html>
 
-
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      // simulation d'envoi
+      document.getElementById("confirmation").style.display = "block";
+      this.reset();
+    });
+  </script>
 </body>
 </html>
 
