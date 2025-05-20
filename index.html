@@ -100,12 +100,25 @@
       background-image: url('fondetoile.jpg');
     }
 
-    .background2 {
+    .background3 {
       background-image: url('fondetoile2.jpg');
     }
 
-    .background3 {
-      background-image: url('fondetoile2.jpg');
+    .section2-full {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    .section2-full.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h1, h2 {
@@ -169,11 +182,6 @@
       opacity: 1;
     }
 
-    .visible {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
     footer {
       background: var(--background-color);
       text-align: center;
@@ -192,6 +200,10 @@
         width: 100%;
         height: auto;
         padding: 20px;
+      }
+
+      .section2-full {
+        padding: 40px 5%;
       }
 
       .cta-links {
@@ -236,26 +248,23 @@
       </div>
     </section>
 
-    <!-- Section 2 -->
+    <!-- Section 2 (plein écran, sans image) -->
     <section>
-      <div class="split">
-        <div class="content animate-left justify">
-          <h2>Nos produits structurés sur crypto-actifs</h2>
-          <p>
-            Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
-          </p>
-          <p>
-            Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
-          </p>
-          <p>
-            Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
-          </p>
-          <div class="cta-links">
-            <a href="solutions.html#selection">Parcourir la sélection</a>
-            <a href="contact.html">Créer une solution sur-mesure</a>
-          </div>
+      <div class="section2-full">
+        <h2>Nos produits structurés sur crypto-actifs</h2>
+        <p>
+          Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
+        </p>
+        <p>
+          Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
+        </p>
+        <p>
+          Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
+        </p>
+        <div class="cta-links">
+          <a href="solutions.html#selection">Parcourir la sélection</a>
+          <a href="contact.html">Créer une solution sur-mesure</a>
         </div>
-        <div class="background background2"></div>
       </div>
     </section>
 
@@ -295,7 +304,7 @@
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.animate-left, .animate-right').forEach(el => {
+    document.querySelectorAll('.animate-left, .animate-right, .section2-full').forEach(el => {
       observer.observe(el);
     });
   </script>
