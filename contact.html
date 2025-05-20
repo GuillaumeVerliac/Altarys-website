@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nous contacter – Altarys Capital</title>
+  <title>Contact – Altarys Capital</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -12,6 +12,9 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
+      --field-bg: #111827;
+      --field-border: #2c2c2c;
+      --highlight: #1e40af;
     }
 
     *, *::before, *::after {
@@ -21,11 +24,10 @@
     }
 
     html, body {
-      height: 100%;
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
       color: var(--text-color);
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -60,52 +62,62 @@
     }
 
     main {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       padding: 140px 10% 60px;
-      min-height: 100vh;
-      background-image: url('fondetoile.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .contact-box {
-      background-color: rgba(15, 17, 25, 0.92);
+    .contact-wrapper {
+      max-width: 1000px;
+      width: 100%;
+      background-color: rgba(20, 22, 30, 0.95);
       padding: 60px;
       border-radius: 24px;
-      max-width: 700px;
-      width: 100%;
-      box-shadow: 0 0 40px rgba(0, 85, 204, 0.2);
+      box-shadow: 0 0 30px rgba(0, 85, 204, 0.2);
       backdrop-filter: blur(6px);
     }
 
-    .contact-box h1 {
-      font-size: 2.8em;
-      margin-bottom: 30px;
-      color: var(--primary-color);
+    .contact-wrapper h1 {
+      font-size: 2.6em;
       text-align: center;
+      margin-bottom: 40px;
+      color: var(--primary-color);
     }
 
-    form {
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .form-group {
       display: flex;
       flex-direction: column;
-      gap: 20px;
     }
 
-    input, textarea {
-      padding: 16px;
-      border: 1px solid #333;
-      border-radius: 10px;
-      background-color: #111;
-      color: var(--text-color);
+    .form-group label {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background-color: var(--field-bg);
+      border: 1px solid var(--field-border);
+      border-radius: 8px;
+      padding: 14px 16px;
       font-size: 1em;
+      color: var(--text-color);
       transition: border 0.3s ease;
     }
 
-    input:focus,
-    textarea:focus {
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
       border-color: var(--primary-color);
       outline: none;
     }
@@ -115,8 +127,20 @@
       min-height: 120px;
     }
 
-    button {
-      align-self: center;
+    .info-box {
+      background-color: #0f172a;
+      color: #ccc;
+      padding: 20px;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 8px;
+      font-size: 0.95em;
+      margin: 30px 0;
+    }
+
+    .submit-button {
+      display: block;
+      margin: 0 auto;
+      margin-top: 30px;
       background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: #fff;
       padding: 14px 36px;
@@ -128,13 +152,14 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    button:hover {
+    .submit-button:hover {
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(0, 85, 204, 0.3);
     }
 
     footer {
-      background-color: var(--background-color);
+      margin-top: 80px;
+      background: var(--background-color);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
@@ -142,33 +167,12 @@
     }
 
     @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-      }
-
-      nav {
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      main {
-        padding: 140px 5% 60px;
-      }
-
-      .contact-box {
+      .contact-wrapper {
         padding: 40px 20px;
       }
 
-      .contact-box h1 {
+      .contact-wrapper h1 {
         font-size: 2em;
-      }
-
-      button {
-        width: 100%;
       }
     }
   </style>
@@ -186,13 +190,52 @@
   </header>
 
   <main>
-    <div class="contact-box">
+    <div class="contact-wrapper">
       <h1>Nous contacter</h1>
       <form>
-        <input type="text" name="nom" placeholder="Votre nom" required />
-        <input type="email" name="email" placeholder="Votre adresse email" required />
-        <textarea name="message" placeholder="Votre message..." required></textarea>
-        <button type="submit">Envoyer</button>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prenom">Prénom*</label>
+            <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required />
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom*</label>
+            <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email*</label>
+            <input type="email" id="email" name="email" placeholder="Entrez votre adresse email" required />
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="Entrez votre téléphone" />
+          </div>
+          <div class="form-group">
+            <label for="entreprise">Entreprise</label>
+            <input type="text" id="entreprise" name="entreprise" placeholder="Entrez le nom de votre entreprise" />
+          </div>
+          <div class="form-group">
+            <label for="objet">Objet*</label>
+            <select id="objet" name="objet" required>
+              <option value="" disabled selected hidden>Choisissez un objet</option>
+              <option value="produits">Produits structurés</option>
+              <option value="partenariat">Partenariat</option>
+              <option value="recherche">Recherche & veille</option>
+              <option value="autre">Autre demande</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message*</label>
+          <textarea id="message" name="message" placeholder="Décrivez la raison pour laquelle vous nous contactez..." required></textarea>
+        </div>
+
+        <div class="info-box">
+          Pour toute question liée aux candidatures ou aux stages, merci de consulter notre site carrière ou de contacter directement le service RH.
+        </div>
+
+        <button type="submit" class="submit-button">Envoyer ma demande</button>
       </form>
     </div>
   </main>
@@ -202,6 +245,7 @@
   </footer>
 </body>
 </html>
+
 
 </body>
 </html>
