@@ -37,6 +37,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      z-index: 1000;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
@@ -44,7 +45,6 @@
       justify-content: space-between;
       padding: 0 10%;
       border-bottom: 1px solid #222;
-      z-index: 1000;
     }
 
     header img {
@@ -70,6 +70,7 @@
     section {
       padding: 80px 10%;
       width: 100%;
+      background-color: rgba(11, 13, 18, 0.95);
       opacity: 0;
       transition: all 1s ease-out;
     }
@@ -83,10 +84,6 @@
     .from-right { transform: translateX(40px); }
     .from-top { transform: translateY(-40px); }
     .from-bottom { transform: translateY(40px); }
-
-    section:last-of-type {
-      background-color: rgba(11, 13, 18, 0.95);
-    }
 
     h1, h2 {
       text-align: center;
@@ -272,6 +269,8 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
         }
       });
     }, { threshold: 0.2 });
@@ -282,3 +281,4 @@
   </script>
 </body>
 </html>
+
