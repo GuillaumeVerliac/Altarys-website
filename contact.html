@@ -12,8 +12,7 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --input-bg: #111;
-      --border-color: #333;
+      --line-color: #444;
     }
 
     *, *::before, *::after {
@@ -126,12 +125,20 @@
     .form-group input,
     .form-group select,
     .form-group textarea {
-      background-color: var(--input-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 12px 14px;
-      font-size: 1em;
+      background: none;
+      border: none;
+      border-bottom: 1px solid var(--line-color);
       color: var(--text-color);
+      font-size: 1em;
+      padding: 10px 4px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-bottom-color: var(--primary-color);
     }
 
     select {
@@ -143,9 +150,10 @@
     }
 
     textarea {
-      grid-column: 1 / -1;
       resize: vertical;
       min-height: 100px;
+      grid-column: 1 / -1;
+      width: 100%;
     }
 
     .submit-button {
@@ -249,7 +257,7 @@
             <option value="autre">Autre</option>
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="grid-column: 1 / -1;">
           <label for="message">Message*</label>
           <textarea id="message" name="message" placeholder="Votre message ici..." required></textarea>
         </div>
