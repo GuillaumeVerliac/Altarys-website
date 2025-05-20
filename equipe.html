@@ -29,6 +29,7 @@
       background-attachment: fixed;
       color: var(--text-color);
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     header {
@@ -36,6 +37,7 @@
       top: 0;
       left: 0;
       width: 100%;
+      z-index: 1000;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
@@ -43,7 +45,6 @@
       justify-content: space-between;
       padding: 0 10%;
       border-bottom: 1px solid #222;
-      z-index: 1000;
     }
 
     header img {
@@ -69,6 +70,14 @@
     section {
       padding: 80px 10%;
       width: 100%;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     section:nth-of-type(odd) {
@@ -79,6 +88,7 @@
       text-align: center;
       color: var(--primary-color);
       margin-bottom: 30px;
+      font-size: 2.4em;
     }
 
     p, blockquote {
@@ -184,7 +194,7 @@
   </header>
 
   <main>
-    <section>
+    <section class="section-animated">
       <h1>Notre vision</h1>
       <p>
         Altarys Capital est née de l’idée que les crypto-actifs, trop souvent considérés comme hautement spéculatifs, méritaient des outils d’investissement structurés, robustes et accessibles aux professionnels de la gestion. 
@@ -195,7 +205,7 @@
       </p>
     </section>
 
-    <section>
+    <section class="section-animated">
       <h2>Les fondateurs</h2>
       <div class="grid">
         <div class="card">
@@ -223,7 +233,18 @@
       </div>
     </section>
 
-    <section>
+    <section class="section-animated">
+      <h2>Nos engagements</h2>
+      <p>
+        Nous nous engageons à garantir l’indépendance de nos outils, la transparence de nos calculs, et la neutralité de nos recommandations. Nous ne détenons ni actifs, ni flux : vous restez seul décisionnaire. 
+        Nos solutions sont pensées pour renforcer votre maîtrise, pas la remplacer.
+      </p>
+      <p>
+        Nous croyons aussi à une finance plus responsable : notre technologie vise à éviter la sur-ingénierie inutile et à optimiser le couple coût / efficacité des produits proposés à vos clients.
+      </p>
+    </section>
+
+    <section class="section-animated">
       <h2>Nos solutions</h2>
       <p>
         Que vous soyez un gestionnaire privé ou une banque, Altarys vous accompagne dans la conception de produits structurés sur crypto-actifs : reverse convertibles, autocalls, produits à capital protégé, ou stratégies de harvesting de volatilité. Chaque structure est modélisée, simulée, et calibrée à vos besoins.
@@ -238,8 +259,23 @@
   <footer>
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.section-animated').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
+
 
 
 
