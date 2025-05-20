@@ -26,10 +26,15 @@
       background-color: var(--background-color);
       background-image: url('fondetoile4.jpg');
       background-size: cover;
+      background-position: center;
       background-attachment: fixed;
       color: var(--text-color);
-      scroll-behavior: smooth;
+      height: 100%;
       overflow-x: hidden;
+    }
+
+    body {
+      overflow-y: auto;
     }
 
     header {
@@ -64,26 +69,25 @@
     }
 
     main {
-      padding-top: 100px;
+      padding-top: 80px;
     }
 
     section {
       padding: 80px 10%;
       width: 100%;
-      background-color: rgba(11, 13, 18, 0.95);
       opacity: 0;
       transition: all 1s ease-out;
     }
+
+    .from-left { transform: translateX(-40px); background-color: rgba(11, 13, 18, 0.95); }
+    .from-right { transform: translateX(40px); background-color: rgba(11, 13, 18, 0.95); }
+    .from-top { transform: translateY(-40px); background-color: transparent; }
+    .from-bottom { transform: translateY(40px); background-color: transparent; }
 
     .visible {
       opacity: 1;
       transform: none !important;
     }
-
-    .from-left { transform: translateX(-40px); }
-    .from-right { transform: translateX(40px); }
-    .from-top { transform: translateY(-40px); }
-    .from-bottom { transform: translateY(40px); }
 
     h1, h2 {
       text-align: center;
@@ -206,7 +210,7 @@
       </p>
     </section>
 
-    <section class="from-top">
+    <section class="from-bottom">
       <h2>Les fondateurs</h2>
       <div class="grid">
         <div class="card">
@@ -281,4 +285,3 @@
   </script>
 </body>
 </html>
-
