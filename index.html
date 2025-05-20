@@ -116,9 +116,14 @@
       transition: all 1s ease-out;
     }
 
-    .section2-full.visible {
-      opacity: 1;
+    .section2-full.animate-up {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    .section2-full.animate-up.visible {
       transform: translateY(0);
+      opacity: 1;
     }
 
     h1, h2 {
@@ -248,9 +253,9 @@
       </div>
     </section>
 
-    <!-- Section 2 (plein écran, sans image) -->
+    <!-- Section 2 (plein écran, sans image, animée bottom->top) -->
     <section>
-      <div class="section2-full">
+      <div class="section2-full animate-up">
         <h2>Nos produits structurés sur crypto-actifs</h2>
         <p>
           Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
@@ -300,16 +305,19 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // permet de rejouer l'animation
         }
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.animate-left, .animate-right, .section2-full').forEach(el => {
+    document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
       observer.observe(el);
     });
   </script>
 </body>
 </html>
+
 
 
 
