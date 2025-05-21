@@ -13,6 +13,8 @@
       --background-color: #0b0d12;
       --text-color: #ffffff;
       --overlay-bg: rgba(11, 13, 18, 0.97);
+      --positive-color: #00cc88;
+      --negative-color: #cc4444;
     }
 
     *, *::before, *::after {
@@ -77,15 +79,10 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .slide-active main {
-      transform: translateX(-100vw);
-    }
-
     .two-columns {
       display: flex;
       flex-wrap: wrap;
       gap: 40px;
-      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
       flex-direction: row-reverse;
@@ -166,6 +163,10 @@
       color: var(--primary-color);
     }
 
+    .positive { color: var(--positive-color); }
+    .negative { color: var(--negative-color); }
+    .neutral { color: var(--text-color); }
+
     .slide-panel {
       position: fixed;
       top: 80px;
@@ -219,18 +220,10 @@
     }
 
     @media (max-width: 768px) {
-      .two-columns {
-        flex-direction: column;
-      }
-      .actus-cards {
-        flex-direction: column;
-      }
-      .actus-card {
-        max-width: 100%;
-      }
-      .markets {
-        padding: 20px;
-      }
+      .two-columns { flex-direction: column; }
+      .actus-cards { flex-direction: column; }
+      .actus-card { max-width: 100%; }
+      .markets { padding: 20px; }
     }
   </style>
 </head>
@@ -252,8 +245,17 @@
         <h2>Flash de marché</h2>
         <div class="flash-cards">
           <div class="flash-card" onclick="openSlide('Résumé du marché - Mai 2025', 'Les marchés crypto ont connu une forte résilience malgré la baisse de la liquidité, le BTC restant au-dessus des 100k$.')">Notre résumé – Mai</div>
-          <div class="flash-card" onclick="openSlide('Résumé du marché - Avril 2025', 'Le mois d’avril a été marqué par une consolidation autour des 90k$, avec une volatilité implicite en baisse.')">Notre résumé – Avril</div>
+          <div class="flash-card" onclick="openSlide('Résumé du marché - Avril 2025', 'Le mois d’avril a été marqué par une consolidation autour des 90k$, avec une volontilité implicite en baisse.')">Notre résumé – Avril</div>
           <div class="flash-card" onclick="openSlide('Résumé du marché - Mars 2025', 'En mars, l’ETH a repris son rôle moteur dans les rotations sectorielles, porté par les layer-2.')">Notre résumé – Mars</div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+          <h3 style="margin-bottom: 10px; color: var(--primary-color);">Recevez nos analyses directement dans votre boîte mail</h3>
+          <form id="newsletter-form" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+            <input type="email" id="newsletter-email" placeholder="Votre adresse email" required style="padding: 10px; font-size: 1em; border-radius: 999px; border: none; min-width: 250px; max-width: 400px; background-color: #111; color: white;" />
+            <button type="submit" style="padding: 10px 20px; font-size: 1em; font-weight: bold; border-radius: 999px; background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); cursor: pointer;">S'inscrire</button>
+          </form>
+          <div id="newsletter-confirmation" style="margin-top: 10px; color: #00cc88; font-weight: 600; display: none;">Merci pour votre inscription !</div>
         </div>
       </div>
 
@@ -267,19 +269,6 @@
           <div class="actus-card" onclick="openSlide('Banques & crypto', 'De grandes banques suisses lancent leurs desks de produits structurés crypto.')">
             <img src="illustration4.jpg" alt="Banques">
             <strong>Banques & crypto</strong>
-          </div>
-        </div>
-
-        <div style="margin-top: 40px; text-align: center;">
-          <h3 style="margin-bottom: 10px; color: var(--primary-color);">Recevez nos analyses directement dans votre boîte mail</h3>
-          <form id="newsletter-form" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
-            <input type="email" id="newsletter-email" placeholder="Votre adresse email" required style="padding: 10px; font-size: 1em; border-radius: 999px; border: none; min-width: 250px; max-width: 400px; background-color: #111; color: white;" />
-            <button type="submit" style="padding: 10px 20px; font-size: 1em; font-weight: bold; border-radius: 999px; background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); cursor: pointer;">
-              S'inscrire
-            </button>
-          </form>
-          <div id="newsletter-confirmation" style="margin-top: 10px; color: #00cc88; font-weight: 600; display: none;">
-            Merci pour votre inscription !
           </div>
         </div>
       </div>
@@ -332,17 +321,30 @@
       const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y`);
       const data = await res.json();
 
-      const rows = data.map(coin => `
-        <tr>
-          <td>${coin.name}</td>
-          <td>$${coin.current_price.toLocaleString()}</td>
-          <td>${(coin.price_change_percentage_30d_in_currency || 0).toFixed(2)}%</td>
-          <td>${(coin.price_change_percentage_90d_in_currency || 0).toFixed(2)}%</td>
-          <td>${(coin.price_change_percentage_1y_in_currency || 0).toFixed(2)}%</td>
-          <td>${(coin.price_change_percentage_2y_in_currency || 0).toFixed(2)}%</td>
-          <td>${(coin.price_change_percentage_5y_in_currency || 0).toFixed(2)}%</td>
-        </tr>
-      `).join('');
+      let previousSpot = 0;
+      const rows = data.map((coin, index) => {
+        const spot = coin.current_price;
+        const spotClass = index > 0 && spot < previousSpot ? 'negative' : 'positive';
+        previousSpot = spot;
+
+        function formatChange(value) {
+          if (value > 0) return `<td class="positive">${value.toFixed(2)}%</td>`;
+          if (value < 0) return `<td class="negative">${value.toFixed(2)}%</td>`;
+          return `<td class="neutral">${value.toFixed(2)}%</td>`;
+        }
+
+        return `
+          <tr>
+            <td>${coin.name}</td>
+            <td class="${spotClass}">$${spot.toLocaleString()}</td>
+            ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_90d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_2y_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_5y_in_currency || 0)}
+          </tr>
+        `;
+      }).join('');
 
       document.getElementById('market-table').innerHTML = rows;
     }
