@@ -12,8 +12,7 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --line-color: #444;
-      --input-bg: #111;
+      --overlay-bg: rgba(11, 13, 18, 0.97);
     }
 
     *, *::before, *::after {
@@ -43,7 +42,6 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
@@ -51,6 +49,7 @@
       justify-content: space-between;
       padding: 0 10%;
       border-bottom: 1px solid #222;
+      z-index: 1000;
     }
 
     header img {
@@ -74,17 +73,16 @@
       padding-left: 5%;
       padding-right: 5%;
       animation: fadeInUp 0.8s ease-out;
+      transition: transform 0.4s ease;
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-active main {
+      transform: translateX(-100vw);
     }
 
     .two-columns {
@@ -159,39 +157,41 @@
       color: var(--primary-color);
     }
 
-    .overlay {
+    .slide-panel {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 80px;
+      left: 100vw;
       width: 100vw;
-      height: 100vh;
-      background-color: rgba(11, 13, 18, 0.97);
+      max-width: 100%;
+      height: calc(100vh - 80px);
+      background-color: var(--overlay-bg);
       color: var(--text-color);
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      z-index: 2000;
+      padding: 40px 30px;
+      transition: left 0.4s ease;
+      overflow-y: auto;
+      z-index: 1001;
     }
 
-    .overlay-content {
-      max-width: 800px;
-      text-align: justify;
+    .slide-active .slide-panel {
+      left: 0;
     }
 
-    .overlay h3 {
+    .slide-panel .back-btn {
+      font-size: 1.5em;
+      color: var(--text-color);
+      background: none;
+      border: none;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .slide-panel h3 {
       color: var(--primary-color);
       margin-bottom: 20px;
     }
 
-    .close-btn {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      font-size: 1.5em;
-      color: #fff;
-      cursor: pointer;
+    .slide-panel p {
+      text-align: justify;
     }
 
     footer {
@@ -230,28 +230,28 @@
       <div class="flash">
         <h2>Flash de marché</h2>
         <div class="flash-cards">
-          <div class="flash-card" onclick="openOverlay('Résumé du marché - Mai 2025', 'Les marchés crypto ont connu une forte résilience malgré la baisse de la liquidité, le BTC restant au-dessus des 100k$.')">Notre résumé – Mai</div>
-          <div class="flash-card" onclick="openOverlay('Résumé du marché - Avril 2025', 'Le mois d’avril a été marqué par une consolidation autour des 90k$, avec une volatilité implicite en baisse.')">Notre résumé – Avril</div>
-          <div class="flash-card" onclick="openOverlay('Résumé du marché - Mars 2025', 'En mars, l’ETH a repris son rôle moteur dans les rotations sectorielles, porté par les layer-2.')">Notre résumé – Mars</div>
+          <div class="flash-card" onclick="openSlide('Résumé du marché - Mai 2025', 'Les marchés crypto ont connu une forte résilience malgré la baisse de la liquidité, le BTC restant au-dessus des 100k$.')">Notre résumé – Mai</div>
+          <div class="flash-card" onclick="openSlide('Résumé du marché - Avril 2025', 'Le mois d’avril a été marqué par une consolidation autour des 90k$, avec une volatilité implicite en baisse.')">Notre résumé – Avril</div>
+          <div class="flash-card" onclick="openSlide('Résumé du marché - Mars 2025', 'En mars, l’ETH a repris son rôle moteur dans les rotations sectorielles, porté par les layer-2.')">Notre résumé – Mars</div>
         </div>
       </div>
 
       <div class="actus">
         <h2>Actualités</h2>
         <div class="actus-cards">
-          <div class="actus-card" onclick="openOverlay('Bitcoin franchit un cap', 'Le Bitcoin atteint un nouveau sommet historique à 105 000$, porté par la macro.')">
+          <div class="actus-card" onclick="openSlide('Bitcoin franchit un cap', 'Le Bitcoin atteint un nouveau sommet historique à 105 000$, porté par la macro.')">
             <img src="illustration2.jpg" alt="BTC">
             <strong>Bitcoin franchit un cap</strong>
           </div>
-          <div class="actus-card" onclick="openOverlay('Banques & crypto', 'De grandes banques suisses lancent leurs desks de produits structurés crypto.')">
+          <div class="actus-card" onclick="openSlide('Banques & crypto', 'De grandes banques suisses lancent leurs desks de produits structurés crypto.')">
             <img src="illustration4.jpg" alt="Banques">
             <strong>Banques & crypto</strong>
           </div>
-          <div class="actus-card" onclick="openOverlay('Web3 et régulation', 'L’Europe avance sur la régulation des prestataires de service crypto (MiCA).')">
+          <div class="actus-card" onclick="openSlide('Web3 et régulation', 'L’Europe avance sur la régulation des prestataires de service crypto (MiCA).')">
             <img src="illustration5.jpg" alt="Régulation">
             <strong>Web3 et régulation</strong>
           </div>
-          <div class="actus-card" onclick="openOverlay('Stablecoins : nouvelles approches', 'Les stablecoins algorithmique reprennent du terrain face aux modèles collatéralisés.')">
+          <div class="actus-card" onclick="openSlide('Stablecoins : nouvelles approches', 'Les stablecoins algorithmique reprennent du terrain face aux modèles collatéralisés.')">
             <img src="illustration6.jpg" alt="Stablecoins">
             <strong>Stablecoins : nouvelles approches</strong>
           </div>
@@ -280,12 +280,10 @@
     </div>
   </main>
 
-  <div class="overlay" id="overlay">
-    <span class="close-btn" onclick="closeOverlay()">&times;</span>
-    <div class="overlay-content">
-      <h3 id="overlay-title"></h3>
-      <p id="overlay-body"></p>
-    </div>
+  <div class="slide-panel" id="slidePanel">
+    <button class="back-btn" onclick="closeSlide()">← Retour</button>
+    <h3 id="slide-title"></h3>
+    <p id="slide-body"></p>
   </div>
 
   <footer>
@@ -293,14 +291,14 @@
   </footer>
 
   <script>
-    function openOverlay(title, body) {
-      document.getElementById('overlay-title').innerText = title;
-      document.getElementById('overlay-body').innerText = body;
-      document.getElementById('overlay').style.display = 'flex';
+    function openSlide(title, body) {
+      document.getElementById('slide-title').innerText = title;
+      document.getElementById('slide-body').innerText = body;
+      document.body.classList.add('slide-active');
     }
 
-    function closeOverlay() {
-      document.getElementById('overlay').style.display = 'none';
+    function closeSlide() {
+      document.body.classList.remove('slide-active');
     }
 
     async function fetchCryptoData() {
@@ -327,5 +325,6 @@
   </script>
 </body>
 </html>
+
 
 
