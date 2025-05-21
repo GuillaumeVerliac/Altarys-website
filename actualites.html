@@ -116,17 +116,17 @@
 }
 
     .flash-card, .actus-card {
-  flex: 1 1 calc(50% - 10px);
-  max-width: calc(50% - 10px);
-  background-color: #111;
-  padding: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(11, 13, 18, 0.95);
+  padding: 16px 24px;
   border: 1px solid #222;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 12px;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  font-size: 1.05em;
+  color: var(--text-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
     .actus-card {
@@ -142,8 +142,9 @@
 }
 
     .flash-card:hover, .actus-card:hover {
-      transform: translateY(-4px);
-    }
+  background-color: rgba(0, 85, 204, 0.1);
+  transform: translateY(-4px);
+}
 
     .markets {
       background-color: rgba(11, 13, 18, 0.95);
