@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>À propos – Altarys Capital</title>
+  <title>Recherche & Marchés – Altarys Capital</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -12,15 +12,15 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --card-bg: #111;
+      --overlay-bg: rgba(11, 13, 18, 0.97);
+      --positive-color: #00cc88;
+      --negative-color: #ff4444;
     }
-
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-
     html, body {
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
@@ -32,17 +32,11 @@
       height: 100%;
       overflow-x: hidden;
     }
-
-    body {
-      overflow-y: auto;
-    }
-
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 1000;
       height: 80px;
       background-color: var(--background-color);
       display: flex;
@@ -50,12 +44,11 @@
       justify-content: space-between;
       padding: 0 10%;
       border-bottom: 1px solid #222;
+      z-index: 1000;
     }
-
     header img {
       height: 50px;
     }
-
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -63,104 +56,133 @@
       font-weight: 600;
       transition: color 0.3s ease;
     }
-
     nav a:hover {
       color: var(--primary-color);
     }
-
     main {
-      padding-top: 80px;
+      padding-top: 100px;
+      padding-left: 5%;
+      padding-right: 5%;
     }
-
-    section {
-      padding: 80px 10%;
-      width: 100%;
-      opacity: 0;
-      transition: all 1s ease-out;
-    }
-
-    .from-left { transform: translateX(-40px); background-color: rgba(11, 13, 18, 0.95); }
-    .from-right { transform: translateX(40px); background-color: rgba(11, 13, 18, 0.95); }
-    .from-top { transform: translateY(-40px); background-color: transparent; }
-    .from-bottom { transform: translateY(40px); background-color: transparent; }
-
-    .visible {
-      opacity: 1;
-      transform: none !important;
-    }
-
-    h1, h2 {
-      text-align: center;
-      color: var(--primary-color);
-      margin-bottom: 30px;
-      font-size: 2.6em;
-    }
-
-    p, blockquote {
-      max-width: 900px;
-      margin: 0 auto 20px;
-      font-size: 1.1em;
-      color: #ccc;
-      text-align: justify;
-      line-height: 1.8;
-    }
-
-    blockquote {
-      font-style: italic;
-      color: #aaa;
-      border-left: 4px solid var(--primary-color);
-      padding-left: 16px;
-      margin-top: 30px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
       gap: 40px;
-      margin-top: 40px;
+      max-width: 1200px;
+      margin: auto;
     }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 30px;
+    .flash, .actus {
+      flex: 1;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 40px;
       border-radius: 16px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0, 85, 204, 0.15);
-    }
-
-    .card img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      border: 3px solid var(--primary-color);
-    }
-
-    .card h3 {
+    .flash h2, .actus h2 {
       color: var(--primary-color);
-      margin-bottom: 8px;
+      margin-bottom: 20px;
+      text-align: center;
     }
-
-    .role {
-      font-style: italic;
-      color: #aaa;
-      margin-bottom: 15px;
+    .flash-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
     }
-
+    .actus-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .flash-card, .actus-card {
+      background-color: #111;
+      padding: 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .actus-card {
+      flex: 1 1 calc(50% - 10px);
+    }
+    .actus-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .flash-card:hover, .actus-card:hover {
+      transform: translateY(-4px);
+    }
+    .markets {
+      background-color: rgba(0, 0, 0, 0.9);
+      margin: 60px auto;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 1200px;
+    }
+    .markets h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      color: #ccc;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #333;
+      text-align: center;
+    }
+    th {
+      color: var(--primary-color);
+    }
+    .newsletter {
+      margin-top: 60px;
+      text-align: center;
+    }
+    .newsletter h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .newsletter input[type="email"] {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 999px;
+      border: none;
+      min-width: 250px;
+      max-width: 400px;
+      background-color: #111;
+      color: white;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      font-size: 1em;
+      font-weight: bold;
+      border-radius: 999px;
+      background-color: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+      cursor: pointer;
+    }
+    .newsletter-confirmation {
+      margin-top: 10px;
+      color: var(--positive-color);
+      font-weight: 600;
+      display: none;
+    }
     .cta-buttons {
-      margin-top: 40px;
+      margin: 60px auto;
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
     }
-
     .cta-buttons a {
       padding: 12px 28px;
       border: 2px solid var(--primary-color);
@@ -170,12 +192,10 @@
       text-decoration: none;
       transition: 0.3s ease;
     }
-
     .cta-buttons a:hover {
       color: var(--secondary-color);
       border-color: var(--secondary-color);
     }
-
     footer {
       background-color: var(--background-color);
       text-align: center;
@@ -197,88 +217,111 @@
       <a href="contact.html">Nous contacter</a>
     </nav>
   </header>
-
   <main>
-    <section class="from-left">
-      <h1>Notre vision</h1>
-      <p>
-        Altarys Capital est née de l’idée que les crypto-actifs, trop souvent considérés comme hautement spéculatifs, méritaient des outils d’investissement structurés, robustes et accessibles aux professionnels de la gestion.
-        En croisant les codes de la finance dérivée avec les technologies Web3, nous proposons une nouvelle manière de concevoir la performance dans un environnement volatil.
-      </p>
-      <p>
-        Notre ambition : mettre la rigueur de l’ingénierie financière au service d’une gestion innovante des actifs numériques, avec des solutions prédictibles, calibrées, modulables. Chez Altarys, chaque produit a un sens, chaque structure répond à un objectif, chaque modèle est testé, validé et transparent.
-      </p>
-    </section>
-
-    <section class="from-bottom">
-      <h2>Les fondateurs</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="Guillaume.jpg" alt="Guillaume" />
-          <h3>Guillaume</h3>
-          <div class="role">Cofondateur – Stratégie & Produits</div>
-          <p>
-            Ingénieur de Centrale et titulaire d’un master en mathématiques financières de l'AMSE, Guillaume a exercé en structuration chez Natixis avant de fonder Altarys. Il conçoit les modèles quantitatifs derrière les structures, avec une obsession : la pertinence des produits pour les clients.
-          </p>
-          <blockquote>
-            « Concevoir, c’est traduire la complexité en opportunité. »
-          </blockquote>
-        </div>
-        <div class="card">
-          <img src="Antoine.jpg" alt="Antoine" />
-          <h3>Antoine</h3>
-          <div class="role">Cofondateur – Développement & Technologie</div>
-          <p>
-            Diplômé de Centrale et développeur Web3 passionné, Antoine a piloté de nombreux projets blockchain en startup avant Altarys. Il dirige la construction de notre plateforme et conçoit les architectures API qui rendent nos outils puissants, rapides et adaptables.
-          </p>
-          <blockquote>
-            « La technologie n’est pas un outil, c’est un langage. »
-          </blockquote>
+    <div class="two-columns">
+      <div class="flash">
+        <h2>Flash de marché</h2>
+        <div class="flash-cards">
+          <div class="flash-card" onclick="openSlide('Résumé Mai 2025', 'Les marchés crypto ont connu une forte résilience malgré la baisse de la liquidité.')">Notre résumé – Mai</div>
+          <div class="flash-card" onclick="openSlide('Résumé Avril 2025', 'Consolidation autour des 90k$, volatilité implicite en baisse.')">Notre résumé – Avril</div>
+          <div class="flash-card" onclick="openSlide('Résumé Mars 2025', 'ETH moteur dans les rotations sectorielles via les L2.')">Notre résumé – Mars</div>
         </div>
       </div>
-    </section>
-
-    <section class="from-left">
-      <h2>Nos engagements</h2>
-      <p>
-        Nous nous engageons à garantir l’indépendance de nos outils, la transparence de nos calculs, et la neutralité de nos recommandations. Nous ne détenons ni actifs, ni flux : vous restez seul décisionnaire.
-        Nos solutions sont pensées pour renforcer votre maîtrise, pas la remplacer.
-      </p>
-      <p>
-        Nous croyons aussi à une finance plus responsable : notre technologie vise à éviter la sur-ingénierie inutile et à optimiser le couple coût / efficacité des produits proposés à vos clients.
-      </p>
-    </section>
-
-    <section class="from-right">
-      <h2>Nos solutions</h2>
-      <p>
-        Que vous soyez un gestionnaire privé ou une banque, Altarys vous accompagne dans la conception de produits structurés sur crypto-actifs : reverse convertibles, autocalls, produits à capital protégé, ou stratégies de harvesting de volatilité. Chaque structure est modélisée, simulée, et calibrée à vos besoins.
-      </p>
-      <div class="cta-buttons">
-        <a href="solutions.html#selection">Parcourir la sélection</a>
-        <a href="contact.html">Créer une solution sur-mesure</a>
+      <div class="actus">
+        <h2>Actualités</h2>
+        <div class="actus-cards">
+          <div class="actus-card" onclick="openSlide('Bitcoin franchit un cap', 'Nouveau sommet à 105 000$ porté par la macro.')">
+            <img src="illustration2.jpg" alt="BTC">
+            <strong>Bitcoin franchit un cap</strong>
+          </div>
+          <div class="actus-card" onclick="openSlide('Banques & crypto', 'Banques suisses lancent des desks de produits crypto.')">
+            <img src="illustration4.jpg" alt="Banques">
+            <strong>Banques & crypto</strong>
+          </div>
+        </div>
+        <div class="newsletter">
+          <h3>Inscrivez-vous à notre Newsletter</h3>
+          <form id="newsletter-form">
+            <input type="email" id="newsletter-email" placeholder="Votre adresse email" required />
+            <button type="submit">S'inscrire</button>
+          </form>
+          <div id="newsletter-confirmation" class="newsletter-confirmation">
+            Merci pour votre inscription !
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="markets">
+      <h2>Niveaux de marché</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Actif</th>
+            <th>Spot</th>
+            <th>1M</th>
+            <th>3M</th>
+            <th>1Y</th>
+            <th>2Y</th>
+            <th>5Y</th>
+          </tr>
+        </thead>
+        <tbody id="market-table">
+          <tr><td colspan="7">Chargement en cours...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cta-buttons">
+      <a href="solutions.html#selection">Découvrir nos solutions</a>
+      <a href="contact.html">Nous contacter</a>
+    </div>
   </main>
-
   <footer>
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
-
   <script>
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+    function openSlide(title, body) {
+      alert(title + "\n\n" + body);
+    }
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+    async function fetchCryptoData() {
+      const ids = ['bitcoin', 'ethereum', 'solana'];
+      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y`);
+      const data = await res.json();
+      let previousPrice = 0;
+      const rows = data.map((coin, index) => {
+        const spot = coin.current_price;
+        const spotColor = index > 0 && spot > previousPrice ? 'var(--positive-color)' : (index > 0 && spot < previousPrice ? 'var(--negative-color)' : '#ccc');
+        previousPrice = spot;
+        function perfColor(value) {
+          if (value > 0) return 'var(--positive-color)';
+          if (value < 0) return 'var(--negative-color)';
+          return '#ffffff';
+        }
+        return `
+          <tr>
+            <td>${coin.name}</td>
+            <td style="color: ${spotColor};">$${spot.toLocaleString()}</td>
+            <td style="color: ${perfColor(coin.price_change_percentage_30d_in_currency)};">${(coin.price_change_percentage_30d_in_currency || 0).toFixed(2)}%</td>
+            <td style="color: ${perfColor(coin.price_change_percentage_90d_in_currency)};">${(coin.price_change_percentage_90d_in_currency || 0).toFixed(2)}%</td>
+            <td style="color: ${perfColor(coin.price_change_percentage_1y_in_currency)};">${(coin.price_change_percentage_1y_in_currency || 0).toFixed(2)}%</td>
+            <td style="color: ${perfColor(coin.price_change_percentage_2y_in_currency)};">${(coin.price_change_percentage_2y_in_currency || 0).toFixed(2)}%</td>
+            <td style="color: ${perfColor(coin.price_change_percentage_5y_in_currency)};">${(coin.price_change_percentage_5y_in_currency || 0).toFixed(2)}%</td>
+          </tr>`;
+      }).join('');
+      document.getElementById('market-table').innerHTML = rows;
+    }
+
+    fetchCryptoData();
+
+    document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById("newsletter-email");
+      if (emailInput.checkValidity()) {
+        document.getElementById("newsletter-confirmation").style.display = "block";
+        emailInput.value = "";
+      }
     });
   </script>
 </body>
 </html>
+
