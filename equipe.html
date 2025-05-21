@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nous contacter – Altarys Capital</title>
+  <title>À propos – Altarys Capital</title>
   <link rel="icon" href="logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -12,8 +12,7 @@
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --line-color: #444;
-      --input-bg: #111;
+      --card-bg: #111;
     }
 
     *, *::before, *::after {
@@ -70,137 +69,111 @@
     }
 
     main {
-      min-height: 100vh;
       padding-top: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 5%;
-      padding-right: 5%;
     }
 
-    .contact-wrapper {
-      background-color: var(--background-color);
+    section {
+      padding: 80px 10%;
       width: 100%;
-      max-width: 880px;
-      padding: 50px;
-      border-radius: 20px;
-      animation: fadeInUp 0.8s ease-out;
+      opacity: 0;
+      transition: all 1s ease-out;
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .from-left { transform: translateX(-40px); background-color: rgba(11, 13, 18, 0.95); }
+    .from-right { transform: translateX(40px); background-color: rgba(11, 13, 18, 0.95); }
+    .from-top { transform: translateY(-40px); background-color: transparent; }
+    .from-bottom { transform: translateY(40px); background-color: transparent; }
+
+    .visible {
+      opacity: 1;
+      transform: none !important;
     }
 
-    .contact-wrapper h1 {
+    h1, h2 {
       text-align: center;
-      font-size: 2.4em;
-      margin-bottom: 40px;
       color: var(--primary-color);
+      margin-bottom: 30px;
+      font-size: 2.6em;
     }
 
-    form {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+    p, blockquote {
+      max-width: 900px;
+      margin: 0 auto 20px;
+      font-size: 1.1em;
+      color: #ccc;
+      text-align: justify;
+      line-height: 1.8;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group label {
-      font-size: 0.9em;
+    blockquote {
+      font-style: italic;
       color: #aaa;
-      margin-bottom: 6px;
+      border-left: 4px solid var(--primary-color);
+      padding-left: 16px;
+      margin-top: 30px;
     }
 
-    .form-group input,
-    .form-group select {
-      background: none;
-      border: none;
-      border-bottom: 1px solid var(--line-color);
-      color: var(--text-color);
-      font-size: 1em;
-      padding: 10px 4px;
-      transition: border-color 0.3s ease;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
     }
 
-    .form-group input:focus,
-    .form-group select:focus {
-      outline: none;
-      border-bottom-color: var(--primary-color);
+    .card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .form-group select {
-      appearance: none;
-      background-color: transparent;
-      background-image: url("data:image/svg+xml,%3Csvg fill='white' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 16px;
-      color: var(--text-color);
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 30px rgba(0, 85, 204, 0.15);
     }
 
-    .form-group select option {
-      background-color: var(--background-color);
-      color: var(--text-color);
+    .card img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 3px solid var(--primary-color);
     }
 
-    textarea {
-      grid-column: 1 / -1;
-      resize: vertical;
-      min-height: 100px;
-      padding: 12px;
-      font-size: 1em;
-      border-radius: 8px;
-      border: 1px solid var(--line-color);
-      background-color: var(--input-bg);
-      color: var(--text-color);
+    .card h3 {
+      color: var(--primary-color);
+      margin-bottom: 8px;
     }
 
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary-color);
+    .role {
+      font-style: italic;
+      color: #aaa;
+      margin-bottom: 15px;
     }
 
-    .submit-button {
-      grid-column: 1 / -1;
-      margin-top: 20px;
-      background: transparent;
+    .cta-buttons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .cta-buttons a {
+      padding: 12px 28px;
       border: 2px solid var(--primary-color);
       color: var(--primary-color);
-      padding: 12px 32px;
-      font-size: 1em;
-      font-weight: bold;
       border-radius: 999px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      align-self: center;
-      justify-self: center;
-    }
-
-    .submit-button:hover {
-      border-color: var(--secondary-color);
-      color: var(--secondary-color);
-    }
-
-    .confirmation-message {
-      grid-column: 1 / -1;
-      text-align: center;
-      color: #00cc88;
       font-weight: 600;
-      font-size: 1.1em;
-      margin-top: 15px;
-      display: none;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta-buttons a:hover {
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
     }
 
     footer {
@@ -210,20 +183,6 @@
       padding: 30px 10%;
       color: #888;
       border-top: 1px solid #222;
-    }
-
-    @media (max-width: 768px) {
-      .contact-wrapper {
-        padding: 30px 20px;
-      }
-
-      form {
-        grid-template-columns: 1fr;
-      }
-
-      .submit-button {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -240,58 +199,85 @@
   </header>
 
   <main>
-    <div class="contact-wrapper">
-      <h1>Nous contacter</h1>
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="prenom">Prénom*</label>
-          <input type="text" id="prenom" name="prenom" required />
+    <section class="from-left">
+      <h1>Notre vision</h1>
+      <p>
+        Altarys Capital est née de l’idée que les crypto-actifs, trop souvent considérés comme hautement spéculatifs, méritaient des outils d’investissement structurés, robustes et accessibles aux professionnels de la gestion.
+        En croisant les codes de la finance dérivée avec les technologies Web3, nous proposons une nouvelle manière de concevoir la performance dans un environnement volatil.
+      </p>
+      <p>
+        Notre ambition : mettre la rigueur de l’ingénierie financière au service d’une gestion innovante des actifs numériques, avec des solutions prédictibles, calibrées, modulables. Chez Altarys, chaque produit a un sens, chaque structure répond à un objectif, chaque modèle est testé, validé et transparent.
+      </p>
+    </section>
+
+    <section class="from-bottom">
+      <h2>Les fondateurs</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="Guillaume.jpg" alt="Guillaume" />
+          <h3>Guillaume</h3>
+          <div class="role">Cofondateur – Stratégie & Produits</div>
+          <p>
+            Ingénieur de Centrale et titulaire d’un master en mathématiques financières de l'AMSE, Guillaume a exercé en structuration chez Natixis avant de fonder Altarys. Il conçoit les modèles quantitatifs derrière les structures, avec une obsession : la pertinence des produits pour les clients.
+          </p>
+          <blockquote>
+            « Concevoir, c’est traduire la complexité en opportunité. »
+          </blockquote>
         </div>
-        <div class="form-group">
-          <label for="nom">Nom*</label>
-          <input type="text" id="nom" name="nom" required />
+        <div class="card">
+          <img src="Antoine.jpg" alt="Antoine" />
+          <h3>Antoine</h3>
+          <div class="role">Cofondateur – Développement & Technologie</div>
+          <p>
+            Diplômé de Centrale et développeur Web3 passionné, Antoine a piloté de nombreux projets blockchain en startup avant Altarys. Il dirige la construction de notre plateforme et conçoit les architectures API qui rendent nos outils puissants, rapides et adaptables.
+          </p>
+          <blockquote>
+            « La technologie n’est pas un outil, c’est un langage. »
+          </blockquote>
         </div>
-        <div class="form-group">
-          <label for="email">Email*</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-        <div class="form-group">
-          <label for="telephone">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone" />
-        </div>
-        <div class="form-group">
-          <label for="entreprise">Entreprise</label>
-          <input type="text" id="entreprise" name="entreprise" />
-        </div>
-        <div class="form-group">
-          <label for="objet">Objet*</label>
-          <select id="objet" name="objet" required>
-            <option value="" disabled selected hidden>Choisissez un objet</option>
-            <option value="produits">Produits structurés</option>
-            <option value="partenariat">Partenariat</option>
-            <option value="recherche">Recherche</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
-        <div class="form-group" style="grid-column: 1 / -1;">
-          <label for="message">Message*</label>
-          <textarea id="message" name="message" placeholder="Votre message ici..." required></textarea>
-        </div>
-        <button type="submit" class="submit-button">Envoyer</button>
-        <div class="confirmation-message" id="confirmation">Merci pour votre message. Nous vous répondrons sous peu.</div>
-      </form>
-    </div>
+      </div>
+    </section>
+
+    <section class="from-left">
+      <h2>Nos engagements</h2>
+      <p>
+        Nous nous engageons à garantir l’indépendance de nos outils, la transparence de nos calculs, et la neutralité de nos recommandations. Nous ne détenons ni actifs, ni flux : vous restez seul décisionnaire.
+        Nos solutions sont pensées pour renforcer votre maîtrise, pas la remplacer.
+      </p>
+      <p>
+        Nous croyons aussi à une finance plus responsable : notre technologie vise à éviter la sur-ingénierie inutile et à optimiser le couple coût / efficacité des produits proposés à vos clients.
+      </p>
+    </section>
+
+    <section class="from-right">
+      <h2>Nos solutions</h2>
+      <p>
+        Que vous soyez un gestionnaire privé ou une banque, Altarys vous accompagne dans la conception de produits structurés sur crypto-actifs : reverse convertibles, autocalls, produits à capital protégé, ou stratégies de harvesting de volatilité. Chaque structure est modélisée, simulée, et calibrée à vos besoins.
+      </p>
+      <div class="cta-buttons">
+        <a href="solutions.html#selection">Parcourir la sélection</a>
+        <a href="contact.html">Créer une solution sur-mesure</a>
+      </div>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 Altarys Capital. Tous droits réservés.
+    &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
 
   <script>
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      document.getElementById("confirmation").style.display = "block";
-      this.reset();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
