@@ -91,7 +91,7 @@
     .flash, .actus {
       flex: 1;
       min-width: 300px;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(11, 13, 18, 0.95);
       padding: 40px;
       border-radius: 16px;
     }
@@ -109,19 +109,19 @@
     }
 
     .actus-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
     .flash-card, .actus-card {
-      background-color: #111;
-      padding: 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
+  width: 100%;
+  background-color: #111;
+  padding: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
 
     .actus-card {
       flex: 1 1 calc(50% - 10px);
@@ -139,7 +139,7 @@
     }
 
     .markets {
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(11, 13, 18, 0.95);
       margin: 60px auto 0;
       padding: 40px;
       border-radius: 16px;
@@ -226,6 +226,17 @@
       .markets { padding: 20px; }
     }
   </style>
+<style>
+  .section-animated {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+  .section-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
 </head>
 <body>
   <header>
@@ -239,7 +250,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="mainContent">
     <div class="two-columns">
       <div class="flash">
         <h2>Flash de marché</h2>
@@ -293,7 +304,11 @@
         </tbody>
       </table>
     </div>
-  </main>
+  <div class="cta-buttons" style="margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <a href="solutions.html#selection" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Parcourir la sélection</a>
+  <a href="contact.html" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Créer une solution sur-mesure</a>
+</div>
+</main>
 
   <div class="slide-panel" id="slidePanel">
     <button class="back-btn" onclick="closeSlide()">←</button>
@@ -359,7 +374,21 @@
         emailInput.value = "";
       }
     });
-  </script>
+  document.querySelectorAll('.flash, .actus, .markets').forEach(section => {
+  section.classList.add('section-animated');
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('section-visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section-animated').forEach(el => observer.observe(el));
+
+</script>
 </body>
 </html>
 
