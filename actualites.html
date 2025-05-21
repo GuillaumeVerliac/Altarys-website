@@ -110,17 +110,23 @@
 
     .actus-cards {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: space-between;
 }
 
     .flash-card, .actus-card {
-  width: 100%;
+  flex: 1 1 calc(50% - 10px);
+  max-width: calc(50% - 10px);
   background-color: #111;
-  padding: 20px;
+  padding: 0;
   border-radius: 12px;
+  overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #222;
 }
 
     .actus-card {
@@ -129,10 +135,11 @@
     }
 
     .actus-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
 
     .flash-card:hover, .actus-card:hover {
       transform: translateY(-4px);
@@ -275,11 +282,11 @@
         <div class="actus-cards">
           <div class="actus-card" onclick="openSlide('Bitcoin franchit un cap', 'Le Bitcoin atteint un nouveau sommet historique à 105 000$, porté par la macro.')">
             <img src="illustration2.jpg" alt="BTC">
-            <strong>Bitcoin franchit un cap</strong>
+            <div style="padding: 16px; text-align: center;"><strong style="color: var(--primary-color); font-size: 1.1em;">Bitcoin franchit un cap</strong></div>
           </div>
           <div class="actus-card" onclick="openSlide('Banques & crypto', 'De grandes banques suisses lancent leurs desks de produits structurés crypto.')">
             <img src="illustration4.jpg" alt="Banques">
-            <strong>Banques & crypto</strong>
+            <div style="padding: 16px; text-align: center;"><strong style="color: var(--primary-color); font-size: 1.1em;">Banques & crypto</strong></div>
           </div>
         </div>
       </div>
@@ -304,10 +311,12 @@
         </tbody>
       </table>
     </div>
-  <div class="cta-buttons" style="margin-top: 60px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-  <a href="solutions.html#selection" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Parcourir la sélection</a>
-  <a href="contact.html" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Créer une solution sur-mesure</a>
-</div>
+  <section class="cta-section" style="margin-top: 60px; background-color: rgba(11, 13, 18, 0.95); padding: 40px; border-radius: 16px; text-align: center;">
+  <div class="cta-buttons" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <a href="solutions.html#selection" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Parcourir la sélection</a>
+    <a href="contact.html" style="padding: 12px 28px; border: 2px solid var(--primary-color); color: var(--primary-color); border-radius: 999px; font-weight: 600; text-decoration: none; transition: 0.3s ease;">Créer une solution sur-mesure</a>
+  </div>
+</section>
 </main>
 
   <div class="slide-panel" id="slidePanel">
@@ -391,6 +400,7 @@ document.querySelectorAll('.section-animated').forEach(el => observer.observe(el
 </script>
 </body>
 </html>
+
 
 
 
