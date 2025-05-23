@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nos solutions – Altarys Capital</title>
-  <link rel="icon" href="logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Altarys Capital</title>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --primary-color: #0055cc;
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
-      --card-bg: #111;
     }
 
     *, *::before, *::after {
@@ -22,19 +21,17 @@
     }
 
     html, body {
+      height: 100%;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
       font-family: 'Inter', sans-serif;
       background-color: var(--background-color);
-      background-image: url('fondetoile4.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
       color: var(--text-color);
-      height: 100%;
-      overflow-x: hidden;
     }
 
     body {
-      overflow-y: auto;
+      overflow-y: scroll;
     }
 
     header {
@@ -68,151 +65,161 @@
       color: var(--primary-color);
     }
 
-    main {
-      padding-top: 100px;
-    }
-
     section {
-      padding: 80px 10%;
+      height: 100vh;
       width: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .split {
+      display: flex;
+      flex: 1;
+      width: 100%;
+    }
+
+    .split .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 10%;
       opacity: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transition: all 1s ease-out;
     }
 
-    .from-bottom {
+    .split .background {
+      flex: 1;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .background1 {
+      background-image: url('fondetoile.jpg');
+    }
+
+    .background3 {
+      background-image: url('fondetoile2.jpg');
+    }
+
+    .section2-full {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      text-align: center;
+      opacity: 0;
       transform: translateY(40px);
-      background-color: transparent;
+      transition: all 1s ease-out;
     }
 
-    .visible {
+    .section2-full.animate-up {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+
+    .section2-full.animate-up.visible {
+      transform: translateY(0);
       opacity: 1;
-      transform: none !important;
+    }
+
+    h1, h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
     }
 
     h2 {
-      font-size: 2.5em;
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 30px;
-      border-radius: 16px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0, 85, 204, 0.15);
-    }
-
-    .card h3 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 0.95em;
-      margin-bottom: 20px;
-    }
-
-    .card-button a,
-    .card-button button {
-      display: inline-block;
-      min-width: 180px;
-      padding: 12px 20px;
-      font-size: 0.9em;
-      font-weight: 700;
-      background: transparent;
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      border-radius: 999px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .card-button a:hover,
-    .card-button button:hover {
-      color: var(--secondary-color);
-      border-color: var(--secondary-color);
-    }
-
-    .example-section {
-      display: none;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .example-section.fade-in {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    ul {
-      margin: 16px 0 32px 40px;
-      color: #ccc;
+      font-size: 2.2em;
     }
 
     p {
-      text-align: justify;
+      max-width: 900px;
       margin-bottom: 20px;
+      font-size: 1.1em;
+      color: #ccc;
     }
 
-    .button-group {
-      margin-top: 40px;
+    .justify {
+      text-align: justify;
+    }
+
+    .cta-links {
+      margin-top: 30px;
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       gap: 20px;
     }
 
-    .scroll-top-button,
-    .cta-contact-button {
-      background: transparent;
-      color: var(--primary-color);
-      font-weight: bold;
+    .cta-links a {
+      padding: 12px 25px;
       border: 2px solid var(--primary-color);
-      border-radius: 30px;
-      padding: 10px 28px;
-      font-size: 0.95em;
-      transition: all 0.3s ease;
+      border-radius: 999px;
+      color: var(--primary-color);
+      background-color: transparent;
       text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
     }
 
-    .scroll-top-button:hover,
-    .cta-contact-button:hover {
-      background: var(--primary-color);
-      color: #000;
+    .cta-links a:hover {
+      border-color: var(--secondary-color);
+      color: var(--secondary-color);
+    }
+
+    .animate-left {
+      transform: translateX(-40px);
+    }
+
+    .animate-right {
+      transform: translateX(40px);
+    }
+
+    .visible.animate-left,
+    .visible.animate-right {
+      transform: translateX(0);
+      opacity: 1;
     }
 
     footer {
-      background-color: var(--background-color);
+      background: var(--background-color);
       text-align: center;
       font-size: 0.9em;
       padding: 30px 10%;
       color: #888;
-      border-top: 1px solid #222;
+    }
+
+    @media (max-width: 768px) {
+      .split {
+        flex-direction: column;
+      }
+
+      .split .content,
+      .split .background {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+      }
+
+      .section2-full {
+        padding: 40px 5%;
+      }
+
+      .cta-links {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo Altarys Capital">
+    <img src="logo.png" alt="Logo Altarys Capital" />
     <nav>
       <a href="index.html">Accueil</a>
       <a href="solutions.html">Nos solutions</a>
@@ -221,168 +228,92 @@
       <a href="contact.html">Nous contacter</a>
     </nav>
   </header>
+
   <main>
-    <section class="from-bottom">
-      <h2>Nos solutions</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Stratégie Autocall</h3>
-          <p>Structure avec coupons mensuels conditionnels et possibilité de remboursement anticipé.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('autocall')">Voir sur un exemple</button>
+    <!-- Section 1 -->
+    <section>
+      <div class="split">
+        <div class="content animate-left justify">
+          <h1>Altarys Capital</h1>
+          <h2><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
+          <p>
+            Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
+          </p>
+          <p>
+            Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
+          </p>
+          <p>
+            Vous gardez le contrôle, nous fournissons l’intelligence.
+          </p>
+          <div class="cta-links">
+            <a href="equipe.html">Découvrez Altarys</a>
           </div>
         </div>
-        <div class="card">
-          <h3>Stratégie 2</h3>
-          <p>Insérer description pour stratégie 2.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('strategie2')">Voir sur un exemple</button>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Stratégie 3</h3>
-          <p>Insérer description pour stratégie 3.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('strategie3')">Voir sur un exemple</button>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Stratégie 4</h3>
-          <p>Insérer description pour stratégie 4.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('strategie4')">Voir sur un exemple</button>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Stratégie sur mesure</h3>
-          <p>Solutions personnalisées selon vos objectifs : rendement, protection, exposition ciblée.</p>
-          <div class="card-button">
-            <a href="contact.html">Nous contacter</a>
-          </div>
+        <div class="background background1"></div>
+      </div>
+    </section>
+
+    <!-- Section 2 (plein écran, sans image, animée bottom->top) -->
+    <section>
+      <div class="section2-full animate-up">
+        <h2>Nos produits structurés sur crypto-actifs</h2>
+        <p>
+          Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
+        </p>
+        <p>
+          Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
+        </p>
+        <p>
+          Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
+        </p>
+        <div class="cta-links">
+          <a href="solutions.html#selection">Parcourir la sélection</a>
+          <a href="contact.html">Créer une solution sur-mesure</a>
         </div>
       </div>
     </section>
 
-    <section id="autocall" class="example-section">
-      <h2>Exemple : Autocall Phoenix ETH</h2>
-      <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
-        <strong>Durée :</strong> 12 mois<br>
-        <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
-        <strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%<br>
-        <strong>Barrière protection :</strong> 60%</p>
-      <ul>
-        <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
-        <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
-        <li>ETH < 60% à maturité → perte partielle du capital</li>
-      </ul>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario1.jpeg" alt="Scénario 1" style="width: 22%; border-radius: 8px;">
-        <img src="scenario2.jpeg" alt="Scénario 2" style="width: 22%; border-radius: 8px;">
-        <img src="scenario3.jpeg" alt="Scénario 3" style="width: 22%; border-radius: 8px;">
-        <img src="scenario4.jpeg" alt="Scénario 4" style="width: 22%; border-radius: 8px;">
-      </div>
-      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-      <ul>
-        <li>Rendement élevé (jusqu’à 30%/an)</li>
-        <li>Protection du capital jusqu’à -40%</li>
-        <li>Remboursement anticipé dès le mois 3</li>
-        <li>Coupons versés même si le marché stagne</li>
-      </ul>
-      <h3 style="color: var(--primary-color);">Inconvénients</h3>
-      <ul>
-        <li>Capital à risque en cas de forte baisse d’ETH</li>
-        <li>Coupons non garantis</li>
-        <li>Pas de remboursement anticipé si ETH < 100%</li>
-      </ul>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="strategie2" class="example-section">
-      <h2>Exemple : Stratégie 2</h2>
-      <p>Exemple à détailler.</p>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="strategie3" class="example-section">
-      <h2>Exemple : Stratégie 3</h2>
-      <p>Exemple à détailler.</p>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="strategie4" class="example-section">
-      <h2>Exemple : Stratégie 4</h2>
-      <p>Exemple à détailler.</p>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
+    <!-- Section 3 -->
+    <section>
+      <div class="split">
+        <div class="background background3"></div>
+        <div class="content animate-right justify">
+          <h2>Comprendre les marchés, anticiper les tendances</h2>
+          <p>
+            Naviguer dans l’univers complexe des crypto-actifs nécessite une information fiable, actualisée et pertinente. C’est pourquoi notre espace <strong>Recherche</strong> centralise des analyses approfondies pour décrypter les dynamiques de marché : rapports hebdomadaires, suivi de la volatilité, mouvements techniques clés, et signaux avant-coureurs des tendances de fond.
+          </p>
+          <p>
+            Que vous soyez un acteur en veille stratégique ou en pleine structuration d’un produit, nos contenus vous offrent une boussole claire dans un environnement volatil. Grâce à une approche mêlant rigueur quantitative et lecture macroéconomique, nous vous aidons à prendre des décisions fondées, avec un temps d’avance.
+          </p>
+          <p>
+            Intégrez nos insights à vos réflexions pour affiner vos allocations, identifier les fenêtres d’opportunité, et valoriser votre proposition auprès de vos clients. Accédez à l’intelligence de marché pensée pour les professionnels de la structuration crypto.
+          </p>
+          <div class="cta-links">
+            <a href="actualites.html">Accéder à la recherche</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Altarys Capital — Plateforme technologique indépendante
+    &copy; 2025 Altarys Capital. Tous droits réservés.
   </footer>
 
-
   <script>
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // permet de rejouer l'animation
         }
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+    document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
+      observer.observe(el);
     });
-
-    function toggleDetail(id) {
-      const allExamples = document.querySelectorAll('.example-section');
-      const mainSection = document.querySelector('main > .from-bottom');
-      const el = document.getElementById(id);
-
-      allExamples.forEach(section => {
-        section.style.display = 'none';
-        section.classList.remove('fade-in');
-      });
-
-      if (el) {
-        el.style.display = 'block';
-        setTimeout(() => {
-          el.classList.add('fade-in');
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 10);
-      }
-
-      mainSection.style.display = 'none';
-    }
-
-    function scrollToTop() {
-      const mainSection = document.querySelector('main > .from-bottom');
-      const allExamples = document.querySelectorAll('.example-section');
-
-      allExamples.forEach(section => {
-        section.classList.remove('fade-in');
-      });
-
-      setTimeout(() => {
-        allExamples.forEach(section => {
-          section.style.display = 'none';
-        });
-        mainSection.style.display = 'block';
-        mainSection.scrollIntoView({ behavior: 'smooth' });
-      }, 500);
-    }
   </script>
 </body>
 </html>
