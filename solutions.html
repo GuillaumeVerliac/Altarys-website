@@ -154,10 +154,11 @@
       display: none;
       opacity: 0;
       transform: translateY(40px);
+      background-color: rgba(11, 13, 18, 0.95);
       transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .example-section.fade-in {
+    .example-section.show {
       display: block;
       opacity: 1;
       transform: translateY(0);
@@ -332,7 +333,6 @@
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
 
-
   <script>
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -347,41 +347,26 @@
     });
 
     function toggleDetail(id) {
-      const allExamples = document.querySelectorAll('.example-section');
-      const mainSection = document.querySelector('main > .from-bottom');
-      const el = document.getElementById(id);
-
-      allExamples.forEach(section => {
-        section.style.display = 'none';
-        section.classList.remove('fade-in');
+      document.querySelectorAll('.example-section').forEach(section => {
+        section.classList.remove('show');
       });
-
+      const el = document.getElementById(id);
       if (el) {
-        el.style.display = 'block';
         setTimeout(() => {
-          el.classList.add('fade-in');
+          el.classList.add('show');
           el.scrollIntoView({ behavior: 'smooth' });
-        }, 10);
+        }, 50);
       }
-
-      mainSection.style.display = 'none';
     }
 
     function scrollToTop() {
-      const mainSection = document.querySelector('main > .from-bottom');
-      const allExamples = document.querySelectorAll('.example-section');
-
-      allExamples.forEach(section => {
-        section.classList.remove('fade-in');
-      });
-
-      setTimeout(() => {
-        allExamples.forEach(section => {
-          section.style.display = 'none';
-        });
-        mainSection.style.display = 'block';
-        mainSection.scrollIntoView({ behavior: 'smooth' });
-      }, 500);
+      const activeSection = document.querySelector('.example-section.show');
+      if (activeSection) {
+        activeSection.classList.remove('show');
+        setTimeout(() => {
+          document.querySelector('main > .from-bottom').scrollIntoView({ behavior: 'smooth' });
+        }, 6); 
+      }
     }
   </script>
 </body>
