@@ -76,10 +76,13 @@
       padding: 80px 10%;
       width: 100%;
       opacity: 0;
-      transition: all 1s ease-out;
+      transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .from-bottom { transform: translateY(40px); background-color: rgba(11, 13, 18, 0.95); }
+    .from-bottom {
+      transform: translateY(40px);
+      background-color: rgba(11, 13, 18, 0.95);
+    }
 
     .visible {
       opacity: 1;
@@ -150,13 +153,14 @@
     .example-section {
       display: none;
       opacity: 0;
-      padding: 80px 10%;
-      transition: opacity 0.6s ease;
+      transform: translateY(40px);
     }
 
     .example-section.show {
       display: block;
       opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     ul {
@@ -169,7 +173,16 @@
       margin-bottom: 20px;
     }
 
-    .scroll-top-button {
+    .button-group {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .scroll-top-button,
+    .cta-contact-button {
       background: transparent;
       color: var(--primary-color);
       font-weight: bold;
@@ -178,13 +191,11 @@
       padding: 10px 28px;
       font-size: 0.95em;
       transition: all 0.3s ease;
-      margin-top: 30px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      text-decoration: none;
     }
 
-    .scroll-top-button:hover {
+    .scroll-top-button:hover,
+    .cta-contact-button:hover {
       background: var(--primary-color);
       color: #000;
     }
@@ -289,21 +300,31 @@
     <section id="strategie2" class="example-section">
       <h2>Exemple : Stratégie 2</h2>
       <p>Exemple à détailler.</p>
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
+      <div class="button-group">
+        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
+        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
+      </div>
     </section>
 
     <section id="strategie3" class="example-section">
       <h2>Exemple : Stratégie 3</h2>
       <p>Exemple à détailler.</p>
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
+      <div class="button-group">
+        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
+        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
+      </div>
     </section>
 
     <section id="strategie4" class="example-section">
       <h2>Exemple : Stratégie 4</h2>
       <p>Exemple à détailler.</p>
-      <button onclick="scrollToTop()" class="scroll-top-button">← Revenir aux stratégies</button>
+      <div class="button-group">
+        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
+        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
+      </div>
     </section>
   </main>
+
   <footer>
     &copy; 2025 Altarys Capital — Plateforme technologique indépendante
   </footer>
@@ -333,7 +354,13 @@
     }
 
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const activeSection = document.querySelector('.example-section.show');
+      if (activeSection) {
+        activeSection.classList.remove('show');
+        setTimeout(() => {
+          document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
     }
   </script>
 </body>
