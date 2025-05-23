@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #0055cc;
+      --primary-color: #cc0000;
       --secondary-color: #4b0082;
       --background-color: #0b0d12;
       --text-color: #ffffff;
@@ -113,7 +113,7 @@
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0, 85, 204, 0.15);
+      box-shadow: 0 10px 30px rgba(204, 0, 0, 0.15);
     }
 
     .card h3 {
@@ -155,13 +155,13 @@
       opacity: 0;
       transform: translateY(40px);
       background-color: rgba(11, 13, 18, 0.95);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .example-section.show {
       display: block;
       opacity: 1;
       transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     ul {
@@ -362,7 +362,7 @@
       if (activeSection) {
         activeSection.classList.remove('show');
         setTimeout(() => {
-          document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
+          document.querySelector('.from-bottom').scrollIntoView({ behavior: 'smooth' });
         }, 300);
       }
     }
