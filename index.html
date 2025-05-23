@@ -53,6 +53,11 @@
       height: 50px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -63,6 +68,38 @@
 
     nav a:hover {
       color: var(--primary-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: var(--background-color);
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      font-weight: 600;
     }
 
     section {
@@ -114,11 +151,6 @@
       opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease-out;
-    }
-
-    .section2-full.animate-up {
-      transform: translateY(40px);
-      opacity: 0;
     }
 
     .section2-full.animate-up.visible {
@@ -196,6 +228,22 @@
     }
 
     @media (max-width: 768px) {
+      header {
+        padding: 0 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .mobile-nav.active {
+        display: flex;
+      }
+
       .split {
         flex-direction: column;
       }
@@ -220,6 +268,11 @@
 <body>
   <header>
     <img src="logo.png" alt="Logo Altarys Capital" />
+    <div class="menu-toggle" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <nav>
       <a href="index.html">Accueil</a>
       <a href="solutions.html">Nos solutions</a>
@@ -227,6 +280,13 @@
       <a href="equipe.html">À propos</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="actualites.html">Recherche</a>
+      <a href="equipe.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </div>
   </header>
 
   <main>
@@ -301,12 +361,17 @@
   </footer>
 
   <script>
+    function toggleMobileMenu() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('active');
+    }
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
-          entry.target.classList.remove('visible'); // permet de rejouer l'animation
+          entry.target.classList.remove('visible');
         }
       });
     }, { threshold: 0.2 });
@@ -317,7 +382,6 @@
   </script>
 </body>
 </html>
-
 
 
 
