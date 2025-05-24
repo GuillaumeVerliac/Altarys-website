@@ -242,6 +242,14 @@
           </div>
         </div>
         <div class="card">
+          <h3>Stratégie Hybride Multi-Crypto</h3>
+          <p>Exposition croisée à deux cryptos : capital indexé à l’une,<br>
+          coupons conditionnés à la performance de l’autre.</p>
+          <div class="card-button">
+            <button onclick="toggleDetail('hybride')">Voir sur un exemple</button>
+          </div>
+        </div>
+        <div class="card">
           <h3>Stratégie Prime de Volatilité</h3>
           <p>Structure vendant des options pour capter la prime de volatilité tout en<br>
           contrôlant le risque de marché crypto.</p>
@@ -338,6 +346,48 @@
         <li>Plafonnement du rendement</li>
         <li>Durée d’investissement souvent plus longue</li>
         <li>Pas de gain en cas de performance neutre ou faible</li>
+      </ul>
+      <div class="button-group">
+        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
+        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
+      </div>
+    </section>
+
+    <section id="hybride" class="example-section">
+      <h2>Exemple de stratégie Hybride Multi-Crypto : BTC en capital, ETH en coupon</h2>
+      <p>La stratégie hybride combine l’exposition au capital d’une cryptomonnaie avec une distribution de coupons liée à la performance d’une autre. Cette approche croisée permet de diversifier les moteurs de performance et de tirer profit des comportements différenciés entre deux actifs du marché crypto.</p>
+    
+      <p>Dans cet exemple, le capital est exposé à l’évolution du Bitcoin (BTC) : à l’échéance, le remboursement dépendra du niveau final de BTC. En parallèle, des coupons mensuels peuvent être versés si Ethereum (ETH) dépasse un certain seuil, indépendamment de la performance du BTC. L’objectif est de capturer de la performance sur deux dynamiques de marché, tout en structurant un produit cohérent et lisible.</p>
+    
+      <p>Cette stratégie séduit particulièrement les investisseurs qui ont une vision partagée sur deux cryptomonnaies distinctes. Elle permet d’accroître les opportunités de rendement tout en optimisant l’utilisation du capital à travers une exposition différenciée. Une approche audacieuse mais réfléchie pour aller chercher du rendement intelligent sur plusieurs fronts.</p>
+    
+      <h2>Illustration des scénarios</h2>
+      <p><strong>Capital exposé à :</strong> Bitcoin (BTC)<br>
+        <strong>Coupons conditionnés à :</strong> Ethereum (ETH) ≥ 110%<br>
+        <strong>Durée :</strong> 12 mois<br>
+        <strong>Coupon :</strong> 1,8% mensuel si ETH ≥ 110%<br>
+        <strong>Barrière capital :</strong> 70% du niveau initial de BTC</p>
+      <ul>
+        <li>ETH ≥ 110% pendant 6 mois → 6 coupons versés (10,8%)</li>
+        <li>BTC ≥ 70% à l’échéance → capital remboursé à 100%</li>
+        <li>BTC < 70% à l’échéance → perte en capital liée à BTC</li>
+      </ul>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <img src="scenario11.jpeg" alt="Scénario 11" style="width: 30%; border-radius: 8px;">
+        <img src="scenario12.jpeg" alt="Scénario 12" style="width: 30%; border-radius: 8px;">
+        <img src="scenario13.jpeg" alt="Scénario 13" style="width: 30%; border-radius: 8px;">
+      </div>
+      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
+      <ul>
+        <li>Exposition simultanée à deux cryptos majeures</li>
+        <li>Multiplication des sources de performance</li>
+        <li>Optimisation du rendement dans des marchés divergents</li>
+      </ul>
+      <h3 style="color: var(--primary-color);">Inconvénients</h3>
+      <ul>
+        <li>Complexité accrue de la structure</li>
+        <li>Double risque sur deux actifs</li>
+        <li>Pas de coupons si ETH reste sous le seuil</li>
       </ul>
       <div class="button-group">
         <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
