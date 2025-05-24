@@ -302,11 +302,42 @@
       </div>
     </section>
 
-
-
-    <section id="strategie2" class="example-section">
-      <h2>Exemple : Stratégie 2</h2>
-      <p>Exemple à détailler.</p>
+    <section id="volatility" class="example-section">
+      <h2>Exemple de stratégie Prime de Volatilité : Barrières Dynamiques sur Bitcoin (BTC)</h2>
+      <p>La stratégie Prime de Volatilité repose sur l’exploitation d’un phénomène fréquent sur les marchés crypto : la surévaluation de la volatilité implicite par rapport à la volatilité réalisée. En vendant régulièrement des options lorsque le marché est nerveux, cette stratégie permet de générer une prime récurrente, tout en maintenant une maîtrise stricte du risque à l’aide de bornes définies à l’avance.</p>
+    
+      <p>Chaque mois, deux barrières sont fixées autour du niveau initial de l’actif : une barrière haute et une barrière basse. Si le cours du Bitcoin franchit l’une de ces deux barrières à la date d’observation, un coupon est déclenché. En jouant sur les mouvements de marché brusques ou excessifs, la stratégie permet de valoriser la volatilité observée, qu’elle soit à la hausse ou à la baisse.</p>
+    
+      <p>Cette approche est particulièrement pertinente sur les crypto-actifs, où la volatilité est structurellement élevée. Elle offre une alternative attractive aux stratégies directionnelles, en permettant de capter de la performance même dans des marchés agités ou incertains. L’investisseur reste toutefois exposé en cas de dérive extrême hors des bornes, ce qui implique une gestion rigoureuse des niveaux choisis.</p>
+    
+      <h2>Illustration des scénarios</h2>
+      <p><strong>Sous-jacent :</strong> Bitcoin (BTC)<br>
+        <strong>Durée :</strong> 12 mois<br>
+        <strong>Coupon :</strong> 2,2% mensuel si BTC franchit une des deux barrières (±15%)<br>
+        <strong>Barrières d’observation :</strong> ±15% du niveau initial, observées chaque mois<br>
+        <strong>Protection :</strong> Pas de remboursement automatique – exposition au sous-jacent à maturité</p>
+      <ul>
+        <li>BTC franchit une barrière chaque mois → coupon mensuel versé</li>
+        <li>BTC reste dans les bornes plusieurs mois → pas de coupon ce mois-là</li>
+        <li>À maturité, BTC est en forte baisse → perte potentielle en capital</li>
+      </ul>
+      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        <img src="scenario5.jpeg" alt="Scénario 5" style="width: 30%; border-radius: 8px;">
+        <img src="scenario6.jpeg" alt="Scénario 6" style="width: 30%; border-radius: 8px;">
+        <img src="scenario7.jpeg" alt="Scénario 7" style="width: 30%; border-radius: 8px;">
+      </div>
+      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
+      <ul>
+        <li>Monétisation de la volatilité du marché crypto</li>
+        <li>Coupons réguliers en cas de forte activité de marché</li>
+        <li>Indépendance de la direction du marché</li>
+      </ul>
+      <h3 style="color: var(--primary-color);">Inconvénients</h3>
+      <ul>
+        <li>Pas de coupon si le marché reste stable</li>
+        <li>Exposition au sous-jacent à maturité</li>
+        <li>Risque accru si les barrières sont mal calibrées</li>
+      </ul>
       <div class="button-group">
         <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
         <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
