@@ -372,11 +372,11 @@
           <tr>
             <td>${coin.name}</td>
             <td class="${spotClass}">$${spot.toLocaleString()}</td>
+            ${formatChange(coin.price_change_percentage_24h_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_7d_in_currency || 0)}
             ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
-            ${formatChange(coin.price_change_percentage_90d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_200d_in_currency || 0)}
             ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
-            ${formatChange(coin.price_change_percentage_2y_in_currency || 0)}
-            ${formatChange(coin.price_change_percentage_5y_in_currency || 0)}
           </tr>
         `;
       }).join('');
