@@ -353,85 +353,37 @@
 
     async function fetchCryptoData() {
       const ids = ['bitcoin', 'ethereum', 'solana'];
-    
-      // Récupération des données de base (spot uniquement)
-      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}`);
+      const res = await fetch(https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y);
       const data = await res.json();
-    
-      // Dates clés en ms
-      const now = Date.now();
-      const daysAgo = days => now - days * 24 * 60 * 60 * 1000;
-      const dates = {
-        '30d': daysAgo(30),
-        '90d': daysAgo(90),
-        '1y': daysAgo(365),
-        '2y': daysAgo(365 * 2),
-        '5y': daysAgo(365 * 5),
-      };
-    
-      // Récupération des historiques
-      const promises = ids.map(id =>
-        fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=max`)
-          .then(res => res.json())
-      );
-    
-      const allHistories = await Promise.all(promises);
-    
-      function getPriceAtDate(prices, targetDate) {
-        // prices = [[timestamp, price], ...]
-        // On cherche le prix au plus proche en dessous ou égal à targetDate
-        let closest = null;
-        for (const [time, price] of prices) {
-          if (time <= targetDate) {
-            if (!closest || time > closest[0]) {
-              closest = [time, price];
-            }
-          }
-        }
-        return closest ? closest[1] : null;
-      }
-    
-      function calcPctChange(currentPrice, oldPrice) {
-        if (!oldPrice) return 0;
-        return ((currentPrice - oldPrice) / oldPrice) * 100;
-      }
-    
-      function formatChange(value) {
-        if (value > 0) return `<td class="positive">${value.toFixed(2)}%</td>`;
-        if (value < 0) return `<td class="negative">${value.toFixed(2)}%</td>`;
-        return `<td class="neutral">${value.toFixed(2)}%</td>`;
-      }
-    
+
       let previousSpot = 0;
       const rows = data.map((coin, index) => {
         const spot = coin.current_price;
         const spotClass = index > 0 && spot < previousSpot ? 'negative' : 'positive';
         previousSpot = spot;
-    
-        const hist = allHistories[ids.indexOf(coin.id)];
-    
-        const price30d = getPriceAtDate(hist.prices, dates['30d']);
-        const price90d = getPriceAtDate(hist.prices, dates['90d']);
-        const price1y = getPriceAtDate(hist.prices, dates['1y']);
-        const price2y = getPriceAtDate(hist.prices, dates['2y']);
-        const price5y = getPriceAtDate(hist.prices, dates['5y']);
-    
-        return `
+
+        function formatChange(value) {
+          if (value > 0) return <td class="positive">${value.toFixed(2)}%</td>;
+          if (value < 0) return <td class="negative">${value.toFixed(2)}%</td>;
+          return <td class="neutral">${value.toFixed(2)}%</td>;
+        }
+
+        return 
           <tr>
             <td>${coin.name}</td>
             <td class="${spotClass}">$${spot.toLocaleString()}</td>
-            ${formatChange(calcPctChange(spot, price30d))}
-            ${formatChange(calcPctChange(spot, price90d))}
-            ${formatChange(calcPctChange(spot, price1y))}
-            ${formatChange(calcPctChange(spot, price2y))}
-            ${formatChange(calcPctChange(spot, price5y))}
+            ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_90d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_2y_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_5y_in_currency || 0)}
           </tr>
-        `;
+        ;
       }).join('');
-    
+
       document.getElementById('market-table').innerHTML = rows;
     }
-    
+
     fetchCryptoData();
 
 
