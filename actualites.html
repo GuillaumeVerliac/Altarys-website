@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>More actions
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -353,7 +353,7 @@
 
     async function fetchCryptoData() {
       const ids = ['bitcoin', 'ethereum', 'solana'];
-      const res = await fetch(https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y);
+      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y`);
       const data = await res.json();
 
       let previousSpot = 0;
@@ -363,12 +363,12 @@
         previousSpot = spot;
 
         function formatChange(value) {
-          if (value > 0) return <td class="positive">${value.toFixed(2)}%</td>;
-          if (value < 0) return <td class="negative">${value.toFixed(2)}%</td>;
-          return <td class="neutral">${value.toFixed(2)}%</td>;
+          if (value > 0) return `<td class="positive">${value.toFixed(2)}%</td>`;
+          if (value < 0) return `<td class="negative">${value.toFixed(2)}%</td>`;
+          return `<td class="neutral">${value.toFixed(2)}%</td>`;
         }
 
-        return 
+        return `
           <tr>
             <td>${coin.name}</td>
             <td class="${spotClass}">$${spot.toLocaleString()}</td>
@@ -378,14 +378,13 @@
             ${formatChange(coin.price_change_percentage_2y_in_currency || 0)}
             ${formatChange(coin.price_change_percentage_5y_in_currency || 0)}
           </tr>
-        ;
+        `;
       }).join('');
 
       document.getElementById('market-table').innerHTML = rows;
     }
 
     fetchCryptoData();
-
 
     document.getElementById("newsletter-form").addEventListener("submit", function(e) {
       e.preventDefault();
