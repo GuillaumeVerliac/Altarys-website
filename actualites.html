@@ -303,11 +303,11 @@
           <tr>
             <th>Actif</th>
             <th>Spot</th>
+            <th>1D</th>
+            <th>1W</th>
             <th>1M</th>
-            <th>3M</th>
+            <th>9M</th>
             <th>1Y</th>
-            <th>2Y</th>
-            <th>5Y</th>
           </tr>
         </thead>
         <tbody id="market-table">
@@ -353,7 +353,7 @@
 
     async function fetchCryptoData() {
       const ids = ['bitcoin', 'ethereum', 'solana'];
-      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=30d,90d,1y,2y,5y`);
+      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=24h,7d,30d,200d,1y`);
       const data = await res.json();
 
       let previousSpot = 0;
