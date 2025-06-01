@@ -188,29 +188,39 @@
     }
 
     footer {
-      background-color: var(--background-color);
-      color: #888;
-      font-size: 0.85em;
-      padding: 30px 10%;
+      background-color: var(--background-color, #000); /* fallback noir si la variable n'est pas définie */
+      color: #ccc;
+      font-size: 0.875rem; /* équivaut à 14px */
+      padding: 30px 5%;
       border-top: 1px solid #222;
       text-align: center;
+      width: 100%;
     }
     
     .footer-container {
       max-width: 800px;
       margin: 0 auto;
-      line-height: 1.4;
+      line-height: 1.6;
+    }
+    
+    .footer-container p {
+      margin: 0;
+    }
+    
+    .footer-container strong {
+      color: #fff;
+      font-weight: bold;
     }
     
     .footer-container a {
-      color: #888;
+      color: #ccc;
       text-decoration: underline;
       cursor: pointer;
       transition: color 0.2s ease;
     }
     
     .footer-container a:hover {
-      color: #ccc;
+      color: #fff;
     }
 
 
