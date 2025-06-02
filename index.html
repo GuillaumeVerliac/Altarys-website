@@ -53,6 +53,11 @@
       height: 50px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -63,6 +68,46 @@
 
     nav a:hover {
       color: var(--primary-color);
+    }
+
+    /* Burger menu button */
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .burger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    /* Mobile menu */
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: 0;
+      background-color: var(--background-color);
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid #222;
+    }
+
+    .mobile-nav a {
+      padding: 15px 0;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #222;
+      margin: 0;
+    }
+
+    .mobile-nav.show {
+      display: flex;
     }
 
     section {
@@ -188,31 +233,31 @@
     }
 
     footer {
-      background-color: var(--background-color, #000); /* fallback noir si la variable n'est pas définie */
+      background-color: var(--background-color, #000);
       color: #ccc;
-      font-size: 0.875rem; /* équivaut à 14px */
+      font-size: 0.875rem;
       padding: 30px 5%;
       border-top: 1px solid #222;
       text-align: center;
       width: 100%;
     }
-    
+
     .footer-container {
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.6;
     }
-    
+
     .footer-container p {
       margin: 0;
       text-align: center
     }
-    
+
     .footer-container strong {
       color: #fff;
       font-weight: bold;
     }
-    
+
     .footer-container a {
       color: #ccc;
       text-decoration: underline;
@@ -220,8 +265,15 @@
       transition: color 0.2s ease;
     }
 
-
     @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
       .split {
         flex-direction: column;
       }
@@ -246,13 +298,25 @@
 <body>
   <header>
     <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav>
+    <nav class="desktop-nav">
       <a href="index.html">Accueil</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="recherche.html">Recherche</a>
       <a href="apropos.html">À propos</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
+    <div class="burger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mobile-nav" id="mobileMenu">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="recherche.html">Recherche</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </div>
   </header>
 
   <main>
@@ -340,7 +404,7 @@
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
-          entry.target.classList.remove('visible'); // permet de rejouer l'animation
+          entry.target.classList.remove('visible');
         }
       });
     }, { threshold: 0.2 });
@@ -348,6 +412,10 @@
     document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
       observer.observe(el);
     });
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
   </script>
 </body>
 </html>
