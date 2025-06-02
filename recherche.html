@@ -345,6 +345,20 @@
     opacity: 1;
     transform: none;
   }
+    .markets table {
+    font-size: 0.7em;
+    table-layout: fixed;
+    word-wrap: break-word;
+  }
+
+  .markets th,
+  .markets td {
+    padding: 6px 4px;
+  }
+
+  .markets thead th {
+    font-size: 0.85em;
+  }
 </style>
 </head>
 <body>
@@ -516,16 +530,17 @@
         return `<td class="neutral">${value.toFixed(2)}%</td>`;
       }
 
-      if (isMobile) {
-        return `
-          <tr>
-            <td>${coin.name}</td>
-            ${formatChange(coin.price_change_percentage_7d_in_currency || 0)}
-            ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
-            ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
-          </tr>
-        `;
-      } else {
+    if (isMobile) {
+      return `
+        <tr>
+          <td>${coin.name}</td>
+          <td class="${spotClass}">$${spot.toLocaleString()}</td>
+          ${formatChange(coin.price_change_percentage_7d_in_currency || 0)}
+          ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
+          ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
+        </tr>
+      `;
+    } else {
         return `
           <tr>
             <td>${coin.name}</td>
@@ -546,6 +561,7 @@
       document.querySelector('.markets thead').innerHTML = `
         <tr>
           <th>Actif</th>
+          <th>Spot</th>
           <th>1W</th>
           <th>1M</th>
           <th>1Y</th>
