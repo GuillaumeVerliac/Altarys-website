@@ -115,24 +115,25 @@
       display: flex;
     }
 
-    main {
-      min-height: 100vh;
-      padding-top: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 5%;
-      padding-right: 5%;
-    }
-
-    .contact-wrapper {
-      background-color: var(--background-color);
-      width: 100%;
-      max-width: 880px;
-      padding: 50px;
-      border-radius: 20px;
-      animation: fadeInUp 0.8s ease-out;
-    }
+      main {
+        min-height: 100vh;
+        padding-top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+      }
+    
+      .contact-wrapper {
+        background-color: var(--background-color);
+        width: 100%;
+        max-width: 880px;
+        padding: 50px;
+        border-radius: 20px;
+        animation: fadeInUp 0.8s ease-out;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+      }
 
     @keyframes fadeInUp {
       from {
@@ -282,33 +283,33 @@
       transition: color 0.2s ease;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .burger {
-        display: flex;
-      }
-
-      main {
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .contact-wrapper {
-        padding: 30px 15px;
-        border-radius: 12px;
-      }
-
-      form {
-        grid-template-columns: 1fr;
-      }
-
-      .submit-button {
-        width: 100%;
-      }
+  @media (max-width: 768px) {
+    nav {
+      display: none;
     }
+
+    .burger {
+      display: flex;
+    }
+
+    main {
+      padding-top: 60px;
+    }
+
+    .contact-wrapper {
+      padding: 30px 15px;
+      border-radius: 12px;
+      max-width: 100%;
+    }
+
+    form {
+      grid-template-columns: 1fr;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
   </style>
 </head>
 <body>
@@ -404,6 +405,7 @@
     }
   </script>
 </body>
+</html>
 </html>
 
 
