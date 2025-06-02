@@ -1,4 +1,4 @@
-<!DOCTYPE html>More actions
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -54,6 +54,11 @@
       height: 50px;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: var(--text-color);
       text-decoration: none;
@@ -64,6 +69,48 @@
 
     nav a:hover {
       color: var(--primary-color);
+    }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .burger span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      top: 80px;
+      right: 0;
+      background-color: var(--background-color);
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      border-top: 1px solid #222;
+    }
+
+    .mobile-nav a {
+      padding: 15px 0;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #222;
+      margin: 0;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .mobile-nav.show {
+      display: flex;
     }
 
     main {
@@ -109,25 +156,25 @@
     }
 
     .actus-cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-}
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
 
     .flash-card, .actus-card {
-  background-color: rgba(11, 13, 18, 0.95);
-  padding: 16px 24px;
-  border: 1px solid #222;
-  border-left: 4px solid var(--primary-color);
-  border-radius: 12px;
-  font-weight: 500;
-  transition: background-color 0.3s, transform 0.3s;
-  cursor: pointer;
-  font-size: 1.05em;
-  color: var(--text-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+      background-color: rgba(11, 13, 18, 0.95);
+      padding: 16px 24px;
+      border: 1px solid #222;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 12px;
+      font-weight: 500;
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+      font-size: 1.05em;
+      color: var(--text-color);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
     .actus-card {
       flex: 1 1 calc(50% - 10px);
@@ -135,16 +182,16 @@
     }
 
     .actus-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
 
     .flash-card:hover, .actus-card:hover {
-  background-color: rgba(0, 85, 204, 0.1);
-  transform: translateY(-4px);
-}
+      background-color: rgba(0, 85, 204, 0.1);
+      transform: translateY(-4px);
+    }
 
     .markets {
       background-color: rgba(11, 13, 18, 0.95);
@@ -175,75 +222,22 @@
     .negative { color: var(--negative-color); }
     .neutral { color: var(--text-color); }
 
-    .slide-panel {
-      position: fixed;
-      top: 80px;
-      left: 100vw;
-      width: 100vw;
-      height: calc(100vh - 80px);
-      background-color: var(--overlay-bg);
-      color: var(--text-color);
-      padding: 40px 30px;
-      transition: left 0.4s ease;
-      overflow-y: auto;
-      z-index: 1001;
-    }
-
-    .slide-active .slide-panel {
-      left: 0;
-    }
-
-    .back-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      font-size: 1.8em;
-      font-weight: bold;
-      border: 2px solid var(--text-color);
-      border-radius: 50%;
-      background: none;
-      color: var(--text-color);
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    .slide-panel h3 {
-      color: var(--primary-color);
-      margin-bottom: 20px;
-    }
-
-    .slide-panel p {
-      text-align: justify;
-    }
-
-    footer {
-      background-color: var(--background-color, #000); /* fallback noir si la variable n'est pas définie */
-      color: #ccc;
-      font-size: 0.875rem; /* équivaut à 14px */
-      padding: 30px 5%;
-      border-top: 1px solid #222;
-      text-align: center;
-      width: 100%;
-    }
-    
     .footer-container {
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.6;
     }
-    
+
     .footer-container p {
       margin: 0;
-      text-align: center
+      text-align: center;
     }
-    
+
     .footer-container strong {
       color: #fff;
       font-weight: bold;
     }
-    
+
     .footer-container a {
       color: #ccc;
       text-decoration: underline;
@@ -251,24 +245,53 @@
       transition: color 0.2s ease;
     }
 
+    footer {
+      background-color: var(--background-color);
+      color: #ccc;
+      font-size: 0.875rem;
+      padding: 30px 5%;
+      border-top: 1px solid #222;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-animated {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .section-visible {
+      opacity: 1;
+      transform: none;
+    }
+
     @media (max-width: 768px) {
-      .two-columns { flex-direction: column; }
-      .actus-cards { flex-direction: column; }
-      .actus-card { max-width: 100%; }
-      .markets { padding: 20px; }
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .two-columns {
+        flex-direction: column;
+      }
+
+      .actus-cards {
+        flex-direction: column;
+      }
+
+      .actus-card {
+        max-width: 100%;
+      }
+
+      .markets {
+        padding: 20px;
+      }
     }
   </style>
-<style>
-  .section-animated {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease-out;
-  }
-  .section-visible {
-    opacity: 1;
-    transform: none;
-  }
-</style>
 </head>
 <body>
   <header>
@@ -280,6 +303,18 @@
       <a href="apropos.html">À propos</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
+    <div class="burger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mobile-nav" id="mobileMenu">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="recherche.html">Recherche</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </div>
   </header>
 
   <main id="mainContent">
@@ -408,23 +443,35 @@
       document.body.classList.remove('slide-active');
     }
 
-    async function fetchCryptoData() {
-      const ids = ['bitcoin', 'ethereum', 'solana'];
-      const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=24h,7d,30d,200d,1y`);
-      const data = await res.json();
+  async function fetchCryptoData() {
+    const ids = ['bitcoin', 'ethereum', 'solana'];
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(',')}&price_change_percentage=24h,7d,30d,200d,1y`);
+    const data = await res.json();
 
-      let previousSpot = 0;
-      const rows = data.map((coin, index) => {
-        const spot = coin.current_price;
-        const spotClass = index > 0 && spot < previousSpot ? 'negative' : 'positive';
-        previousSpot = spot;
+    let previousSpot = 0;
+    const isMobile = window.innerWidth <= 768;
 
-        function formatChange(value) {
-          if (value > 0) return `<td class="positive">${value.toFixed(2)}%</td>`;
-          if (value < 0) return `<td class="negative">${value.toFixed(2)}%</td>`;
-          return `<td class="neutral">${value.toFixed(2)}%</td>`;
-        }
+    const rows = data.map((coin, index) => {
+      const spot = coin.current_price;
+      const spotClass = index > 0 && spot < previousSpot ? 'negative' : 'positive';
+      previousSpot = spot;
 
+      function formatChange(value) {
+        if (value > 0) return `<td class="positive">${value.toFixed(2)}%</td>`;
+        if (value < 0) return `<td class="negative">${value.toFixed(2)}%</td>`;
+        return `<td class="neutral">${value.toFixed(2)}%</td>`;
+      }
+
+      if (isMobile) {
+        return `
+          <tr>
+            <td>${coin.name}</td>
+            ${formatChange(coin.price_change_percentage_7d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_30d_in_currency || 0)}
+            ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
+          </tr>
+        `;
+      } else {
         return `
           <tr>
             <td>${coin.name}</td>
@@ -436,12 +483,23 @@
             ${formatChange(coin.price_change_percentage_1y_in_currency || 0)}
           </tr>
         `;
-      }).join('');
+      }
+    }).join('');
 
-      document.getElementById('market-table').innerHTML = rows;
+    document.getElementById('market-table').innerHTML = rows;
+
+    if (isMobile) {
+      document.querySelector('.markets thead').innerHTML = `
+        <tr>
+          <th>Actif</th>
+          <th>1W</th>
+          <th>1M</th>
+          <th>1Y</th>
+        </tr>`;
     }
+  }
 
-    fetchCryptoData();
+  fetchCryptoData();
 
     document.getElementById("newsletter-form").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -464,8 +522,11 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.section-animated').forEach(el => observer.observe(el));
-
-</script>
+    
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
 
