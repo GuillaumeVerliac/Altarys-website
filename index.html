@@ -124,8 +124,6 @@
     }
     
 
-
-
     .split {
       display: flex;
       flex: 1;
@@ -273,8 +271,18 @@
       transition: color 0.2s ease;
     }
 
-    @media (max-width: 768px) {
-      nav {
+      .mobile-only {
+        display: none;
+      }
+      
+      @media (max-width: 768px) {
+        .desktop-only {
+          display: none;
+        }
+        .mobile-only {
+          display: block;
+        }
+      .nav {
         display: none;
       }
 
@@ -334,14 +342,20 @@
         <div class="content animate-left justify">
           <h1>Altarys Capital</h1>
           <h2><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
-          <p>
+          <!-- Version desktop -->
+          <p class="desktop-only">
             Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
           </p>
-          <p>
+          <p class="desktop-only">
             Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
           </p>
-          <p>
+          <p class="desktop-only">
             Vous gardez le contrôle, nous fournissons l’intelligence.
+          </p>
+          
+          <!-- Version mobile -->
+          <p class="mobile-only">
+            Offrez à vos clients des produits structurés crypto maîtrisés, sans complexité. Vous gardez le contrôle, nous fournissons l’intelligence.
           </p>
           <div class="cta-links">
             <a href="apropos.html">Découvrez Altarys</a>
@@ -355,14 +369,20 @@
     <section>
       <div class="section2-full animate-up">
         <h2>Nos produits structurés sur crypto-actifs</h2>
-        <p>
+        <!-- Version desktop -->
+        <p class="desktop-only">
           Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
         </p>
-        <p>
+        <p class="desktop-only">
           Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
         </p>
-        <p>
+        <p class="desktop-only">
           Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
+        </p>
+      
+        <!-- Version mobile -->
+        <p class="mobile-only">
+          Des produits structurés crypto conçus sur mesure : rendement, protection, diversification. Une expertise financière et crypto au service de vos objectifs.
         </p>
         <div class="cta-links">
           <a href="solutions.html#selection">Parcourir la sélection</a>
@@ -377,14 +397,20 @@
         <div class="background background3"></div>
         <div class="content animate-right justify">
           <h2>Comprendre les marchés, anticiper les tendances</h2>
-          <p>
+          <!-- Version desktop -->
+          <p class="desktop-only">
             Naviguer dans l’univers complexe des crypto-actifs nécessite une information fiable, actualisée et pertinente. C’est pourquoi notre espace <strong>Recherche</strong> centralise des analyses approfondies pour décrypter les dynamiques de marché : rapports mensuels, suivi de la volatilité, mouvements techniques clés, et signaux avant-coureurs des tendances de fond.
           </p>
-          <p>
+          <p class="desktop-only">
             Que vous soyez un acteur en veille stratégique ou en pleine structuration d’un produit, nos contenus vous offrent une boussole claire dans un environnement volatil. Grâce à une approche mêlant rigueur quantitative et lecture macroéconomique, nous vous aidons à prendre des décisions fondées, avec un temps d’avance.
           </p>
-          <p>
+          <p class="desktop-only">
             Intégrez nos insights à vos réflexions pour affiner vos allocations, identifier les fenêtres d’opportunité, et valoriser votre proposition auprès de vos clients. Accédez à l’intelligence de marché pensée pour les professionnels de la structuration crypto.
+          </p>
+        
+          <!-- Version mobile -->
+          <p class="mobile-only">
+            Nos analyses marché vous aident à structurer des produits crypto pertinents. Donnez un temps d’avance à vos décisions.
           </p>
           <div class="cta-links">
             <a href="recherche.html">Accéder à la recherche</a>
