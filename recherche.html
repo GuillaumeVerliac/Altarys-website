@@ -222,7 +222,7 @@
     .negative { color: var(--negative-color); }
     .neutral { color: var(--text-color); }
     
-    .slide-panel {More actions
+    .slide-panel {
       position: fixed;
       top: 80px;
       left: 100vw;
@@ -265,6 +265,16 @@
       text-align: justify;
     }
     
+    footer {
+      background-color: var(--background-color, #000); /* fallback noir si la variable n'est pas définie */
+      color: #ccc;
+      font-size: 0.875rem; /* équivaut à 14px */
+      padding: 30px 5%;
+      border-top: 1px solid #222;
+      text-align: center;
+      width: 100%;
+    }
+
     .footer-container {
       max-width: 800px;
       margin: 0 auto;
@@ -273,7 +283,7 @@
 
     .footer-container p {
       margin: 0;
-      text-align: center;
+      text-align: center
     }
 
     .footer-container strong {
@@ -288,16 +298,6 @@
       transition: color 0.2s ease;
     }
 
-    footer {
-      background-color: var(--background-color);
-      color: #ccc;
-      font-size: 0.875rem;
-      padding: 30px 5%;
-      border-top: 1px solid #222;
-      text-align: center;
-      width: 100%;
-    }
-
     .section-animated {
       opacity: 0;
       transform: translateY(40px);
@@ -309,32 +309,45 @@
       transform: none;
     }
 
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .burger {
-        display: flex;
-      }
-
-      .two-columns {
-        flex-direction: column;
-      }
-
-      .actus-cards {
-        flex-direction: column;
-      }
-
-      .actus-card {
-        max-width: 100%;
-      }
-
-      .markets {
-        padding: 20px;
-      }
+<style>
+  @media (max-width: 768px) {
+    nav {
+      display: none;
     }
-  </style>
+
+    .burger {
+      display: flex;
+    }
+
+    .two-columns {
+      flex-direction: column;
+    }
+
+    .actus-cards {
+      flex-direction: column;
+    }
+
+    .actus-card {
+      max-width: 100%;
+    }
+
+    .markets {
+      padding: 20px;
+    }
+  }
+
+  .section-animated {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+  }
+
+  .section-visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
 </head>
 <body>
   <header>
@@ -441,7 +454,7 @@
           <tr><td colspan="7">Chargement en cours...</td></tr>
         </tbody>
       </table>
-    
+
       <div class="cta-section" style="background-color: rgba(11, 13, 18, 0.95); padding: 40px; border-radius: 16px; text-align: center; margin-top: 0;">
         <h3 style="color: var(--primary-color); font-size: 1.6em; margin-bottom: 10px;">Envie d’aller plus loin ?</h3>
         <p style="max-width: 700px; margin: 0 auto 30px; color: #ccc; font-size: 1.05em;">
@@ -453,7 +466,7 @@
         </div>
       </div>
     </div>
-    
+
     </main>
     
     <div class="slide-panel" id="slidePanel">
