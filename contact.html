@@ -396,8 +396,26 @@
   <script>
     document.getElementById("contact-form").addEventListener("submit", function (e) {
       e.preventDefault();
-      document.getElementById("confirmation").style.display = "block";
-      this.reset();
+
+      const form = this;
+      const formData = new FormData(form);
+
+      fetch("sendmail.php", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.text())
+      .then(res => {
+        if (res === "success") {
+          document.getElementById("confirmation").style.display = "block";
+          form.reset();
+        } else {
+          alert("Erreur d’envoi : " + res);
+        }
+      })
+      .catch(err => {
+        alert("Erreur réseau : " + err);
+      });
     });
 
     function toggleMobileMenu() {
@@ -405,7 +423,6 @@
     }
   </script>
 </body>
-</html>
 </html>
 
 
