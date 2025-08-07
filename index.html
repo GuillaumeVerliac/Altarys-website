@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Altarys Capital</title>
   <link rel="icon" href="logo.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary-color: #0055cc;
-      --secondary-color: #4b0082;
+      --primary-color: #94b3ff;
+      --secondary-color: #a080ff;
       --background-color: #0b0d12;
-      --text-color: #ffffff;
+      --text-color: #e0e0e0;
     }
 
     *, *::before, *::after {
@@ -70,7 +70,6 @@
       color: var(--primary-color);
     }
 
-    /* Burger menu button */
     .burger {
       display: none;
       flex-direction: column;
@@ -85,14 +84,12 @@
       transition: 0.4s;
     }
 
-    /* Mobile menu */
     .mobile-nav {
       display: none;
       position: absolute;
       top: 80px;
       right: 0;
       background-color: var(--background-color);
-      text-decoration: none;
       width: 100%;
       flex-direction: column;
       align-items: center;
@@ -106,7 +103,7 @@
       border-bottom: 1px solid #222;
       margin: 0;
       color: var(--text-color);
-      text-decoration: none; /* <- retire le soulignement */
+      text-decoration: none;
       font-weight: 600;
       transition: background 0.3s ease;
     }
@@ -122,7 +119,6 @@
       align-items: stretch;
       justify-content: center;
     }
-    
 
     .split {
       display: flex;
@@ -164,11 +160,6 @@
       opacity: 0;
       transform: translateY(40px);
       transition: all 1s ease-out;
-    }
-
-    .section2-full.animate-up {
-      transform: translateY(40px);
-      opacity: 0;
     }
 
     .section2-full.animate-up.visible {
@@ -238,7 +229,7 @@
     }
 
     footer {
-      background-color: var(--background-color, #000);
+      background-color: var(--background-color);
       color: #ccc;
       scroll-snap-align: end;
       font-size: 0.875rem;
@@ -256,7 +247,7 @@
 
     .footer-container p {
       margin: 0;
-      text-align: center
+      text-align: center;
     }
 
     .footer-container strong {
@@ -271,62 +262,52 @@
       transition: color 0.2s ease;
     }
 
-      .mobile-only {
+    .mobile-only {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
         display: none;
       }
-      
-      @media (max-width: 768px) {
-        .desktop-only {
-          display: none;
-        }
-        .mobile-only {
-          display: block;
-        }
+      .mobile-only {
+        display: block;
+      }
       nav {
         display: none;
       }
-
       .burger {
         display: flex;
       }
-
       .split {
         flex-direction: column;
       }
-
       .split .content,
       .split .background {
         width: 100%;
         height: auto;
         padding: 20px;
       }
-
       .section2-full {
         padding: 40px 5%;
       }
-
       .cta-links {
         justify-content: center;
       }
-        
-        .section1 h1 {
-  font-size: 2em;
-}
-        .section1 {
-  padding-top: 120px; /* ou la valeur de ton choix */
-}
-        .section3 {
-  padding-bottom: 120px; /* ou la valeur de ton choix */
-}
-.section1 h2 {
-  font-size: 1.2em;
-}
-.section2 h2 {
-  font-size: 1.6em;
-} 
-.section3 h2 {
-  font-size: 1.6em;
-}   
+      .section1 h1 {
+        font-size: 2em;
+      }
+      .section1 {
+        padding-top: 120px;
+      }
+      .section3 {
+        padding-bottom: 120px;
+      }
+      .section1 h2,
+      .section2 h2,
+      .section3 h2 {
+        font-size: 1.6em;
+      }
     }
   </style>
 </head>
@@ -361,16 +342,162 @@
         <div class="content animate-left justify">
           <h1>ALTARYS Capital</h1>
           <h2>Produits structurés sur crypto-actifs, conçus pour les professionnels de la gestion patrimoniale.</h2>
-          <p>Maîtrisez la volatilité des crypto-marchés avec des solutions structurées à la hauteur des attentes de vos clients.</p>
-          <p>Autocalls, capital garanti, primes de volatilité ou stratégies sur-mesure : offrez l’ingénierie des produits traditionnels appliquée aux actifs numériques.</p>
-          <blockquote style="font-style: italic; color: #ccc; margin: 20px 0;">
-            “Construire plutôt que parier, c'est convertir la volatilité en stratégie.”
-          </blockquote>
-          <h2>Pour qui ?</h2>
+          <p>Maîtrisez la volatilité des crypto-marchés avec des <span style="color:#94b3ff;">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
+          <p><strong>Autocalls</strong>, capital garanti, primes de volatilité ou stratégies sur-mesure : offrez l’ingénierie des produits traditionnels appliquée aux actifs numériques.</p>
+      
+          <p class="quote">“<span>Construire</span> plutôt que parier, c'est convertir la volatilité en <span>stratégie</span>.”</p>
+      
+          <p class="section-title">Pour qui ?</p>
           <p>Family offices, banques privées, gestionnaires de fortune, asset managers indépendants.</p>
-          <h2>Ce que nous faisons :</h2>
+      
+          <p class="section-title">Ce que nous faisons :</p>
           <p>Nous structurons des produits sur crypto-actifs, vous gardez la relation client et le contrôle.</p>
-          <p>Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer des solutions robustes, transparentes et performantes.</p>
+          <p>Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer des <span style="color:#94b3ff;">solutions robustes, transparentes et performantes</span>.</p>
+      
+          <div class="cta-links">
+            <a href="apropos.html">Découvrir notre approche</a>
+          </div>
+        </div>
+        <div class="background background1"></div>
+      </div>
+    </section>
+
+    <!-- Section 2 (plein écran, sans image, animée bottom->top) -->
+    <section class="section2">
+      <div class="section2-full animate-up">
+        <h2>Nos produits structurés sur crypto-actifs</h2>
+        <!-- Version desktop -->
+        <p class="desktop-only">
+          Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
+        </p>
+        <p class="desktop-only">
+          Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
+        </p>
+        <p class="desktop-only">
+          Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
+        </p>
+      
+        <!-- Version mobile -->
+        <p class="mobile-only">
+          Nous structurons des produits crypto adaptés à vos objectifs : rendement, protection du capital, diversification. Chaque solution est pensée sur mesure.
+        </p>
+        <p class="mobile-only">
+          Bénéficiez de notre double expertise financière et crypto pour proposer à vos clients des produits performants et maîtrisés.
+        </p>
+        <div class="cta-links">
+          <a href="solutions.html#selection">Parcourir la sélection</a>
+          <a href="contact.html">Créer une solution sur-mesure</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section3">
+      <div class="split">
+        <div class="background background3"></div>
+        <div class="content animate-right justify">
+          <h2>Comprendre les marchés, anticiper les tendances</h2>
+          <!-- Version desktop -->
+          <p class="desktop-only">
+            Naviguer dans l’univers complexe des crypto-actifs nécessite une information fiable, actualisée et pertinente. C’est pourquoi notre espace <strong>Recherche</strong> centralise des analyses approfondies pour décrypter les dynamiques de marché : rapports mensuels, suivi de la volatilité, mouvements techniques clés, et signaux avant-coureurs des tendances de fond.
+          </p>
+          <p class="desktop-only">
+            Que vous soyez un acteur en veille stratégique ou en pleine structuration d’un produit, nos contenus vous offrent une boussole claire dans un environnement volatil. Grâce à une approche mêlant rigueur quantitative et lecture macroéconomique, nous vous aidons à prendre des décisions fondées, avec un temps d’avance.
+          </p>
+          <p class="desktop-only">
+            Intégrez nos insights à vos réflexions pour affiner vos allocations, identifier les fenêtres d’opportunité, et valoriser votre proposition auprès de vos clients. Accédez à l’intelligence de marché pensée pour les professionnels de la structuration crypto.
+          </p>
+        
+          <!-- Version mobile -->
+          <p class="mobile-only">
+            Pour structurer des produits crypto efficaces, vous avez besoin d’analyses claires et à jour. Notre espace Recherche vous fournit les repères essentiels.
+          </p>
+          <p class="mobile-only">
+            Rapports mensuels, signaux techniques, lecture macro : des contenus pensés pour anticiper les tendances et décider avec précision.
+          </p>
+          <div class="cta-links">
+            <a href="recherche.html">Accéder à la recherche</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <p>
+        <strong>Altarys Capital</strong><br>
+        4 rue Hérold, 75001 Paris – Tél : +33 6 17 43 52 00<br>
+        &copy; 2025 Altarys Capital — Plateforme indépendante dédiée aux produits structurés sur crypto-actifs<br>
+        Toutes les informations fournies sur cette plateforme le sont à titre informatif et ne constituent en aucun cas une recommandation financière, juridique ou fiscale.<br>
+        <a href="javascript:void(0)">Mentions légales</a> | <a href="javascript:void(0)">Politique de confidentialité</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
+      observer.observe(el);
+    });
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
+  <header>
+    <img src="logo.png" alt="Logo Altarys Capital" />
+    <nav class="desktop-nav">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="recherche.html">Recherche</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </nav>
+    <div class="burger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="mobile-nav" id="mobileMenu">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <a href="recherche.html">Recherche</a>
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html">Nous contacter</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section 1 -->
+    <section class="section1">
+      <div class="split">
+        <div class="content animate-left justify">
+          <h1>ALTARYS Capital</h1>
+          <h2>Produits structurés sur crypto-actifs, conçus pour les professionnels de la gestion patrimoniale.</h2>
+          <p>Maîtrisez la volatilité des crypto-marchés avec des <span style="color:#94b3ff;">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
+          <p><strong>Autocalls</strong>, capital garanti, primes de volatilité ou stratégies sur-mesure : offrez l’ingénierie des produits traditionnels appliquée aux actifs numériques.</p>
+      
+          <p class="quote">“<span>Construire</span> plutôt que parier, c'est convertir la volatilité en <span>stratégie</span>.”</p>
+      
+          <p class="section-title">Pour qui ?</p>
+          <p>Family offices, banques privées, gestionnaires de fortune, asset managers indépendants.</p>
+      
+          <p class="section-title">Ce que nous faisons :</p>
+          <p>Nous structurons des produits sur crypto-actifs, vous gardez la relation client et le contrôle.</p>
+          <p>Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer des <span style="color:#94b3ff;">solutions robustes, transparentes et performantes</span>.</p>
+      
           <div class="cta-links">
             <a href="apropos.html">Découvrir notre approche</a>
           </div>
