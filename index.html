@@ -2,240 +2,185 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Altarys Capital</title>
   <link rel="icon" href="logo.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
-    :root {
-      --primary-color: #0055cc;
-      --secondary-color: #4b0082;
-      --background-color: #0b0d12;
-      --text-color: #ffffff;
+    :root{
+      --primary-color:#72abdd;
+      --secondary-color:#4b0082;
+      --background-color:#0b0d12;
+      --text-color:#ffffff;
+      --muted-text:#cfd6df;
+
+      --header-h:80px;
+      --footer-h:100px;
+      --container-x:10%;
     }
 
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* Reset & base */
+    *,*::before,*::after{ box-sizing: border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family:'Inter', sans-serif;
+      background:var(--background-color);
+      color:var(--text-color);
+      overflow-x:hidden;
     }
 
-    html, body {
-      height: 100%;
+    /* Typo */
+    h1, h2{ color:var(--primary-color); margin-bottom:0.6em; line-height:1.15; }
+    h1{ font-size:clamp(2rem, 2.5vw, 3rem); letter-spacing:.2px; }
+    h2{ font-size:clamp(1.2rem, 2.2vw, 2rem); }
+    p { font-size:clamp(1rem, 1.05vw, 1.1rem); line-height:1.65; color:var(--muted-text); max-width:900px; margin-bottom:1rem; }
+    .justify{ text-align:justify; }
+    a { color:inherit; text-decoration:none; }
+    .accent{ color:var(--primary-color); }
+
+    /* Header (référence visuelle) */
+    header{
+      position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
+      background: linear-gradient(to bottom, rgba(11,13,18,0.85), rgba(11,13,18,0.55));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 var(--container-x);
+    }
+    header img{ height:50px; }
+    nav{ display:flex; align-items:center; gap:28px; }
+    nav a{
+      font-weight:600; padding:10px 0; position:relative; opacity:.95;
+      transition:opacity .2s ease, color .2s ease, transform .2s ease;
+    }
+    nav a::after{
+      content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
+      border-radius:2px; background:linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition:width .25s ease;
+    }
+    nav a:hover{ color:var(--primary-color); opacity:1; transform:translateY(-1px); }
+    nav a:hover::after{ width:100%; }
+
+    /* Conteneur principal avec snap */
+    main{
       scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      color: var(--text-color);
+      overscroll-behavior-y: contain;
     }
 
-    body {
-      overflow-y: scroll;
-    }
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      height: 80px;
-      background-color: var(--background-color);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10%;
-      border-bottom: 1px solid #222;
-    }
-
-    header img {
-      height: 50px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary-color);
-    }
-
-    /* Burger menu button */
-    .burger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .burger span {
-      height: 3px;
-      width: 25px;
-      background: white;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    /* Mobile menu */
-    .mobile-nav {
-      display: none;
-      position: absolute;
-      top: 80px;
-      right: 0;
-      background-color: var(--background-color);
-      text-decoration: none;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-      border-top: 1px solid #222;
-    }
-
-    .mobile-nav a {
-      padding: 15px 0;
-      width: 100%;
-      text-align: center;
-      border-bottom: 1px solid #222;
-      margin: 0;
-      color: var(--text-color);
-      text-decoration: none; /* <- retire le soulignement */
-      font-weight: 600;
-      transition: background 0.3s ease;
-    }
-
-    .mobile-nav.show {
-      display: flex;
-    }
-
-    section {
-      height: 100vh;
+    /* Sections plein écran (moins header) */
+    section{
+      height: calc(100vh - var(--header-h));
       scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display:flex; align-items:stretch; justify-content:center;
+      padding-top: var(--header-h);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Grille */
+    .split{ display:flex; flex:1; width:100%; }
+    .split .content{
+      flex:1; display:flex; flex-direction:column; justify-content:center;
+      padding:60px var(--container-x);
+      gap:8px; /* <-- espacement vertical réduit globalement */
+      opacity:0; transition: all 1s ease-out;
+      min-width:0;
+    }
+    .split .background{
+      flex:1; background-size:cover; background-position:center; min-width:0;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .background1{ background-image:url('fondetoile.jpg'); }
+    .background3{ background-image:url('fondetoile2.jpg'); }
+
+    /* Section 1 : réglages fins d'espacement/tailles */
+    .section1 .content p{ margin-bottom: 0.5rem; } /* <-- paragraphes plus serrés */
+    .section1 blockquote.quote{
+      margin: 6px 0 4px;
+      padding: 10px 14px;
+      border-left: 4px solid var(--primary-color);
+      color: #d8dde5;
+      font-style: italic;
+      font-size: 0.95em; /* <-- citation un peu plus petite */
+    }
+    .section1 .minor{
+      margin-top: 6px;
+      color: #d8dde5;
+      font-weight: 600;
+      font-size: clamp(0.9rem, 1vw, 1.05rem); /* <-- beaucoup plus petit */
+      letter-spacing: .02em;
+    }
+
+    /* Section 2 contenu */
+    .section2-full{
       display: flex;
-      align-items: stretch;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      padding: 60px var(--container-x);
+      text-align: justify;
+      min-width: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+    .section2-full h2 {
+      margin-bottom: 2rem; /* Espacement sous le titre */
     }
     
-
-    .split {
-      display: flex;
-      flex: 1;
-      width: 100%;
+    .section2-full p {
+      margin-bottom: 1.5rem; /* Augmenter l'espacement entre les paragraphes */
     }
-
-    .split .content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 10%;
-      opacity: 0;
-      transition: all 1s ease-out;
+    
+    /* Espacer les boutons (cta-links) */
+    .cta-links {
+      margin-top: 2rem; /* Augmenter l'espacement entre les éléments du CTA */
     }
-
-    .split .background {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .background1 {
-      background-image: url('fondetoile.jpg');
-    }
-
-    .background3 {
-      background-image: url('fondetoile2.jpg');
-    }
-
-    .section2-full {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 60px 10%;
-      text-align: justify;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease-out;
-    }
-
-    .section2-full.animate-up {
-      transform: translateY(40px);
-      opacity: 0;
-    }
+    
+    .cta-links a {
+      margin-top: 1rem; /* Espacement entre les boutons dans le CTA */
+}
 
     .section2-full.animate-up.visible {
       transform: translateY(0);
       opacity: 1;
     }
 
-    h1, h2 {
-      color: var(--primary-color);
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 3em;
-    }
-
-    h2 {
-      font-size: 2.2em;
-    }
-
-    p {
-      max-width: 900px;
-      margin-bottom: 20px;
-      font-size: 1.1em;
-      color: #ccc;
-    }
-
-    .justify {
-      text-align: justify;
-    }
-
-    .cta-links {
-      margin-top: 30px;
+     /* Grille dans section 2 pour juxtaposé les éléments */
+    .split-content {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-direction: row; /* Changer la direction en ligne */
+      gap: 60px; /* Espacement horizontal entre les éléments */
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: space-between; /* Distribuer les éléments horizontalement */
+    }
+    
+    .content-item {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 33%; /* Pour répartir l'espace de manière égale */
     }
 
-    .cta-links a {
-      padding: 12px 25px;
-      border: 2px solid var(--primary-color);
-      border-radius: 999px;
-      color: var(--primary-color);
-      background-color: transparent;
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
+    /* CTA Section (général – conservé pour sections 1/2/3 si besoin) */
+    .cta-links{ margin-top:.7rem; display:flex; gap:16px; flex-wrap:wrap; }
+    .cta-links a{
+      padding:10px 20px; border:2px solid var(--primary-color); border-radius:999px;
+      color:var(--primary-color); font-weight:600; transition: all .25s ease; white-space:nowrap;
     }
+    .cta-links a:hover{ border-color:var(--secondary-color); color:var(--secondary-color); }
 
-    .cta-links a:hover {
-      border-color: var(--secondary-color);
-      color: var(--secondary-color);
-    }
-
-    .animate-left {
-      transform: translateX(-40px);
-    }
-
-    .animate-right {
-      transform: translateX(40px);
-    }
-
+    /* Animations */
+    .animate-left{ transform: translateX(-40px); }
+    .animate-right{ transform: translateX(40px); }
     .visible.animate-left,
-    .visible.animate-right {
-      transform: translateX(0);
-      opacity: 1;
-    }
+    .visible.animate-right{ transform: translateX(0); opacity:1; }
 
     footer {
       background-color: var(--background-color, #000);
@@ -270,88 +215,19 @@
       cursor: pointer;
       transition: color 0.2s ease;
     }
-
-      .mobile-only {
-        display: none;
-      }
-      
-      @media (max-width: 768px) {
-        .desktop-only {
-          display: none;
-        }
-        .mobile-only {
-          display: block;
-        }
-      nav {
-        display: none;
-      }
-
-      .burger {
-        display: flex;
-      }
-
-      .split {
-        flex-direction: column;
-      }
-
-      .split .content,
-      .split .background {
-        width: 100%;
-        height: auto;
-        padding: 20px;
-      }
-
-      .section2-full {
-        padding: 40px 5%;
-      }
-
-      .cta-links {
-        justify-content: center;
-      }
-        
-        .section1 h1 {
-  font-size: 2em;
-}
-        .section1 {
-  padding-top: 120px; /* ou la valeur de ton choix */
-}
-        .section3 {
-  padding-bottom: 120px; /* ou la valeur de ton choix */
-}
-.section1 h2 {
-  font-size: 1.2em;
-}
-.section2 h2 {
-  font-size: 1.6em;
-} 
-.section3 h2 {
-  font-size: 1.6em;
-}   
-    }
   </style>
 </head>
+
 <body>
   <header>
     <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav class="desktop-nav">
+    <nav aria-label="Navigation principale">
       <a href="index.html">Accueil</a>
       <a href="solutions.html">Nos solutions</a>
       <a href="recherche.html">Recherche</a>
       <a href="apropos.html">À propos</a>
       <a href="contact.html">Nous contacter</a>
     </nav>
-    <div class="burger" onclick="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="mobile-nav" id="mobileMenu">
-      <a href="index.html">Accueil</a>
-      <a href="solutions.html">Nos solutions</a>
-      <a href="recherche.html">Recherche</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Nous contacter</a>
-    </div>
   </header>
 
   <main>
@@ -359,55 +235,52 @@
     <section class="section1">
       <div class="split">
         <div class="content animate-left justify">
-          <h1>Altarys Capital</h1>
-          <h2><em>Construire plutôt que parier,</em> c'est convertir la volatilité en stratégie.</h2>
-          <!-- Version desktop -->
-          <p class="desktop-only">
-            Que vous soyez gestionnaire de fortune, banque privée, family office ou asset manager indépendant, vous pouvez aujourd’hui offrir à vos clients des produits structurés sur crypto-actifs aussi maîtrisés que ceux des marchés traditionnels.
-          </p>
-          <p class="desktop-only">
-            Altarys Capital est votre partenaire technologique pour concevoir ces instruments sans en assumer la complexité.
-          </p>
-          <p class="desktop-only">
-            Vous gardez le contrôle, nous fournissons l’intelligence.
-          </p>
-          <!-- Version mobile -->
-          <p class="mobile-only">
-            Proposez à vos clients des produits structurés sur crypto-actifs avec la même maîtrise que sur les marchés traditionnels, sans gérer la complexité technique.
-          </p>
-          <p class="mobile-only">
-            Altarys Capital vous fournit l’intelligence et les outils pour structurer efficacement, tout en gardant le contrôle de la relation client.
-          </p>
-          <div class="cta-links">
-            <a href="apropos.html">Découvrez Altarys</a>
+          <h1>ALTARYS Capital</h1>
+          <p><span class="accent">Produits structurés sur crypto-actifs</span>, conçus pour les professionnels de la gestion patrimoniale. Maîtrisez la volatilité des crypto-marchés avec des <span class="accent">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
+          <p>Autocalls, capital garanti ou stratégies sur-mesure&nbsp;: offrez <span class="accent">l’ingénierie des produits traditionnels appliquée aux actifs numériques</span>.</p>
+          <blockquote class="quote"><span class="accent">Construire</span> plutôt que parier, c'est convertir la volatilité en <span class="accent">stratégie.</span></blockquote>
+          <h2 class="minor">Pour qui&nbsp;?</h2>
+          <p>Family offices, banques privées, et asset managers indépendants.</p>
+          <h2 class="minor">Ce que nous faisons&nbsp;:</h2>
+          <p>Nous structurons des produits sur crypto-actifs, vous gardez la relation client et le contrôle. Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer <span class="accent">des solutions robustes, transparentes et performantes.</span></p>
+          <div class="cta-links" style="margin-top:6px;">
+            <a href="apropos.html">Découvrir Altarys</a>
           </div>
         </div>
         <div class="background background1"></div>
       </div>
     </section>
 
-    <!-- Section 2 (plein écran, sans image, animée bottom->top) -->
-    <section class="section2">
-      <div class="section2-full animate-up">
+    <!-- Section 2 -->
+     <section class="section2">
+      <div class="section2-full animate-up visible">
         <h2>Nos produits structurés sur crypto-actifs</h2>
-        <!-- Version desktop -->
-        <p class="desktop-only">
-          Chez Altarys, nous concevons avec vous des produits structurés sur mesure, adaptés aux spécificités des marchés numériques. Autocalls à déclenchement conditionnel, stratégies de volatility harvesting, produits à capital garanti : chaque structure est pensée pour répondre à vos contraintes de rendement, de risque et de liquidité.
-        </p>
-        <p class="desktop-only">
-          Nos solutions s’inscrivent dans des logiques d’investissement précises : générer du rendement dans des marchés plats ou volatils, sécuriser une part du capital dans un environnement incertain, ou encore diversifier efficacement un portefeuille exposé au secteur crypto. Chaque produit est modélisé avec rigueur et calibré selon vos objectifs.
-        </p>
-        <p class="desktop-only">
-          Notre équipe allie expertise en structuration financière traditionnelle et compréhension fine des spécificités crypto. Nous mettons cette double compétence au service d’une ingénierie agile, proactive et sur-mesure, pour faire de chaque structuration une opportunité stratégique.
-        </p>
-      
-        <!-- Version mobile -->
-        <p class="mobile-only">
-          Nous structurons des produits crypto adaptés à vos objectifs : rendement, protection du capital, diversification. Chaque solution est pensée sur mesure.
-        </p>
-        <p class="mobile-only">
-          Bénéficiez de notre double expertise financière et crypto pour proposer à vos clients des produits performants et maîtrisés.
-        </p>
+        <div class="split-content">
+          <div class="content-item">
+            <p>
+              Chez <span class="accent">Altarys</span>, nous concevons à vos côtés des produits structurés sur mesure, adaptés aux dynamiques spécifiques des marchés numériques : Autocalls à déclenchement conditionnel, Stratégies de volatility harvesting, Produits à capital garanti, Ou encore solutions sur-mesure.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;Chaque structure est pensée pour <span class="accent">répondre précisément à vos objectifs de rendement, de gestion du risque et de liquidité</span>.&nbsp;»
+            </blockquote>
+          </div>
+          <div class="content-item">
+            <p>
+              Nos solutions s’intègrent dans des stratégies définies : Générer du <span class="accent">rendement dans des marchés plats ou volatils</span>, Sécuriser une partie du capital dans un <span class="accent">environnement incertain</span>, <span class="accent">Diversifier intelligemment</span> un portefeuille exposé aux crypto-actifs.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;Chaque produit est modélisé avec rigueur et calibré sur mesure, <span class="accent">selon vos contraintes et votre vision</span>.&nbsp;»
+            </blockquote>
+          </div>
+          <div class="content-item">
+            <p>
+              Notre équipe combine une expertise pointue en <span class="accent">structuration financière traditionnelle</span> avec une compréhension approfondie des dynamiques des <span class="accent">marchés crypto</span>. Cette double compétence nous permet de naviguer dans les enjeux financiers classiques tout en anticipant les particularités des actifs numériques.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;<span class="accent">Ce savoir-faire croisé nous permet de proposer une ingénierie agile et personnalisée</span> pour transformer chaque structuration en avantage stratégique.&nbsp;»
+            </blockquote>
+          </div>
+        </div>
         <div class="cta-links">
           <a href="solutions.html#selection">Parcourir la sélection</a>
           <a href="contact.html">Créer une solution sur-mesure</a>
@@ -415,29 +288,17 @@
       </div>
     </section>
 
-    <!-- Section 3 -->
+    <!-- Section 2 -->
     <section class="section3">
       <div class="split">
         <div class="background background3"></div>
         <div class="content animate-right justify">
           <h2>Comprendre les marchés, anticiper les tendances</h2>
-          <!-- Version desktop -->
-          <p class="desktop-only">
-            Naviguer dans l’univers complexe des crypto-actifs nécessite une information fiable, actualisée et pertinente. C’est pourquoi notre espace <strong>Recherche</strong> centralise des analyses approfondies pour décrypter les dynamiques de marché : rapports mensuels, suivi de la volatilité, mouvements techniques clés, et signaux avant-coureurs des tendances de fond.
+          <p>
+            Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : <span class="accent">“Il faut une information fiable, précise et pertinente, constamment mise à jour.”</span> C’est pourquoi nous avons créé un espace <span class="accent">Recherche</span> dédié, conçu pour vous offrir une lecture approfondie des dynamiques de marché. Ce que vous y trouverez : Rapports mensuels de marché, analyses de la volatilité et des flux techniques, décryptage des mouvements clés, et signaux précurseurs des tendances de fond.
           </p>
-          <p class="desktop-only">
-            Que vous soyez un acteur en veille stratégique ou en pleine structuration d’un produit, nos contenus vous offrent une boussole claire dans un environnement volatil. Grâce à une approche mêlant rigueur quantitative et lecture macroéconomique, nous vous aidons à prendre des décisions fondées, avec un temps d’avance.
-          </p>
-          <p class="desktop-only">
-            Intégrez nos insights à vos réflexions pour affiner vos allocations, identifier les fenêtres d’opportunité, et valoriser votre proposition auprès de vos clients. Accédez à l’intelligence de marché pensée pour les professionnels de la structuration crypto.
-          </p>
-        
-          <!-- Version mobile -->
-          <p class="mobile-only">
-            Pour structurer des produits crypto efficaces, vous avez besoin d’analyses claires et à jour. Notre espace Recherche vous fournit les repères essentiels.
-          </p>
-          <p class="mobile-only">
-            Rapports mensuels, signaux techniques, lecture macro : des contenus pensés pour anticiper les tendances et décider avec précision.
+          <p>
+            Que vous soyez en veille active, en structuration d’un produit, ou en phase de recommandation client, nos analyses vous offrent <span class="accent">un temps d’avance dans un environnement incertain</span>. Nous combinons une <span class="accent">approche quantitative rigoureuse</span> avec une <span class="accent">lecture macroéconomique du marché</span> pour vous aider à prendre des décisions éclairées. Intégrez nos insights à vos réflexions pour ajuster vos allocations, identifier les fenêtres d’opportunité, et renforcer la pertinence de votre conseil client.
           </p>
           <div class="cta-links">
             <a href="recherche.html">Accéder à la recherche</a>
@@ -445,9 +306,8 @@
         </div>
       </div>
     </section>
-  </main>
 
-  <footer>
+   <footer>
     <div class="footer-container">
       <p>
         <strong>Altarys Capital</strong><br>
@@ -458,25 +318,19 @@
       </p>
     </div>
   </footer>
+  </main>
 
   <script>
+    // Animation d’apparition au scroll (sections/éléments)
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
 
     document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
       observer.observe(el);
     });
-
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    }
   </script>
 </body>
 </html>
