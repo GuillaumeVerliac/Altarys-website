@@ -103,6 +103,9 @@
     .from-bottom {
       transform: translateY(40px);
       background-color: transparent;
+      display: flex;
+      flex-direction: column; /* Empile le titre et les cartes verticalement */
+      align-items: center; /* Centre tout le contenu dans la section */
     }
 
     .visible {
@@ -129,6 +132,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
+    justify-items: center;
+    }
+    .center-card {
+      grid-column: span 2; /* Cette règle va faire en sorte que la troisième carte prenne la place du centre en s'étendant sur 2 colonnes */
+      justify-self: center; /* Assure que la carte est centrée dans sa zone */
     }
 
     .card {
@@ -546,6 +554,9 @@
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
     }
+  </script>
+</body>
+</html>
   </script>
 </body>
 </html>
