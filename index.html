@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Altarys Capital</title>
-  <link rel="icon" href="logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-   <style>
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
     :root{
       --primary-color:#72abdd;
       --secondary-color:#4b0082;
       --background-color:#0b0d12;
       --text-color:#ffffff;
       --muted-text:#cfd6df;
-      --card-bg : #111;
 
       --header-h:80px;
       --footer-h:100px;
@@ -22,26 +23,25 @@
 
     /* Reset & base */
     *,*::before,*::after{ box-sizing: border-box; margin:0; padding:0; }
- 
-    html, body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background-color);
-      background-image: url('fondetoile4.jpg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: var(--text-color);
-      height: 100%;
-      overflow-x: hidden;
+    html, body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family:'Inter', sans-serif;
+      background:var(--background-color);
+      color:var(--text-color);
+      overflow-x:hidden;
     }
 
-    body {
-      overflow-y: auto;
-    }
-    
+    /* Typo */
+    h1, h2{ color:var(--primary-color); margin-bottom:0.6em; line-height:1.15; }
+    h1{ font-size:clamp(2rem, 2.5vw, 3rem); letter-spacing:.2px; }
+    h2{ font-size:clamp(1.2rem, 2.2vw, 2rem); }
+    p { font-size:clamp(1rem, 1.05vw, 1.1rem); line-height:1.65; color:var(--muted-text); max-width:900px; margin-bottom:1rem; }
+    .justify{ text-align:justify; }
     a { color:inherit; text-decoration:none; }
     .accent{ color:var(--primary-color); }
 
+    /* Header (référence visuelle) */
     header{
       position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
       background: linear-gradient(to bottom, rgba(11,13,18,0.85), rgba(11,13,18,0.55));
@@ -58,16 +58,16 @@
       justify-content: center;
       margin-left: -375px; /* Décalage vers la gauche pour se rapprocher du logo */
     }
-    
+
     .altarys {
       color: #72abdd;  /* Bleu ciel */
     }
-    
+
     .altarys {
       font-size: 1.8rem;  /* Taille réduite pour "Altarys" */
       font-weight: bold;
     }
-    
+
     .capital {
       font-size: 1.8rem;  /* Taille réduite pour "Capital" */
       font-weight: normal;
@@ -89,146 +89,143 @@
     nav a:hover{ color:var(--primary-color); opacity:1; transform:translateY(-1px); }
     nav a:hover::after{ width:100%; }
 
-    main {
-      padding-top: 80px;
+    /* Conteneur principal avec snap */
+    main{
+      scroll-snap-type: y mandatory;
+      overscroll-behavior-y: contain;
     }
 
+    /* Sections plein écran (avec le header inclus dans la hauteur) */
     section {
-      padding: 60px 10%;
-      width: 100%;
-      opacity: 0;
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      height: 100vh; /* La section prend toute la hauteur de l'écran, y compris le header */
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding-top: var(--header-h); /* On applique le padding-top pour laisser de l'espace sous le header */
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
-    .from-bottom {
-      transform: translateY(40px);
-      background-color: transparent;
+    /* Grille */
+    .split{ display:flex; flex:1; width:100%; }
+    .split .content{
+      flex:1; display:flex; flex-direction:column; justify-content:center;
+      padding:60px var(--container-x);
+      gap:8px; /* <-- espacement vertical réduit globalement */
+      opacity:0; transition: all 1s ease-out;
+      min-width:0;
+    }
+    .split .background{
+      flex:1; background-size:cover; background-position:center; min-width:0;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .background1{ background-image:url('fondetoile.jpg'); }
+    .background3{ background-image:url('fondetoile2.jpg'); }
+
+    /* Section 1 : réglages fins d'espacement/tailles */
+    .section1 .content p{ margin-bottom: 0.5rem; } /* <-- paragraphes plus serrés */
+    .section1 blockquote.quote{
+      margin: 6px 0 4px;
+      padding: 10px 14px;
+      border-left: 4px solid var(--primary-color);
+      color: #d8dde5;
+      font-style: italic;
+      font-size: 0.95em; /* <-- citation un peu plus petite */
+    }
+    .section1 .minor{
+      margin-top: 6px;
+      color: #d8dde5;
+      font-weight: 600;
+      font-size: clamp(0.9rem, 1vw, 1.05rem); /* <-- beaucoup plus petit */
+      letter-spacing: .02em;
     }
 
-    .visible {
-      opacity: 1;
-      transform: none !important;
-    }
-
-    h2 {
-      font-size: 2.6em;
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 40px;
-      margin-top: 40px;
-    }
-    
-    h4 {
-      font-size: 2.6em;
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 40px;
-    }
-
-    .card {
-      background-color: var(--card-bg);
-      padding: 30px;
-      border-radius: 16px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    /* Section 2 contenu */
+    .section2-full{
       display: flex;
       flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 30px rgba(0, 85, 204, 0.15);
-    }
-
-    .card h3 {
-      color: var(--primary-color);
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #ccc;
-      font-size: 0.95em;
-      margin-bottom: 20px;
-    }
-
-    .card-button a,
-    .card-button button {
-      display: inline-block;
-      min-width: 180px;
-      padding: 12px 20px;
-      font-size: 0.9em;
-      font-weight: 700;
-      background: transparent;
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-      border-radius: 999px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: center;
-    }
-
-    .card-button a:hover,
-    .card-button button:hover {
-      color: var(--secondary-color);
-      border-color: var(--secondary-color);
-    }
-
-    .example-section {
-      display: none;
-      opacity: 0;
-      transform: translateY(20px);
-      background-color: rgba(11, 13, 18, 0.95);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .example-section.show {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    ul {
-      margin: 16px 0 32px 40px;
-      color: #ccc;
-    }
-
-    p {
-      text-align: justify;
-      margin-bottom: 20px;
-    }
-
-    .button-group {
-      margin-top: 40px;
-      display: flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      padding: 60px var(--container-x);
+      text-align: justify;
+      min-width: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+    .section2-full h2 {
+      margin-bottom: 2rem; /* Espacement sous le titre */
     }
 
-    .scroll-top-button,
-    .cta-contact-button {
-      background: transparent;
-      color: var(--primary-color);
-      font-weight: bold;
-      border: 2px solid var(--primary-color);
-      border-radius: 30px;
-      padding: 10px 28px;
-      font-size: 0.95em;
-      transition: all 0.3s ease;
-      text-decoration: none;
+    .section2-full p {
+      margin-bottom: 1.5rem; /* Augmenter l'espacement entre les paragraphes */
     }
 
-    .scroll-top-button:hover,
-    .cta-contact-button:hover {
-      background: var(--primary-color);
-      color: #000;
+    /* Espacer les boutons (cta-links) */
+    .cta-links {
+      margin-top: 2rem; /* Augmenter l'espacement entre les éléments du CTA */
     }
+
+    .cta-links a {
+      margin-top: 1rem; /* Espacement entre les boutons dans le CTA */
+    }
+
+    .section2-full.animate-up.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+     /* Grille dans section 2 pour juxtaposé les éléments */
+    /* Section 2 – conteneur sans gap pour une vraie symétrie */
+    .section2 .split-content {
+      display: flex;
+      flex-direction: row;
+      gap: 0; /* ⬅ supprime l'espace qui casse la symétrie */
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: flex-start; /* ⬅ plus de space-between */
+    }
+
+
+    /* Section 2 – colonnes avec padding identique de part et d'autre des barres */
+    .section2 .content-item {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      flex: 1 1 0;   /* 3 colonnes de largeur égale */
+      min-width: 0;
+      padding: 0 25px; /* même espace à gauche et à droite des barres */
+    }
+
+
+    /* Barre et équilibrage pour les colonnes du milieu et de droite */
+    .section2 .content-item:not(:first-child) {
+      border-left: 2px solid white;
+      padding-left: 20px; /* espace à gauche de la barre */
+    }
+
+    /* Réduit le padding droit des colonnes du milieu pour équilibrer */
+    .section2 .content-item:not(:last-child) {
+      padding-right: 20px;
+    }
+
+
+    /* CTA Section (général – conservé pour sections 1/2/3 si besoin) */
+    .cta-links{ margin-top:.7rem; display:flex; gap:16px; flex-wrap:wrap; }
+    .cta-links a{
+      padding:10px 20px; border:2px solid var(--primary-color); border-radius:999px;
+      color:var(--primary-color); font-weight:600; transition: all .25s ease; white-space:nowrap;
+    }
+    .cta-links a:hover{ border-color:var(--secondary-color); color:var(--secondary-color); }
+
+    /* Animations */
+    .animate-left{ transform: translateX(-40px); }
+    .animate-right{ transform: translateX(40px); }
+    .visible.animate-left,
+    .visible.animate-right{ transform: translateX(0); opacity:1; }
 
     footer {
       background-color: var(--background-color, #000);
@@ -265,6 +262,7 @@
     }
   </style>
 </head>
+
 <body>
     <header>
       <img src="logo.png" alt="Logo Altarys Capital" />
@@ -280,223 +278,85 @@
         <a href="contact.html">Nous contacter</a>
       </nav>
     </header>
+
+
   <main>
-    <section class="from-bottom">
-      <h4>Nos solutions</h4>
-      <div class="grid">
-        <div class="card">
-          <h3>Stratégie Capital Garanti</h3>
-          <p>Structure à échéance fixe assurant 100% du capital tout en captant<br>
-          une partie de la performance crypto.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('capitalgaranti')">Voir sur un exemple</button>
+    <!-- Section 1 -->
+    <section class="section1">
+      <div class="split">
+        <div class="content animate-left justify">
+          <h1>ALTARYS Capital</h1>
+          <p><span class="accent">Produits structurés sur crypto-actifs</span>, conçus pour les professionnels de la gestion patrimoniale. Maîtrisez la volatilité des crypto-marchés avec des <span class="accent">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
+          <blockquote class="quote"><span class="accent">Construire</span> plutôt que parier, c'est convertir la volatilité en <span class="accent">stratégie</span>.</blockquote>
+          <h2 class="minor">Pour qui&nbsp;?</h2>
+          <p>Family offices, banques privées, et asset managers indépendants.</p>
+          <h2 class="minor">Ce que nous faisons&nbsp;:</h2>
+          <p>Nous structurons des produits sur crypto-actifs, vous gardez la relation client et le contrôle. Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer <span class="accent">des solutions robustes, transparentes et performantes.</span></p>
+          <div class="cta-links" style="margin-top:6px;">
+            <a href="apropos.html">Découvrir Altarys</a>
           </div>
         </div>
-        <div class="card">
-          <h3>Stratégie Autocall</h3>
-          <p>Structure avec coupons mensuels conditionnels et possibilité de remboursement anticipé.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('autocall')">Voir sur un exemple</button>
+        <div class="background background1"></div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+     <section class="section2">
+      <div class="section2-full animate-up">
+        <h2>Nos produits structurés sur crypto-actifs</h2>
+        <div class="split-content">
+          <div class="content-item">
+            <p>
+              Chez <span class="accent">Altarys</span>, nous concevons à vos côtés des produits structurés sur mesure, adaptés aux dynamiques spécifiques des marchés numériques : Autocalls à déclenchement conditionnel, Stratégies de volatility harvesting, Produits à capital garanti, Ou encore solutions sur-mesure.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;Chaque structure est pensée pour <span class="accent">répondre précisément à vos objectifs de rendement, de gestion du risque et de liquidité</span>.&nbsp;»
+            </blockquote>
+          </div>
+          <div class="content-item">
+            <p>
+              Nos solutions s’intègrent dans des stratégies définies : Générer du <span class="accent">rendement dans des marchés plats ou volatils</span>, Sécuriser une partie du capital dans un <span class="accent">environnement incertain</span>, <span class="accent">Diversifier intelligemment</span> un portefeuille exposé aux crypto-actifs.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;Chaque produit est modélisé avec rigueur et calibré sur mesure, <span class="accent">selon vos contraintes et votre vision</span>.&nbsp;»
+            </blockquote>
+          </div>
+          <div class="content-item">
+            <p>
+              Notre équipe combine une expertise pointue en <span class="accent">structuration financière traditionnelle</span> et une compréhension approfondie des <span class="accent">marchés crypto</span>. Cette double compétence nous permet de naviguer dans les enjeux financiers classiques en anticipant les particularités des actifs numériques.
+            </p>
+            <blockquote class="quote">
+              «&nbsp;<span class="accent">Ce savoir-faire croisé nous permet de proposer une ingénierie agile et personnalisée</span> pour transformer chaque structuration en avantage stratégique.&nbsp;»
+            </blockquote>
           </div>
         </div>
-        <div class="card">
-          <h3>Stratégie Hybride Multi-Crypto</h3>
-          <p>Exposition croisée à deux cryptos : capital indexé à l’une, coupons indéxés aux performances de l’autre.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('hybride')">Voir sur un exemple</button>
-          </div>
+        <div class="cta-links">
+          <a href="solutions.html#selection">Parcourir la sélection</a>
+          <a href="contact.html">Créer une solution sur-mesure</a>
         </div>
-        <div class="card">
-          <h3>Stratégie Prime de Volatilité</h3>
-          <p>Structure vendant des options pour capter la prime de volatilité tout en<br>
-          contrôlant le risque de marché crypto.</p>
-          <div class="card-button">
-            <button onclick="toggleDetail('volatility')">Voir sur un exemple</button>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Stratégie sur mesure</h3>
-          <p>Solutions personnalisées selon vos objectifs : rendement, protection, exposition ciblée.</p>
-          <div class="card-button">
-            <a href="contact.html">Nous contacter</a>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section3">
+      <div class="split">
+        <div class="background background3"></div>
+        <div class="content animate-right justify">
+          <h2>Comprendre les marchés, anticiper les tendances</h2>
+          <p>
+            Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : <span class="accent">“Il faut une information fiable, précise et pertinente, constamment mise à jour.”</span> C’est pourquoi nous avons créé un espace <span class="accent">Recherche</span> dédié, conçu pour vous offrir une lecture approfondie des dynamiques de marché. Ce que vous y trouverez : Rapports mensuels de marché, analyses de la volatilité et des flux techniques, décryptage des mouvements clés, et signaux précurseurs des tendances de fond.
+          </p>
+          <p>
+            Que vous soyez en veille active, en structuration d’un produit, ou en phase de recommandation client, nos analyses vous offrent <span class="accent">un temps d’avance dans un environnement incertain</span>. Nous combinons une <span class="accent">approche quantitative rigoureuse</span> avec une <span class="accent">lecture macroéconomique du marché</span> pour vous aider à prendre des décisions éclairées. Intégrez nos insights à vos réflexions pour ajuster vos allocations, identifier les fenêtres d’opportunité, et renforcer la pertinence de votre conseil client.
+          </p>
+          <div class="cta-links">
+            <a href="recherche.html">Accéder à la recherche</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="autocall" class="example-section">
-      <h2>Exemple de stratégie Autocall : Autocall Phoenix sur Ethereum (ETH)</h2>
-      <p>L’Autocall Phoenix est un produit structuré innovant, conçu pour offrir un rendement attractif tout en maîtrisant le risque sur des actifs volatils comme les cryptomonnaies. Il combine des coupons réguliers avec un mécanisme de remboursement anticipé, permettant à l’investisseur de bénéficier d’un retour sur investissement rapide en cas de stabilité ou de hausse modérée du marché. Ce type de produit se distingue par sa capacité à générer de la performance même dans des marchés peu directionnels.</p>
-    
-      <p>Chaque mois, un coupon est versé si l’actif sous-jacent reste au-dessus d’un seuil de performance défini, souvent entre 60 % et 80 % de son niveau initial. À partir d’un certain moment (par exemple, le troisième mois), le produit peut être rappelé automatiquement (autocall) si le cours de l’actif dépasse un niveau prédéterminé, généralement 100 %. Ce mécanisme d’autocall permet à l’investisseur de récupérer son capital et les coupons acquis sans attendre la maturité finale.</p>
-    
-      <p>À l’échéance, si le produit n’a pas été rappelé, le capital est intégralement remboursé tant que le sous-jacent ne franchit pas la barrière de protection. En cas de baisse marquée sous cette barrière, l’investisseur subit une perte proportionnelle. Grâce à cette structuration, l’Autocall Phoenix s’avère particulièrement pertinent pour des stratégies de portage opportunistes ou pour monétiser une conviction de marché latérale à légèrement haussière.</p>
-    
-      <h2>Illustration des scénarios</h2>
-      <p><strong>Sous-jacent :</strong> Ethereum (ETH)<br>
-        <strong>Durée :</strong> 12 mois<br>
-        <strong>Coupon :</strong> 2,5% mensuel si ETH ≥ 70%<br>
-        <strong>Autocall :</strong> mensuel dès M3 si ETH ≥ 100%<br>
-        <strong>Barrière protection :</strong> 60%</p>
-      <ul>
-        <li>ETH ≥ 100% au mois 3 → remboursement + coupons</li>
-        <li>ETH entre 60%-100% à maturité → capital remboursé à 100%</li>
-        <li>ETH < 60% à maturité → perte partielle du capital</li>
-      </ul>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario_1_autocall.png" alt="Scénario 1" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_2_autocall.png" alt="Scénario 2" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_3_autocall.png" alt="Scénario 3" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_4_autocall.png" alt="Scénario 4" style="width: 22%; border-radius: 8px;">
-      </div>
-      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-      <ul>
-        <li>Rendement élevé (jusqu’à 30%/an)</li>
-        <li>Protection du capital jusqu’à -40%</li>
-        <li>Remboursement anticipé dès le mois 3</li>
-        <li>Coupons versés même si le marché stagne</li>
-      </ul>
-      <h3 style="color: var(--primary-color);">Inconvénients</h3>
-      <ul>
-        <li>Capital à risque en cas de forte baisse d’ETH</li>
-        <li>Coupons non garantis</li>
-        <li>Pas de remboursement anticipé si ETH < 100%</li>
-      </ul>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="capitalgaranti" class="example-section">
-      <h2>Exemple de stratégie Capital Garanti : Performance Capée sur Bitcoin (BTC)</h2>
-      <p>La stratégie à capital garanti permet aux investisseurs d’exposer leur portefeuille à la performance potentielle d’un actif crypto, tout en conservant une garantie à 100% sur leur capital initial à maturité. C’est une solution idéale pour les profils prudents souhaitant accéder au marché des cryptomonnaies sans compromettre leur sécurité financière de base.</p>
-    
-      <p>Ce type de produit repose généralement sur l’achat d’une obligation zéro-coupon assurant la garantie en capital, couplée à l’achat d’options permettant de capter une partie de la hausse du sous-jacent. L’investisseur bénéficie ainsi d’un rendement potentiel plafonné, en échange d’une protection totale du capital à l’échéance.</p>
-    
-      <p>Dans l’univers crypto, cette structuration prend tout son sens : elle permet de s’exposer à un actif très volatil comme le Bitcoin, tout en éliminant le risque de perte en capital. C’est une porte d’entrée rassurante pour les institutions et les particuliers cherchant à investir dans les actifs numériques avec une approche rigoureuse et cadrée.</p>
-    
-      <h2>Illustration des scénarios</h2>
-      <p><strong>Sous-jacent :</strong> Bitcoin (BTC)<br>
-        <strong>Durée :</strong> 3 ans<br>
-        <strong>Participation :</strong> 80% de la hausse de BTC<br>
-        <strong>Capital garanti :</strong> 100% à maturité<br>
-        <strong>Plafond de performance :</strong> +40% maximum à échéance</p>
-      <ul>
-        <li>BTC +50% → gain plafonné à +40%</li>
-        <li>BTC +20% → gain de +16% (80% x 20%)</li>
-        <li>BTC -30% → capital remboursé à 100%</li>
-      </ul>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario_1_garanti.png" alt="Scénario 8" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_2_garanti.png" alt="Scénario 9" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_3_garanti.png" alt="Scénario 10" style="width: 30%; border-radius: 8px;">
-      </div>
-      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-      <ul>
-        <li>Protection intégrale du capital à maturité</li>
-        <li>Participation à la hausse des cryptos</li>
-        <li>Idéal pour les investisseurs prudents ou institutionnels</li>
-      </ul>
-      <h3 style="color: var(--primary-color);">Inconvénients</h3>
-      <ul>
-        <li>Plafonnement du rendement</li>
-        <li>Durée d’investissement souvent plus longue</li>
-        <li>Pas de gain en cas de performance neutre ou faible</li>
-      </ul>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="hybride" class="example-section">
-      <h2>Exemple de stratégie Hybride Multi-Crypto : BTC en capital, ETH en coupon</h2>
-      <p>La stratégie hybride combine l’exposition au capital d’une cryptomonnaie avec une distribution de coupons liée à la performance d’une autre. Cette approche croisée permet de diversifier les moteurs de performance et de tirer profit des comportements différenciés entre deux actifs du marché crypto.</p>
-    
-      <p>Dans cet exemple, le capital est exposé à l’évolution du Bitcoin (BTC) : à l’échéance, le remboursement dépendra du niveau final de BTC. En parallèle, des coupons mensuels peuvent être versés si Ethereum (ETH) dépasse un certain seuil, indépendamment de la performance du BTC. L’objectif est de capturer de la performance sur deux dynamiques de marché, tout en structurant un produit cohérent et lisible.</p>
-    
-      <p>Cette stratégie séduit particulièrement les investisseurs qui ont une vision partagée sur deux cryptomonnaies distinctes. Elle permet d’accroître les opportunités de rendement tout en optimisant l’utilisation du capital à travers une exposition différenciée. Une approche audacieuse mais réfléchie pour aller chercher du rendement intelligent sur plusieurs fronts.</p>
-    
-      <h2>Illustration des scénarios</h2>
-      <p><strong>Capital exposé à :</strong> Bitcoin (BTC)<br>
-        <strong>Coupons conditionnés à :</strong> Ethereum (ETH) ≥ 110%<br>
-        <strong>Durée :</strong> 12 mois<br>
-        <strong>Coupon :</strong> 1,8% mensuel si ETH ≥ 110%<br>
-        <strong>Barrière capital :</strong> 70% du niveau initial de BTC</p>
-      <ul>
-        <li>ETH ≥ 110% pendant 6 mois → 6 coupons versés (10,8%)</li>
-        <li>BTC ≥ 70% à l’échéance → capital remboursé à 100%</li>
-        <li>BTC < 70% à l’échéance → perte en capital liée à BTC</li>
-      </ul>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario_1_hybride.png" alt="Scénario 11" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_2_hybride.png" alt="Scénario 12" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_3_hybride.png" alt="Scénario 13" style="width: 30%; border-radius: 8px;">
-      </div>
-      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-      <ul>
-        <li>Exposition simultanée à deux cryptos majeures</li>
-        <li>Multiplication des sources de performance</li>
-        <li>Optimisation du rendement dans des marchés divergents</li>
-      </ul>
-      <h3 style="color: var(--primary-color);">Inconvénients</h3>
-      <ul>
-        <li>Complexité accrue de la structure</li>
-        <li>Double risque sur deux actifs</li>
-        <li>Pas de coupons si ETH reste sous le seuil</li>
-      </ul>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-
-    <section id="volatility" class="example-section">
-      <h2>Exemple de stratégie Prime de Volatilité : Barrières Dynamiques sur Bitcoin (BTC)</h2>
-      <p>La stratégie Prime de Volatilité repose sur l’exploitation d’un phénomène fréquent sur les marchés crypto : la surévaluation de la volatilité implicite par rapport à la volatilité réalisée. En vendant régulièrement des options lorsque le marché est nerveux, cette stratégie permet de générer une prime récurrente, tout en maintenant une maîtrise stricte du risque à l’aide de bornes définies à l’avance.</p>
-    
-      <p>Chaque mois, deux barrières sont fixées autour du niveau initial de l’actif : une barrière haute et une barrière basse. Si le cours du Bitcoin franchit l’une de ces deux barrières à la date d’observation, un coupon est déclenché. En jouant sur les mouvements de marché brusques ou excessifs, la stratégie permet de valoriser la volatilité observée, qu’elle soit à la hausse ou à la baisse.</p>
-    
-      <p>Cette approche est particulièrement pertinente sur les crypto-actifs, où la volatilité est structurellement élevée. Elle offre une alternative attractive aux stratégies directionnelles, en permettant de capter de la performance même dans des marchés agités ou incertains. L’investisseur reste toutefois exposé en cas de dérive extrême hors des bornes, ce qui implique une gestion rigoureuse des niveaux choisis.</p>
-    
-      <h2>Illustration des scénarios</h2>
-      <p><strong>Sous-jacent :</strong> Bitcoin (BTC)<br>
-        <strong>Durée :</strong> 12 mois<br>
-        <strong>Coupon :</strong> 2,2% mensuel si BTC franchit une des deux barrières (±15%)<br>
-        <strong>Barrières d’observation :</strong> ±15% du niveau initial, observées chaque mois<br>
-        <strong>Protection :</strong> Pas de remboursement automatique – exposition au sous-jacent à maturité</p>
-      <ul>
-        <li>BTC franchit une barrière chaque mois → coupon mensuel versé</li>
-        <li>BTC reste dans les bornes plusieurs mois → pas de coupon ce mois-là</li>
-        <li>À maturité, BTC est en forte baisse → perte potentielle en capital</li>
-      </ul>
-      <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario_1_volatilite.png" alt="Scénario 5" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_2_volatilite.png" alt="Scénario 6" style="width: 30%; border-radius: 8px;">
-        <img src="scenario_3_volatilite.png" alt="Scénario 7" style="width: 30%; border-radius: 8px;">
-      </div>
-      <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
-      <ul>
-        <li>Monétisation de la volatilité du marché crypto</li>
-        <li>Coupons réguliers en cas de forte activité de marché</li>
-        <li>Indépendance de la direction du marché</li>
-      </ul>
-      <h3 style="color: var(--primary-color);">Inconvénients</h3>
-      <ul>
-        <li>Pas de coupon si le marché reste stable</li>
-        <li>Exposition au sous-jacent à maturité</li>
-        <li>Risque accru si les barrières sont mal calibrées</li>
-      </ul>
-      <div class="button-group">
-        <button onclick="scrollToTop()" class="scroll-top-button">← Retour aux stratégies</button>
-        <a href="contact.html" class="cta-contact-button">Discutons ensemble de cette opportunité →</a>
-      </div>
-    </section>
-    
-  </main>
-
-  <footer>
+   <footer>
     <div class="footer-container">
       <p>
         <strong>Altarys Capital</strong><br>
@@ -507,45 +367,20 @@
       </p>
     </div>
   </footer>
+  </main>
 
   <script>
-    const observer = new IntersectionObserver(entries => {
+    // Animation d’apparition au scroll (sections/éléments)
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+        else entry.target.classList.remove('visible');  // Assure que l'animation se refait à chaque fois
       });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+    document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
+      observer.observe(el);
     });
-
-    function toggleDetail(id) {
-      document.querySelectorAll('.example-section').forEach(section => {
-        section.classList.remove('show');
-      });
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.classList.add('show');
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 50);
-      }
-    }
-
-    function scrollToTop() {
-      const activeSection = document.querySelector('.example-section.show');
-      if (activeSection) {
-        activeSection.classList.remove('show');
-        setTimeout(() => {
-          document.querySelector('main > .from-bottom').scrollIntoView({ behavior: 'smooth' });
-        }, 6); 
-      }
-    }
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    }
   </script>
 </body>
 </html>
