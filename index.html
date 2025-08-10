@@ -69,14 +69,16 @@
       scroll-snap-type: y mandatory;
       overscroll-behavior-y: contain;
     }
-
-    /* Sections plein écran (moins header) */
-    section{
-      height: calc(100vh - var(--header-h));
+    
+    /* Sections plein écran (avec le header inclus dans la hauteur) */
+    section {
+      height: 100vh; /* La section prend toute la hauteur de l'écran, y compris le header */
       scroll-snap-align: start;
       scroll-snap-stop: always;
-      display:flex; align-items:stretch; justify-content:center;
-      padding-top: var(--header-h);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding-top: var(--header-h); /* On applique le padding-top pour laisser de l'espace sous le header */
       box-sizing: border-box;
       overflow: hidden;
     }
