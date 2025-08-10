@@ -50,6 +50,31 @@
       display:flex; align-items:center; justify-content:space-between;
       padding:0 var(--container-x);
     }
+    /* Header text styles */
+    .header-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-left: -500px; /* Décalage vers la gauche pour se rapprocher du logo */
+    }
+    
+    .altarys {
+      color: #72abdd;  /* Bleu ciel */
+    }
+    
+    .altarys {
+      font-size: 1.8rem;  /* Taille réduite pour "Altarys" */
+      font-weight: bold;
+    }
+    
+    .capital {
+      font-size: 1.8rem;  /* Taille réduite pour "Capital" */
+      font-weight: normal;
+      margin-top: 2px; /* Décalage léger vers le bas pour "Capital" */
+      margin-left: 30px; /* Décalage horizontal de "Capital" par rapport à "Altarys" */
+    }
+
     header img{ height:50px; }
     nav{ display:flex; align-items:center; gap:28px; }
     nav a{
@@ -239,16 +264,21 @@
 </head>
 
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav aria-label="Navigation principale">
-      <a href="index.html">Accueil</a>
-      <a href="solutions.html">Nos solutions</a>
-      <a href="recherche.html">Recherche</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Nous contacter</a>
-    </nav>
-  </header>
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <div class="header-text">
+        <span class="altarys">Altarys</span>
+        <span class="capital">Capital</span>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="recherche.html">Recherche</a>
+        <a href="apropos.html">À propos</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
+
 
   <main>
     <!-- Section 1 -->
