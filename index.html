@@ -143,7 +143,7 @@
     
     .cta-links a {
       margin-top: 1rem; /* Espacement entre les boutons dans le CTA */
-}
+    }
 
     .section2-full.animate-up.visible {
       transform: translateY(0);
@@ -151,22 +151,40 @@
     }
 
      /* Grille dans section 2 pour juxtaposé les éléments */
-    .split-content {
+    /* Section 2 – conteneur sans gap pour une vraie symétrie */
+    .section2 .split-content {
       display: flex;
-      flex-direction: row; /* Changer la direction en ligne */
-      gap: 60px; /* Espacement horizontal entre les éléments */
+      flex-direction: row;
+      gap: 0; /* ⬅ supprime l'espace qui casse la symétrie */
       width: 100%;
       max-width: 1000px;
       margin: 0 auto;
-      justify-content: space-between; /* Distribuer les éléments horizontalement */
+      justify-content: flex-start; /* ⬅ plus de space-between */
     }
+
     
-    .content-item {
+    /* Section 2 – colonnes avec padding identique de part et d'autre des barres */
+    .section2 .content-item {
       display: flex;
       flex-direction: column;
       gap: 30px;
-      max-width: 33%; /* Pour répartir l'espace de manière égale */
+      flex: 1 1 0;   /* 3 colonnes de largeur égale */
+      min-width: 0;
+      padding: 0 25px; /* même espace à gauche et à droite des barres */
     }
+
+    
+    /* Barre et équilibrage pour les colonnes du milieu et de droite */
+    .section2 .content-item:not(:first-child) {
+      border-left: 2px solid white;
+      padding-left: 20px; /* espace à gauche de la barre */
+    }
+    
+    /* Réduit le padding droit des colonnes du milieu pour équilibrer */
+    .section2 .content-item:not(:last-child) {
+      padding-right: 20px;
+    }
+
 
     /* CTA Section (général – conservé pour sections 1/2/3 si besoin) */
     .cta-links{ margin-top:.7rem; display:flex; gap:16px; flex-wrap:wrap; }
@@ -252,7 +270,7 @@
 
     <!-- Section 2 -->
      <section class="section2">
-      <div class="section2-full animate-up visible">
+      <div class="section2-full animate-up">
         <h2>Nos produits structurés sur crypto-actifs</h2>
         <div class="split-content">
           <div class="content-item">
@@ -273,7 +291,7 @@
           </div>
           <div class="content-item">
             <p>
-              Notre équipe combine une expertise pointue en <span class="accent">structuration financière traditionnelle</span> avec une compréhension approfondie des dynamiques des <span class="accent">marchés crypto</span>. Cette double compétence nous permet de naviguer dans les enjeux financiers classiques tout en anticipant les particularités des actifs numériques.
+              Notre équipe combine une expertise pointue en <span class="accent">structuration financière traditionnelle</span> et une compréhension approfondie des <span class="accent">marchés crypto</span>. Cette double compétence nous permet de naviguer dans les enjeux financiers classiques en anticipant les particularités des actifs numériques.
             </p>
             <blockquote class="quote">
               «&nbsp;<span class="accent">Ce savoir-faire croisé nous permet de proposer une ingénierie agile et personnalisée</span> pour transformer chaque structuration en avantage stratégique.&nbsp;»
@@ -324,6 +342,7 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
+        else entry.target.classList.remove('visible');  // Assure que l'animation se refait à chaque fois
       });
     }, { threshold: 0.2 });
 
