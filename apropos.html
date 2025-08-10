@@ -7,12 +7,17 @@
   <link rel="icon" href="logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --primary-color: #0055cc;
-      --secondary-color: #4b0082;
-      --background-color: #0b0d12;
-      --text-color: #ffffff;
-      --card-bg: #111;
+    :root{
+      --primary-color:#72abdd;
+      --secondary-color:#4b0082;
+      --background-color:#0b0d12;
+      --text-color:#ffffff;
+      --muted-text:#cfd6df;
+      --card-bg : #111;
+
+      --header-h:80px;
+      --footer-h:100px;
+      --container-x:10%;
     }
 
     *, *::before, *::after {
@@ -37,41 +42,55 @@
       overflow-y: auto;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      height: 80px;
-      background-color: var(--background-color);
+    a { color:inherit; text-decoration:none; }
+    .accent{ color:var(--primary-color); }
+
+    header{
+      position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
+      background: linear-gradient(to bottom, rgba(11,13,18,0.85), rgba(11,13,18,0.55));
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 var(--container-x);
+    }
+    /* Header text styles */
+    .header-text {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10%;
-      border-bottom: 1px solid #222;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-left: -375px; /* Décalage vers la gauche pour se rapprocher du logo */
+    }
+    
+    .altarys {
+      color: #72abdd;  /* Bleu ciel */
+    }
+    
+    .altarys {
+      font-size: 1.8rem;  /* Taille réduite pour "Altarys" */
+      font-weight: bold;
+    }
+    
+    .capital {
+      font-size: 1.8rem;  /* Taille réduite pour "Capital" */
+      font-weight: normal;
+      margin-top: 2px; /* Décalage léger vers le bas pour "Capital" */
+      margin-left: 30px; /* Décalage horizontal de "Capital" par rapport à "Altarys" */
     }
 
-    header img {
-      height: 50px;
+    header img{ height:50px; }
+    nav{ display:flex; align-items:center; gap:28px; }
+    nav a{
+      font-weight:600; padding:10px 0; position:relative; opacity:.95;
+      transition:opacity .2s ease, color .2s ease, transform .2s ease;
     }
-
-    nav {
-      display: flex;
-      align-items: center;
+    nav a::after{
+      content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
+      border-radius:2px; background:linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition:width .25s ease;
     }
-
-    nav a {
-      color: var(--text-color);
-      text-decoration: none;
-      margin-left: 30px;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--primary-color);
-    }
+    nav a:hover{ color:var(--primary-color); opacity:1; transform:translateY(-1px); }
+    nav a:hover::after{ width:100%; }
 
     /* Burger menu */
     .burger {
@@ -270,29 +289,20 @@
   </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo Altarys Capital" />
-    <nav class="desktop-nav">
-      <a href="index.html">Accueil</a>
-      <a href="solutions.html">Nos solutions</a>
-      <a href="recherche.html">Recherche</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Nous contacter</a>
-    </nav>
-    <div class="burger" onclick="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="mobile-nav" id="mobileMenu">
-      <a href="index.html">Accueil</a>
-      <a href="solutions.html">Nos solutions</a>
-      <a href="recherche.html">Recherche</a>
-      <a href="apropos.html">À propos</a>
-      <a href="contact.html">Nous contacter</a>
-    </div>
-  </header>
-
+    <header>
+      <img src="logo.png" alt="Logo Altarys Capital" />
+      <div class="header-text">
+        <span class="altarys">Altarys</span>
+        <span class="capital">Capital</span>
+      </div>
+      <nav aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="solutions.html">Nos solutions</a>
+        <a href="recherche.html">Recherche</a>
+        <a href="apropos.html">À propos</a>
+        <a href="contact.html">Nous contacter</a>
+      </nav>
+    </header>
   <main>
     <section class="from-left">
       <h1>Notre vision</h1>
