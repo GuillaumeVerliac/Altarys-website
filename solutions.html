@@ -271,6 +271,36 @@
       cursor: pointer;
       transition: color 0.2s ease;
     }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .modal-content {
+      max-width: 90%;
+      max-height: 80%;
+      margin: auto;
+    }
+  
+    .close {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2000;
+    }
+
   </style>
 </head>
 <body>
@@ -289,6 +319,10 @@
       </nav>
     </header>
   <main>
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
+    </div>
     <section class="from-bottom">
       <h4>Nos solutions</h4>
       <div class="grid">
@@ -352,10 +386,10 @@
         <li>ETH < 60% à maturité → perte partielle du capital</li>
       </ul>
       <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
-        <img src="scenario_1_autocall.png" alt="Scénario 1" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_2_autocall.png" alt="Scénario 2" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_3_autocall.png" alt="Scénario 3" style="width: 22%; border-radius: 8px;">
-        <img src="scenario_4_autocall.png" alt="Scénario 4" style="width: 22%; border-radius: 8px;">
+        <img src="scenario_1_autocall.png" alt="Scénario 1" style="width: 22%; border-radius: 8px;" onclick="openModal(this.src)">
+        <img src="scenario_2_autocall.png" alt="Scénario 2" style="width: 22%; border-radius: 8px;" onclick="openModal(this.src)">
+        <img src="scenario_3_autocall.png" alt="Scénario 3" style="width: 22%; border-radius: 8px;" onclick="openModal(this.src)">
+        <img src="scenario_4_autocall.png" alt="Scénario 4" style="width: 22%; border-radius: 8px;" onclick="openModal(this.src)">
       </div>
       <h3 style="color: var(--primary-color); margin-top: 40px;">Avantages</h3>
       <ul>
@@ -554,6 +588,18 @@
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
     }
+      // Fonction pour ouvrir le modal et afficher l'image zoomée
+  function openModal(imageSrc) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    modal.style.display = "flex";  // Affiche le modal
+    modalImage.src = imageSrc;    // Met l'image dans le modal
+  }
+
+  // Fonction pour fermer le modal
+  function closeModal() {
+    document.getElementById("imageModal").style.display = "none";
+  }
   </script>
 </body>
 </html>
