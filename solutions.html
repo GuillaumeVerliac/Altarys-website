@@ -370,6 +370,60 @@
     cursor: pointer;
     z-index: 2000;
   }
+        /* --- Burger en X quand actif --- */
+    .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    
+    /* Transitions lignes burger */
+    .burger span { transition: transform .25s ease, opacity .2s ease; }
+    
+    /* Mobile nav : animation ouverture */
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--header-h, 80px);
+      right: 0;
+      left: 0;
+      background: rgba(11,13,18,0.98);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #222;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+      z-index: 999; /* sous le header (1000) */
+    }
+    .mobile-nav a {
+      padding: 16px 10%;
+      border-bottom: 1px solid #222;
+      text-align: left;
+    }
+    .mobile-nav.show { max-height: 60vh; }
+    
+    /* Empêche le scroll du body quand le menu est ouvert */
+    body.menu-open { overflow: hidden; }
+    
+    /* Header + typo adaptés mobile */
+    @media (max-width: 768px) {
+      :root { --header-h: 64px; }
+      header { --h: var(--header-h); padding: 0 6%; }
+      header img { height: 40px; margin-right: 8px; }
+      .altarys { font-size: 1.8rem; }
+      .capital { font-size: .9rem; }
+    
+      /* cache la nav desktop, affiche le burger (tu avais déjà partiellement) */
+      nav[aria-label="Navigation principale"] { display: none; }
+      .burger {
+        display: inline-flex;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        width: 44px; height: 44px; /* bonne zone tactile */
+        border: none;
+        background: transparent;
+      }
+    }
 
   </style>
 </head>
