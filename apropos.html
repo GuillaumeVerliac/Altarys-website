@@ -349,6 +349,61 @@
         display: flex;
       }
     }
+    
+    /* --- Burger en X quand actif --- */
+    .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.active span:nth-child(2) { opacity: 0; }
+    .burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    
+    /* Transitions lignes burger */
+    .burger span { transition: transform .25s ease, opacity .2s ease; }
+    
+    /* Mobile nav : animation ouverture */
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--header-h, 80px);
+      right: 0;
+      left: 0;
+      background: rgba(11,13,18,0.98);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #222;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+      z-index: 999; /* sous le header (1000) */
+    }
+    .mobile-nav a {
+      padding: 16px 10%;
+      border-bottom: 1px solid #222;
+      text-align: left;
+    }
+    .mobile-nav.show { max-height: 60vh; }
+    
+    /* Empêche le scroll du body quand le menu est ouvert */
+    body.menu-open { overflow: hidden; }
+    
+    /* Header + typo adaptés mobile */
+    @media (max-width: 768px) {
+      :root { --header-h: 64px; }
+      header { --h: var(--header-h); padding: 0 6%; }
+      header img { height: 40px; margin-right: 8px; }
+      .altarys { font-size: 1.8rem; }
+      .capital { font-size: .9rem; }
+    
+      /* cache la nav desktop, affiche le burger (tu avais déjà partiellement) */
+      nav[aria-label="Navigation principale"] { display: none; }
+      .burger {
+        display: inline-flex;
+        margin-left: auto;
+        align-items: center;
+        justify-content: center;
+        width: 44px; height: 44px; /* bonne zone tactile */
+        border: none;
+        background: transparent;
+      }
+    }
   </style>
 </head>
 <body>
@@ -365,6 +420,16 @@
         <a href="apropos.html">À propos</a>
         <a href="contact.html" class="contact-link">Nous contacter</a>
       </nav>
+    <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+     <nav class="mobile-nav" id="mobileMenu" aria-label="Navigation mobile">
+      <a href="index.html">Accueil</a>
+      <a href="solutions.html">Nos solutions</a>
+      <!-- <a href="recherche.html">Recherche</a> -->
+      <a href="apropos.html">À propos</a>
+      <a href="contact.html" class="contact-link">Nous contacter</a>
+    </nav>
     </header>
   <main>
     <section class="from-left">
@@ -450,9 +515,30 @@
       observer.observe(section);
     });
 
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    }
+      const burgerBtn = document.getElementById('burgerBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+    
+      function toggleMobileMenu(forceState) {
+        const willOpen = typeof forceState === 'boolean' ? forceState : !mobileMenu.classList.contains('show');
+        mobileMenu.classList.toggle('show', willOpen);
+        burgerBtn.classList.toggle('active', willOpen);
+        burgerBtn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+        document.body.classList.toggle('menu-open', willOpen);
+      }
+    
+      burgerBtn.addEventListener('click', () => toggleMobileMenu());
+      // Ferme le menu quand on clique un lien
+      mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMobileMenu(false)));
+    
+      // Ferme si on resize au-dessus du breakpoint
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && mobileMenu.classList.contains('show')) toggleMobileMenu(false);
+      });
+    
+      // Ferme avec Échap
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('show')) toggleMobileMenu(false);
+      });
   </script>
 </body>
 </html>
