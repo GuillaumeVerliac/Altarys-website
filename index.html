@@ -52,6 +52,7 @@
       --text: #ffffff;
     
       position: fixed;
+      top : 0;
       inset: 0 0 auto 0;
       height: var(--h);
       z-index: 1000;
@@ -133,12 +134,31 @@
     }
     
     nav a:hover::after{ width: 100%; }
+    
+    nav a.contact-link {
+      color: #5a6fd6; /* bleu foncé violacé */
+    }
+    
+    nav a.contact-link:hover {
+      color: #7a5fd9; /* violet un peu plus clair au survol */
+    }
+
+
+    /* Bouton "Nous contacter" - bleu ciel violacé foncé */
+    .cta-links a.btn-contact {
+      border-color: #5a6fd6; /* bleu violacé plus foncé */
+      color: #5a6fd6;
+    }
+    .cta-links a.btn-contact:hover {
+      border-color: #7a5fd9; /* violet plus soutenu au survol */
+      color: #7a5fd9;
+}
 
 
     /* Conteneur principal avec snap */
     main{
-      scroll-snap-type: y mandatory;
-      overscroll-behavior-y: contain;
+          scroll-snap-type: y mandatory;
+          overscroll-behavior-y: contain;
     }
 
     /* Sections plein écran (avec le header inclus dans la hauteur) */
@@ -368,7 +388,7 @@
         <a href="solutions.html">Nos solutions</a>
         <!--<a href="recherche.html">Recherche</a>-->
         <a href="apropos.html">À propos</a>
-        <a href="contact.html">Nous contacter</a>
+        <a href="contact.html" class="contact-link">Nous contacter</a>
       </nav>
     </header>
 
@@ -385,9 +405,10 @@
           <p>Family offices, banques privées, et asset managers indépendants.</p>
           <h2 class="minor">Ce que nous faisons&nbsp;:</h2>
           <p>Nous structurons des produits sur crypto-actifs, vous gardez la relation client et le contrôle. Altarys Capital prend en charge la complexité technique et la structuration, pour vous permettre de proposer <span class="accent">des solutions robustes, transparentes et performantes.</span></p>
-          <div class="cta-links" style="margin-top:6px;">
-            <a href="apropos.html">Découvrir Altarys</a>
-          </div>
+            <div class="cta-links" style="margin-top:6px;">
+              <a href="apropos.html">Découvrir Altarys</a>
+              <a href="contact.html" class="btn-contact">Nous contacter</a>
+            </div>
         </div>
         <div class="background background1"></div>
       </div>
