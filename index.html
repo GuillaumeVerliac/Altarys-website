@@ -400,6 +400,23 @@
       width: 100%;
     }
   }
+        /* Bouton burger — styles de base (MANQUANTS sur cette page) */
+    .burger{
+      display: none;              /* caché en desktop, montré en mobile dans @media */
+      flex-direction: column;
+      cursor: pointer;
+      margin-left: auto;          /* pousse le bouton à droite si nav est cachée */
+      border: 0;
+      background: transparent;
+    }
+    .burger span{
+      height: 3px;
+      width: 25px;
+      background: #fff;           /* lignes blanches visibles sur ton header sombre */
+      margin: 4px 0;
+      transition: transform .25s ease, opacity .2s ease;
+    }
+
       /* --- Burger en X quand actif --- */
     .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .burger.active span:nth-child(2) { opacity: 0; }
