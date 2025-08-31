@@ -370,6 +370,33 @@
     cursor: pointer;
     z-index: 2000;
   }
+       @media (max-width: 768px) {
+    nav {
+      display: none;
+    }
+
+    .burger {
+      display: flex;
+    }
+
+    main {
+      padding-top: 60px;
+    }
+
+    .contact-wrapper {
+      padding: 30px 15px;
+      border-radius: 12px;
+      max-width: 100%;
+    }
+
+    form {
+      grid-template-columns: 1fr;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+  }
         /* --- Burger en X quand actif --- */
     .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .burger.active span:nth-child(2) { opacity: 0; }
