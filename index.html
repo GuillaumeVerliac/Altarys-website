@@ -448,8 +448,9 @@
             Une approche <span class="accent">quantitative</span> croisée à une lecture <span class="accent">macro</span> 
             pour identifier les fenêtres d’opportunité, ajuster les allocations et renforcer la pertinence du conseil client.
           </p>
-    
-          <form id="newsletter-form" class="newsletter-cta" novalidate>
+
+          <!-- Branché sur sendmail.php, sans modifier le PHP -->
+          <form id="newsletter-form" class="newsletter-cta" action="sendmail.php" method="post" novalidate>
             <label for="newsletter-email" class="visually-hidden">Adresse e-mail</label>
             <input 
               id="newsletter-email" 
@@ -461,13 +462,18 @@
               required
               aria-required="true"
             />
+            <!-- Champs attendus par sendmail.php (sans changer le backend) -->
+            <input type="hidden" name="objet" value="Inscription newsletter">
+            <input type="hidden" name="message" id="newsletter-message-hidden" value="">
+            <input type="hidden" name="source" value="newsletter-section3">
+            <!-- Honeypot anti-bot -->
+            <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
+
             <button type="submit" class="btn-pill">S’inscrire à la newsletter</button>
             <p id="newsletter-msg" class="form-msg" role="status" aria-live="polite"></p>
             <noscript>
               <p style="margin-top:.75rem;">
-                JavaScript est désactivé. Écrivez-nous à 
-                <a href="mailto:contact@altarys-capital.fr?subject=Inscription%20newsletter">contact@altarys-capital.fr</a> 
-                pour vous inscrire.
+                JavaScript est désactivé. Le formulaire enverra quand même un e-mail via sendmail.php.
               </p>
             </noscript>
           </form>
@@ -475,17 +481,17 @@
       </div>
     </section>
 
-   <footer>
-    <div class="footer-container">
-      <p>
-        <strong>Altarys Capital</strong><br>
-        4 rue Hérold, 75001 Paris – Tél : +33 6 17 43 52 00<br>
-        &copy; 2025 Altarys Capital — Plateforme indépendante dédiée aux produits structurés sur crypto-actifs<br>
-        Toutes les informations fournies sur cette plateforme le sont à titre informatif et ne constituent en aucun cas une recommandation financière, juridique ou fiscale.<br>
-        <a href="javascript:void(0)">Mentions légales</a> | <a href="javascript:void(0)">Politique de confidentialité</a>
-      </p>
-    </div>
-  </footer>
+    <footer>
+      <div class="footer-container">
+        <p>
+          <strong>Altarys Capital</strong><br>
+          4 rue Hérold, 75001 Paris – Tél : +33 6 17 43 52 00<br>
+          &copy; 2025 Altarys Capital — Plateforme indépendante dédiée aux produits structurés sur crypto-actifs<br>
+          Toutes les informations fournies sur cette plateforme le sont à titre informatif et ne constituent en aucun cas une recommandation financière, juridique ou fiscale.<br>
+          <a href="javascript:void(0)">Mentions légales</a> | <a href="javascript:void(0)">Politique de confidentialité</a>
+        </p>
+      </div>
+    </footer>
   </main>
 
   <script>
@@ -493,62 +499,74 @@
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
-        else entry.target.classList.remove('visible');  // Assure que l'animation se refait à chaque fois
+        else entry.target.classList.remove('visible');
       });
     }, { threshold: 0.2 });
 
     document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
       observer.observe(el);
     });
-    // — Newsletter submit (remplace '/api/subscribe' par ton endpoint réel) —
-  (function(){
-    const form = document.getElementById('newsletter-form');
-    if(!form) return;
-    const emailInput = document.getElementById('newsletter-email');
-    const msg = document.getElementById('newsletter-msg');
 
-    function isValidEmail(v){
-      // Regex simple mais robuste pour e-mails pro
-      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
-    }
+    // Newsletter submit → sendmail.php (sans modifier le PHP)
+    (function(){
+      const form = document.getElementById('newsletter-form');
+      if(!form) return;
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      msg.className = 'form-msg';
-      msg.textContent = '';
+      const emailInput = document.getElementById('newsletter-email');
+      const hiddenMsg  = document.getElementById('newsletter-message-hidden');
+      const msg        = document.getElementById('newsletter-msg');
 
-      const email = (emailInput.value || '').trim();
-      if(!isValidEmail(email)){
-        msg.textContent = 'Veuillez saisir une adresse e-mail valide.';
-        msg.classList.add('error');
-        emailInput.focus();
-        return;
+      function isValidEmail(v){
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((v||'').trim());
       }
 
-      // Optionnel : disable le bouton pendant l’envoi
-      const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
+      form.addEventListener('submit', async (e) => {
+        // On gère en AJAX mais garde aussi action="sendmail.php" en fallback no-JS
+        e.preventDefault();
+        msg.className = 'form-msg';
+        msg.textContent = '';
 
-      try{
-        // 🔧 À ADAPTER : mets ici ton endpoint d’abonnement (OVH, backend, Mailchimp, Brevo, etc.)
-        const res = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
-        });
+        const email = (emailInput.value || '').trim();
+        if(!isValidEmail(email)){
+          msg.textContent = 'Veuillez saisir une adresse e-mail valide.';
+          msg.classList.add('error');
+          emailInput.focus();
+          return;
+        }
 
-        if(!res.ok) throw new Error('Réponse réseau non OK');
-        msg.textContent = 'Merci, votre inscription est confirmée. Vérifiez votre boîte mail.';
-        msg.classList.add('success');
-        form.reset();
-      }catch(err){
-        msg.textContent = 'Impossible de finaliser l’inscription pour le moment. Réessayez ou écrivez-nous à contact@altarys-capital.fr.';
-        msg.classList.add('error');
-      }finally{
-        btn.disabled = false;
-      }
-    });
-  })();
+        // Message attendu par le backend (sans changer le PHP)
+        hiddenMsg.value = `${email} souhaite s'inscrire à la newsletter.`;
+
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+
+        try{
+          const fd = new FormData(form);
+          // on force ces valeurs au cas où
+          fd.set('email', email);
+          fd.set('objet', 'Inscription newsletter');
+          fd.set('message', hiddenMsg.value);
+          fd.set('source', 'newsletter-section3');
+
+          const res = await fetch('sendmail.php', { method: 'POST', body: fd });
+          const text = await res.text();
+
+          if (res.ok && text.trim() === 'success'){
+            msg.textContent = 'Merci, votre inscription a bien été envoyée.';
+            msg.classList.add('success');
+            form.reset();
+          } else {
+            msg.textContent = 'Erreur: ' + text;
+            msg.classList.add('error');
+          }
+        }catch(err){
+          msg.textContent = 'Erreur réseau : ' + err;
+          msg.classList.add('error');
+        }finally{
+          btn.disabled = false;
+        }
+      });
+    })();
   </script>
 </body>
 </html>
