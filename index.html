@@ -52,27 +52,23 @@
     }
     /* Header text styles */
     .header-text {
-      display: flex;
+      display: inline-flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      margin-left: -375px; /* Décalage vers la gauche pour se rapprocher du logo */
+      align-items: flex-end; /* aligne "Capital" à droite de "Altarys" */
+      line-height: 1;
     }
-
+    
     .altarys {
-      color: #72abdd;  /* Bleu ciel */
-    }
-
-    .altarys {
-      font-size: 1.8rem;  /* Taille réduite pour "Altarys" */
+      font-size: 2.5rem;   /* taille du Altarys */
       font-weight: bold;
+      color: #72abdd;      /* bleu ciel */
     }
-
+    
     .capital {
-      font-size: 1.8rem;  /* Taille réduite pour "Capital" */
+      font-size: 1rem;     /* beaucoup plus petit */
       font-weight: normal;
-      margin-top: 2px; /* Décalage léger vers le bas pour "Capital" */
-      margin-left: 30px; /* Décalage horizontal de "Capital" par rapport à "Altarys" */
+      color: #ffffff;      /* blanc (ou même bleu si tu veux uniforme) */
+      margin-top: 2px;
     }
 
     header img{ height:50px; }
