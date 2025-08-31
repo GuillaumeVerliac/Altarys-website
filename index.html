@@ -211,7 +211,54 @@
     .section2 .content-item:not(:last-child) {
       padding-right: 20px;
     }
+    /* Accessibilité */
+.visually-hidden{
+  position:absolute!important; width:1px!important; height:1px!important;
+  margin:-1px!important; padding:0!important; border:0!important; clip:rect(0 0 0 0)!important; overflow:hidden!important;
+}
 
+/* Newsletter CTA */
+.newsletter-cta{
+  display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:1rem;
+}
+.newsletter-cta input{
+  flex:1 1 260px;
+  min-width:260px;
+  padding:12px 16px;
+  background:rgba(255,255,255,0.04);
+  border:2px solid rgba(114,171,221,0.55);
+  border-radius:999px;
+  color:var(--text-color);
+  outline:none;
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.newsletter-cta input::placeholder{ color:#93a0b1; }
+.newsletter-cta input:focus{
+  border-color:var(--primary-color);
+  box-shadow:0 0 0 4px rgba(114,171,221,0.15);
+}
+
+.btn-pill{
+  padding:12px 20px;
+  border:2px solid var(--primary-color);
+  border-radius:999px;
+  color:var(--primary-color);
+  background:transparent;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+  transition: all .25s ease;
+}
+.btn-pill:hover{ border-color:var(--secondary-color); color:var(--secondary-color); transform:translateY(-1px); }
+
+.form-msg{
+  width:100%;
+  font-size:0.95rem;
+  margin-top:6px;
+  color:var(--muted-text);
+}
+.form-msg.success{ color:#6bdc7b; }
+.form-msg.error{ color:#ff8c8c; }
 
     /* CTA Section (général – conservé pour sections 1/2/3 si besoin) */
     .cta-links{ margin-top:.7rem; display:flex; gap:16px; flex-wrap:wrap; }
@@ -344,14 +391,40 @@
         <div class="content animate-right justify">
           <h2>Comprendre les marchés, anticiper les tendances</h2>
           <p>
-            Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : <span class="accent">“Il faut une information fiable, précise et pertinente, constamment mise à jour.”</span> C’est pourquoi nous avons créé un espace <span class="accent">Recherche</span> dédié, conçu pour vous offrir une lecture approfondie des dynamiques de marché. Ce que vous y trouverez : Rapports mensuels de marché, analyses de la volatilité et des flux techniques, décryptage des mouvements clés, et signaux précurseurs des tendances de fond.
+            Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : 
+            <span class="accent">il faut une information fiable, précise et exploitable</span>. 
+            Nous diffusons désormais nos analyses via une <span class="accent">newsletter hebdomadaire</span> : 
+            un condensé clair des dynamiques de marché pour gagner du temps sans rien perdre en profondeur.
           </p>
           <p>
-            Que vous soyez en veille active, en structuration d’un produit, ou en phase de recommandation client, nos analyses vous offrent <span class="accent">un temps d’avance dans un environnement incertain</span>. Nous combinons une <span class="accent">approche quantitative rigoureuse</span> avec une <span class="accent">lecture macroéconomique du marché</span> pour vous aider à prendre des décisions éclairées. Intégrez nos insights à vos réflexions pour ajuster vos allocations, identifier les fenêtres d’opportunité, et renforcer la pertinence de votre conseil client.
+            Au programme chaque semaine : récap des mouvements clés, lecture de la volatilité et des flux techniques, 
+            angles de structuration et <span class="accent">signaux actionnables</span> pour vos décisions. 
+            Une approche <span class="accent">quantitative</span> croisée à une lecture <span class="accent">macro</span> 
+            pour identifier les fenêtres d’opportunité, ajuster les allocations et renforcer la pertinence du conseil client.
           </p>
-          <div class="cta-links">
-            <a href="recherche.html">Accéder à la recherche</a>
-          </div>
+    
+          <form id="newsletter-form" class="newsletter-cta" novalidate>
+            <label for="newsletter-email" class="visually-hidden">Adresse e-mail</label>
+            <input 
+              id="newsletter-email" 
+              name="email" 
+              type="email" 
+              inputmode="email"
+              autocomplete="email"
+              placeholder="Votre e-mail professionnel"
+              required
+              aria-required="true"
+            />
+            <button type="submit" class="btn-pill">S’inscrire à la newsletter</button>
+            <p id="newsletter-msg" class="form-msg" role="status" aria-live="polite"></p>
+            <noscript>
+              <p style="margin-top:.75rem;">
+                JavaScript est désactivé. Écrivez-nous à 
+                <a href="mailto:contact@altarys-capital.fr?subject=Inscription%20newsletter">contact@altarys-capital.fr</a> 
+                pour vous inscrire.
+              </p>
+            </noscript>
+          </form>
         </div>
       </div>
     </section>
@@ -381,6 +454,55 @@
     document.querySelectorAll('.animate-left, .animate-right, .animate-up').forEach(el => {
       observer.observe(el);
     });
+    // — Newsletter submit (remplace '/api/subscribe' par ton endpoint réel) —
+  (function(){
+    const form = document.getElementById('newsletter-form');
+    if(!form) return;
+    const emailInput = document.getElementById('newsletter-email');
+    const msg = document.getElementById('newsletter-msg');
+
+    function isValidEmail(v){
+      // Regex simple mais robuste pour e-mails pro
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.className = 'form-msg';
+      msg.textContent = '';
+
+      const email = (emailInput.value || '').trim();
+      if(!isValidEmail(email)){
+        msg.textContent = 'Veuillez saisir une adresse e-mail valide.';
+        msg.classList.add('error');
+        emailInput.focus();
+        return;
+      }
+
+      // Optionnel : disable le bouton pendant l’envoi
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+
+      try{
+        // 🔧 À ADAPTER : mets ici ton endpoint d’abonnement (OVH, backend, Mailchimp, Brevo, etc.)
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+
+        if(!res.ok) throw new Error('Réponse réseau non OK');
+        msg.textContent = 'Merci, votre inscription est confirmée. Vérifiez votre boîte mail.';
+        msg.classList.add('success');
+        form.reset();
+      }catch(err){
+        msg.textContent = 'Impossible de finaliser l’inscription pour le moment. Réessayez ou écrivez-nous à contact@altarys-capital.fr.';
+        msg.classList.add('error');
+      }finally{
+        btn.disabled = false;
+      }
+    });
+  })();
   </script>
 </body>
 </html>
