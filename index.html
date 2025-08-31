@@ -449,7 +449,7 @@
             pour identifier les fenêtres d’opportunité, ajuster les allocations et renforcer la pertinence du conseil client.
           </p>
 
-          <!-- Branché sur sendmail.php, sans modifier le PHP -->
+          <!-- Formulaire Newsletter relié à sendmail.php -->
           <form id="newsletter-form" class="newsletter-cta" action="sendmail.php" method="post" novalidate>
             <label for="newsletter-email" class="visually-hidden">Adresse e-mail</label>
             <input 
@@ -462,10 +462,16 @@
               required
               aria-required="true"
             />
-            <!-- Champs attendus par sendmail.php (sans changer le backend) -->
-            <input type="hidden" name="objet" value="Inscription newsletter">
+
+            <!-- Tous les champs “nécessaires” remplis par NEWSLETTER -->
+            <input type="hidden" name="prenom" value="NEWSLETTER">
+            <input type="hidden" name="nom" value="NEWSLETTER">
+            <input type="hidden" name="telephone" value="NEWSLETTER">
+            <input type="hidden" name="entreprise" value="NEWSLETTER">
+            <input type="hidden" name="objet" value="NEWSLETTER">
             <input type="hidden" name="message" id="newsletter-message-hidden" value="">
-            <input type="hidden" name="source" value="newsletter-section3">
+            <input type="hidden" name="source" value="NEWSLETTER">
+
             <!-- Honeypot anti-bot -->
             <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
 
@@ -521,7 +527,6 @@
       }
 
       form.addEventListener('submit', async (e) => {
-        // On gère en AJAX mais garde aussi action="sendmail.php" en fallback no-JS
         e.preventDefault();
         msg.className = 'form-msg';
         msg.textContent = '';
@@ -534,7 +539,7 @@
           return;
         }
 
-        // Message attendu par le backend (sans changer le PHP)
+        // Message utile pour lecture côté back
         hiddenMsg.value = `${email} souhaite s'inscrire à la newsletter.`;
 
         const btn = form.querySelector('button[type="submit"]');
@@ -542,16 +547,24 @@
 
         try{
           const fd = new FormData(form);
-          // on force ces valeurs au cas où
+
+          // Forcer tous les champs “nécessaires” à NEWSLETTER
+          fd.set('prenom', 'NEWSLETTER');
+          fd.set('nom', 'NEWSLETTER');
+          fd.set('telephone', 'NEWSLETTER');
+          fd.set('entreprise', 'NEWSLETTER');
+          fd.set('objet', 'NEWSLETTER');
+          fd.set('source', 'NEWSLETTER');
+
+          // Champs dynamiques
           fd.set('email', email);
-          fd.set('objet', 'Inscription newsletter');
           fd.set('message', hiddenMsg.value);
-          fd.set('source', 'newsletter-section3');
 
           const res = await fetch('sendmail.php', { method: 'POST', body: fd });
           const text = await res.text();
 
-          if (res.ok && text.trim() === 'success'){
+          // Tolère des warnings/HTML avant "success"
+          if (res.ok && /success/i.test(text)){
             msg.textContent = 'Merci, votre inscription a bien été envoyée.';
             msg.classList.add('success');
             form.reset();
@@ -570,4 +583,5 @@
   </script>
 </body>
 </html>
+
 
