@@ -487,6 +487,27 @@
       }
       #burgerBtn span { background: #fff; } /* garantit un contraste suffisant */
     }
+        /* --- AJOUT MOBILE : versions synthétiques & masquage du long texte --- */
+    .mobile-only{ display:none; }
+    
+    @media (max-width:768px){
+      .mobile-only{ display:block; }
+    
+      /* Section 1 : masquer le texte long */
+      .section1 .content p,
+      .section1 .content blockquote,
+      .section1 .content .minor{ display:none !important; }
+    
+      /* Section 2 : masquer les 3 colonnes détaillées */
+      .section2 .split-content{ display:none !important; }
+    
+      /* Section 3 : masquer les paragraphes longs, garder le formulaire */
+      .section3 .content p{ display:none !important; }
+    
+      /* Liste compacte pour les résumés */
+      .compact{ margin:8px 0 0 0; padding:0; list-style:none; }
+      .compact li{ margin:.35rem 0; font-size:1rem; color:var(--muted-text); }
+    }
   </style>
 </head>
 
@@ -523,6 +544,23 @@
       <div class="split">
         <div class="content animate-left justify">
           <h1>ALTARYS Capital</h1>
+            <div class="mobile-only">
+              <p><span class="accent">Produits structurés crypto</span> pour professionnels : convertissez la volatilité en revenus conditionnels maîtrisés.</p>
+            
+              <div class="mini-title">Pour Qui?</div>
+              <div class="chips">
+                <span class="chip">Family offices</span>
+                <span class="chip">Banques privées</span>
+                <span class="chip">Asset managers</span>
+              </div>
+            
+              <div class="mini-title">Ce que nous proposons</div>
+              <ul class="compact">
+                <li>Structuration dédiée (autocalls, volatility harvesting, capital protégé).</li>
+                <li>Vous gardez la relation client; nous gérons la complexité technique.</li>
+                <li>Process clair : cadrage → calibrage → exécution → suivi.</li>
+              </ul>
+            </div>
           <p><span class="accent">Produits structurés sur crypto-actifs</span>, conçus pour les professionnels de la gestion patrimoniale. Maîtrisez la volatilité des crypto-marchés avec des <span class="accent">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
           <blockquote class="quote"><span class="accent">Construire</span> plutôt que parier, c'est convertir la volatilité en <span class="accent">stratégie</span>.</blockquote>
           <h2 class="minor">Pour qui&nbsp;?</h2>
@@ -542,6 +580,29 @@
      <section class="section2">
       <div class="section2-full animate-up">
         <h2>Nos produits structurés sur crypto-actifs</h2>
+            <div class="mobile-only">
+              <div class="mini-title">Gamme de produits</div>
+              <div class="chips">
+                <span class="chip">Autocalls</span>
+                <span class="chip">Capital protégé</span>
+                <span class="chip">Volatility harvesting</span>
+                <span class="chip">Sur-mesure</span>
+              </div>
+            
+              <div class="mini-title">Ce qu’on optimise</div>
+              <ul class="compact">
+                <li>Rendement sur marchés plats/volatils.</li>
+                <li>Gestion du risque & de la liquidité.</li>
+                <li>Diversification crypto calibrée.</li>
+              </ul>
+            
+              <div class="mini-title">Mise en place</div>
+              <ul class="compact">
+                <li>Cadrage client <small>Profil, contraintes, objectifs.</small></li>
+                <li>Calibrage & scénarios <small>Backtests et niveaux de déclenchement.</small></li>
+                <li>Exécution & reporting <small>Suivi transparent des paramètres.</small></li>
+              </ul>
+            </div>
         <div class="split-content">
           <div class="content-item">
             <p>
@@ -581,6 +642,24 @@
         <div class="background background3"></div>
         <div class="content animate-right justify">
           <h2>Comprendre les marchés, anticiper les tendances</h2>
+          <div class="mobile-only">
+          <p><span class="accent">Newsletter hebdomadaire</span> : un condensé actionnable pour suivre les dynamiques de marché.</p>
+        
+          <div class="mini-title">Vous recevez</div>
+          <ul class="compact">
+            <li>Récap des mouvements clés <small>Prix, flux, niveaux techniques.</small></li>
+            <li>Lecture de la volatilité <small>Implications pour la structuration.</small></li>
+            <li>Idées & angles produits <small>Pistes adaptées à différents profils.</small></li>
+            <li>Points macro pertinents <small>Événements & risques à surveiller.</small></li>
+          </ul>
+        
+          <div class="mini-title">Pensé pour</div>
+          <div class="chips">
+            <span class="chip">CGP</span>
+            <span class="chip">Family offices</span>
+            <span class="chip">Banques privées</span>
+          </div>
+        </div>
           <p>
             Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : 
             <span class="accent">il faut une information fiable, précise et exploitable</span>. 
