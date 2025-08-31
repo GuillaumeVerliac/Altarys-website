@@ -43,7 +43,6 @@
 
     /* ===== HEADER collé au logo, titre Altarys/Capital ===== */
     header{
-      /* Variables locales au header (uniquement ici) */
       --h: 80px;
       --pad-x: 10%;
       --brand: #72abdd;
@@ -61,7 +60,7 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex;
       align-items: center;
-      justify-content: flex-start;           /* colle le groupe gauche */
+      justify-content: flex-start;
       padding: 0 var(--pad-x);
     }
     
@@ -69,20 +68,20 @@
     .header-left{
       display: flex;
       align-items: center;
-      gap: 8px;                               /* espace logo / texte */
     }
     
     header img{
       height: 50px;
       width: auto;
       display: block;
+      margin-right: 2px;   /* à peine d'espace */
     }
     
-    /* Bloc texte (Altarys au-dessus, Capital en dessous à droite) */
+    /* Bloc texte */
     .header-text{
       display: flex;
       flex-direction: column;
-      align-items: flex-end;                   /* aligne Capital à droite */
+      align-items: flex-end;
       line-height: 1;
       margin: 0;
     }
@@ -361,8 +360,8 @@
     <header>
       <img src="logo.png" alt="Logo Altarys Capital" />
       <div class="header-text">
-        <span class="altarys">  Altarys</span>
-        <span class="capital">  Capital</span>
+        <span class="altarys">Altarys</span>
+        <span class="capital">Capital</span>
       </div>
       <nav aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
