@@ -48,52 +48,98 @@
     a { color:inherit; text-decoration:none; }
     .accent{ color:var(--primary-color); }
 
+    /* ===== HEADER collé au logo, titre Altarys/Capital ===== */
     header{
-      position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
-      background: linear-gradient(to bottom, rgba(11,13,18,0.85), rgba(11,13,18,0.55));
+      --h: 80px;
+      --pad-x: 10%;
+      --brand: #72abdd;
+      --brand2: #4b0082;
+      --bg1: rgba(11,13,18,0.85);
+      --bg2: rgba(11,13,18,0.55);
+      --text: #ffffff;
+    
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--h);
+      z-index: 1000;
+      background: linear-gradient(to bottom, var(--bg1), var(--bg2));
       backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 var(--container-x);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 var(--pad-x);
     }
-    /* Header text styles */
-    .header-text {
+    
+    /* Groupe gauche : logo + bloc texte */
+    .header-left{
+      display: flex;
+      align-items: center;
+    }
+    
+    header img{
+      height: 50px;
+      width: auto;
+      display: block;
+      margin-right: 10px;   /* à peine d'espace */
+    }
+    
+    /* Bloc texte */
+    .header-text{
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      margin-left: -375px; /* Décalage vers la gauche pour se rapprocher du logo */
+      align-items: flex-end;
+      line-height: 1;
+      margin: 0;
     }
     
-    .altarys {
-      color: #72abdd;  /* Bleu ciel */
+    .altarys{
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--brand);
     }
     
-    .altarys {
-      font-size: 1.8rem;  /* Taille réduite pour "Altarys" */
-      font-weight: bold;
+    .capital{
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-top: 2px;
     }
     
-    .capital {
-      font-size: 1.8rem;  /* Taille réduite pour "Capital" */
-      font-weight: normal;
-      margin-top: 2px; /* Décalage léger vers le bas pour "Capital" */
-      margin-left: 30px; /* Décalage horizontal de "Capital" par rapport à "Altarys" */
+    /* Nav poussée à droite */
+    nav{
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 28px;
     }
-
-    header img{ height:50px; }
-    nav{ display:flex; align-items:center; gap:28px; }
+    
     nav a{
-      font-weight:600; padding:10px 0; position:relative; opacity:.95;
-      transition:opacity .2s ease, color .2s ease, transform .2s ease;
+      color: var(--text);
+      font-weight: 600;
+      padding: 10px 0;
+      position: relative;
+      opacity: .95;
+      transition: opacity .2s ease, color .2s ease, transform .2s ease;
     }
+    
     nav a::after{
-      content:""; position:absolute; left:0; bottom:0; height:2px; width:0;
-      border-radius:2px; background:linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      transition:width .25s ease;
+      content: "";
+      position: absolute;
+      left: 0; bottom: 0;
+      height: 2px; width: 0;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      transition: width .25s ease;
     }
-    nav a:hover{ color:var(--primary-color); opacity:1; transform:translateY(-1px); }
-    nav a:hover::after{ width:100%; }
+    
+    nav a:hover{
+      color: var(--brand);
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+    
+    nav a:hover::after{ width: 100%; }
 
 
     .burger {
