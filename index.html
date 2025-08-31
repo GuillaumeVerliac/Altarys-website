@@ -41,33 +41,47 @@
     a { color:inherit; text-decoration:none; }
     .accent{ color:var(--primary-color); }
 
-    /* Header (référence visuelle) */
-    header{
-      position:fixed; inset:0 0 auto 0; height:var(--header-h); z-index:1000;
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--header-h);
+      z-index: 1000;
       background: linear-gradient(to bottom, rgba(11,13,18,0.85), rgba(11,13,18,0.55));
       backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 var(--container-x);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--container-x);
     }
-    /* Header text styles */
+    
+    header img {
+      height: 50px;
+      margin-right: 10px; /* petit espace entre le logo et le texte */
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    
     .header-text {
-      display: inline-flex;
+      display: flex;
       flex-direction: column;
-      align-items: flex-end; /* aligne "Capital" à droite de "Altarys" */
+      align-items: flex-end; /* "Capital" aligné à droite de "Altarys" */
       line-height: 1;
     }
     
     .altarys {
-      font-size: 2.5rem;   /* taille du Altarys */
+      font-size: 2.5rem;
       font-weight: bold;
-      color: #72abdd;      /* bleu ciel */
+      color: #72abdd;
     }
     
     .capital {
-      font-size: 1rem;     /* beaucoup plus petit */
+      font-size: 1rem;
       font-weight: normal;
-      color: #ffffff;      /* blanc (ou même bleu si tu veux uniforme) */
+      color: #ffffff;
       margin-top: 2px;
     }
 
