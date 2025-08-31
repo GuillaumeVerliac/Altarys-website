@@ -451,6 +451,22 @@
         background: transparent;
       }
     }
+    /* Le burger doit toujours être au-dessus de tout */
+    #burgerBtn { position: relative; z-index: 1001; }
+    
+    /* Sur mobile, pousse le burger à droite et force l'affichage */
+    @media (max-width: 768px) {
+      /* la nav desktop est déjà masquée plus haut, on pousse le burger */
+      .header-text { margin-right: auto; } /* pousse tout ce qui suit à droite */
+      #burgerBtn {
+        display: inline-flex !important;   /* au cas où une autre règle prend le dessus */
+        margin-left: 0;                    /* on n’en a plus besoin si header-text pousse */
+        width: 44px; height: 44px;
+        align-items: center; justify-content: center;
+        border: none; background: transparent;
+      }
+      #burgerBtn span { background: #fff; } /* garantit un contraste suffisant */
+    }
 
   </style>
 </head>
