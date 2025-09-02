@@ -537,20 +537,26 @@
       .compact{ margin:8px 0 0 0; padding:0; list-style:none; }
       .compact li{ margin:.35rem 0; font-size:1rem; color:var(--muted-text); }
     }
-    /* Section 1 */
-    .section1 .content p,
-    .section1 .content blockquote,
-    .section1 .content .minor{ display:none !important; }
+
+    @media (max-width:768px){
+      /* Section 1 : masquer le texte long */
+      .section1 .content p,
+      .section1 .content blockquote,
+      .section1 .content .minor{ display:none !important; }
     
-    /* Section 3 */
-    .section3 .content p{ display:none !important; }
+      /* Section 3 : masquer les paragraphes longs, garder le formulaire */
+      .section3 .content p{ display:none !important; }
+    }
+
     @media (max-width:768px){
   .section1 .content .mobile-only,
   .section3 .content .mobile-only{ display:block !important; }
 
   .section1 .content .mobile-only p,
   .section3 .content .mobile-only p{ display:block !important; }
+  .section3 .content .form-msg{ display:block !important; }
 }
+
   </style>
 </head>
 
@@ -588,8 +594,8 @@
         <div class="content animate-left justify">
           <h1>ALTARYS Capital</h1>
                 <div class="mobile-only">
-                  <p>Nous concevons des <span class="accent"><strong>produits structurés</strong></span> sur <span class="accent"><strong>crypto-actifs</strong></span> pour les <span class="accent"><strong>professionnels</strong></span>. L’objectif est simple : transformer la <span class="accent"><strong>volatilité</strong></span> en revenus conditionnels maîtrisés au service de vos clients.</p>
-                  <p>Nos interlocuteurs sont les <span class="accent"><strong>family offices</strong></span>, les <span class="accent"><strong>banques privées</strong></span> et les <span class="accent"><strong>asset managers</strong></span> indépendants. Vous conservez la relation client ; nous prenons en charge la <span class="accent"><strong>structuration</strong></span> et la complexité technique.</p>
+                  <p>Nous concevons des <span class="accent"><strong>produits structurés</strong></span> sur <span class="accent"><strong>crypto-actifs</strong></span> pour les <span class="accent"><strong>professionnels</strong></span>. L’objectif est simple : transformer la <span class="accent"><strong>volatilité</strong></span> en revenus maîtrisés au service de vos clients.</p>
+                  <p>Nos interlocuteurs sont les <span class="accent"><strong>family offices</strong></span>, les <span class="accent"><strong>banques privées</strong></span> et les <span class="accent"><strong>asset managers</strong></span> indépendants. Vous conservez la relation client, nous prenons en charge la <span class="accent"><strong>structuration.</strong></span></p>
                   <p>Le déroulé est clair : <span class="accent"><strong>cadrage</strong></span> des objectifs et contraintes, <span class="accent"><strong>calibrage</strong></span> avec scénarios et backtests, <span class="accent"><strong>exécution</strong></span>, puis <span class="accent"><strong>reporting</strong></span> transparent et suivi des paramètres dans la durée.</p>
                 </div>
           <p><span class="accent">Produits structurés sur crypto-actifs</span>, conçus pour les professionnels de la gestion patrimoniale. Maîtrisez la volatilité des crypto-marchés avec des <span class="accent">solutions structurées</span> à la hauteur des attentes de vos clients.</p>
@@ -657,7 +663,7 @@
           <h2>Comprendre les marchés, anticiper les tendances</h2>
         <div class="mobile-only">
           <p>Notre <span class="accent"><strong>newsletter hebdomadaire</strong></span> vous donne une lecture exploitable des marchés crypto en un coup d’œil : l’essentiel des <span class="accent"><strong>mouvements</strong></span>, des <span class="accent"><strong>flux</strong></span> et des <span class="accent"><strong>niveaux techniques</strong></span>, avec les implications pour la <span class="accent"><strong>structuration</strong></span>.</p>
-          <p>Vous y retrouvez une analyse de la <span class="accent"><strong>volatilité</strong></span>, des <span class="accent"><strong>idées de produits</strong></span> adaptées à différents profils et les <span class="accent"><strong>points macro</strong></span> réellement pertinents pour la prise de décision. Elle s’adresse aux <span class="accent"><strong>CGP</strong></span>, <span class="accent"><strong>family offices</strong></span> et <span class="accent"><strong>banques privées</strong></span>.</p>
+          <p>Vous y retrouvez une analyse de la <span class="accent"><strong>volatilité</strong></span>, des <span class="accent"><strong>idées de produits</strong></span> adaptées à différents profils et les <span class="accent"><strong>points macro</strong></span> réellement pertinents pour la prise de décision. </p>
         </div>
           <p>
             Naviguer dans l’univers des crypto-actifs exige plus que de l’intuition : 
