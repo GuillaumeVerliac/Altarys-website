@@ -431,11 +431,20 @@
     
     /* Header + typo adaptés mobile */
     @media (max-width: 768px) {
-      :root { --header-h: 64px; }
-      header { --h: var(--header-h); padding: 0 6%; }
-      header img { height: 40px; margin-right: 8px; }
-      .altarys { font-size: 1.8rem; }
-      .capital { font-size: .9rem; }
+      :root { --header-h: 76px; }   /* avant 72px */
+    
+      header img { 
+        height: 48px;   /* avant 44px */
+      }
+    
+      .altarys { 
+        font-size: 2rem;   /* avant 1.9rem */
+      }
+    
+      .capital { 
+        font-size: 1.05rem;   /* avant 1rem */
+      }
+    }
     
       /* cache la nav desktop, affiche le burger (tu avais déjà partiellement) */
       nav[aria-label="Navigation principale"] { display: none; }
