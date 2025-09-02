@@ -453,11 +453,11 @@
     
     /* Header + typo adaptés mobile */
     @media (max-width: 768px) {
-      :root { --header-h: 64px; }
+      :root { --header-h: 72px; }
       header { --h: var(--header-h); padding: 0 6%; }
-      header img { height: 40px; margin-right: 8px; }
-      .altarys { font-size: 1.8rem; }
-      .capital { font-size: .9rem; }
+      header img { height: 44px; margin-right: 8px; }
+      .altarys { font-size: 1.9rem; }
+      .capital { font-size: 1rem; }
     
       /* cache la nav desktop, affiche le burger (tu avais déjà partiellement) */
       nav[aria-label="Navigation principale"] { display: none; }
@@ -471,6 +471,35 @@
         background: transparent;
       }
     }
+    
+    @media (max-width: 768px) {
+      /* 1) Ne pas afficher les images/panneaux dans les sections (le logo du header n'est pas impacté) */
+      .split .background { 
+        display: none !important; 
+      }
+      section img { 
+        display: none !important; 
+      }
+    
+      /* 2) Centrage des sections et de leur contenu */
+      section { 
+        align-items: center;         /* au lieu de stretch */
+        justify-content: center;     /* déjà présent mais on le confirme */
+      }
+      .split { 
+        flex-direction: column;      /* empile le contenu quand les backgrounds disparaissent */
+      }
+      .split .content,
+      .section2-full { 
+        align-items: center;         /* centre horizontalement les blocs de texte */
+        text-align: center; 
+        padding: 40px 8%;            /* padding un peu plus compact et homogène */
+      }
+      .cta-links { 
+        justify-content: center;     /* centre les boutons d’appel à l’action */
+      }
+    }
+
         /* Le burger doit toujours être au-dessus de tout */
     #burgerBtn { position: relative; z-index: 1001; }
     
@@ -830,6 +859,7 @@
       });
   </script>
 </body>
+</html>
 </html>
 
 
