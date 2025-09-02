@@ -557,6 +557,31 @@
   .section3 .content .form-msg{ display:block !important; }
 }
 
+    /* ===== Force le burger sur toutes les tailles d'écran ===== */
+    header nav[aria-label="Navigation principale"]{
+      display: none !important;   /* cache la nav desktop partout */
+    }
+    
+    #burgerBtn{
+      display: inline-flex !important; /* affiche le burger partout */
+      margin-left: auto;               /* pousse le burger à droite */
+      width: 44px; 
+      height: 44px;
+      align-items: center; 
+      justify-content: center;
+      border: none; 
+      background: transparent;
+    }
+    
+    #burgerBtn span{ background:#fff; } /* bon contraste sur header sombre */
+    
+    /* Optionnel: améliore le focus clavier du burger */
+    #burgerBtn:focus-visible{
+      outline: 2px solid #72abdd;
+      outline-offset: 3px;
+    }
+
+
   </style>
 </head>
 
