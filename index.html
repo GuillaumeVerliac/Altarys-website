@@ -471,6 +471,32 @@
         background: transparent;
       }
     }
+    @media (max-width: 768px) {
+      /* Centrer le bloc dans la section */
+      section { 
+        align-items: center;
+        justify-content: center;
+      }
+    
+      /* Contenu centré mais texte justifié */
+      section .content,
+      section .section2-full {
+        align-items: center;      /* le bloc est centré */
+        text-align: justify;      /* texte justifié */
+        padding: 40px 8%;
+      }
+    
+      /* Mobile-only aussi justifié */
+      section .mobile-only {
+        text-align: justify;
+      }
+    
+      /* CTA → on garde centré */
+      .cta-links { 
+        justify-content: center;
+      }
+    }
+
     
     @media (max-width: 768px) {
       /* 1) Ne pas afficher les images/panneaux dans les sections (le logo du header n'est pas impacté) */
@@ -861,5 +887,3 @@
   </script>
 </body>
 </html>
-
-
