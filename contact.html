@@ -178,6 +178,8 @@
       text-decoration: none;
       font-weight: 600;
     }
+    
+    
 
     .mobile-nav.show {
       display: flex;
@@ -395,6 +397,37 @@
       width: 100%;
     }
   }
+    @media (max-width: 480px) {
+      form { 
+        grid-template-columns: 1fr; 
+        justify-items: center; 
+      }
+    
+      .form-group {
+        width: min(90%, 360px); /* champs plus étroits */
+      }
+    
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        font-size: 0.95em;
+        padding: 8px 10px;
+      }
+    
+      textarea {
+        width: min(90%, 360px);
+        font-size: 0.95em;
+        padding: 10px;
+      }
+    
+      .submit-button {
+        width: min(90%, 360px);
+        padding: 10px 16px;
+      }
+    }
+
+
+
       /* --- Burger en X quand actif --- */
     .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .burger.active span:nth-child(2) { opacity: 0; }
