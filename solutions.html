@@ -493,6 +493,11 @@
       }
       #burgerBtn span { background: #fff; } /* garantit un contraste suffisant */
     }
+    
+    /* Rendre le logo + le bloc texte "Altarys / Capital" cliquables visuellement */
+    header img,
+    header .header-text { cursor: pointer; }
+
 
   </style>
 </head>
@@ -824,9 +829,31 @@
   function closeModal() {
     document.getElementById("imageModal").style.display = "none";
   }
-  </script>
-</body>
-</html>
+      // --- Click & clavier -> Accueil pour le logo + "Altarys / Capital" (AJOUT) ---
+    (function () {
+      const targets = [
+        document.querySelector('header img'),
+        document.querySelector('header .header-text')
+      ].filter(Boolean);
+    
+      const goHome = () => { window.location.href = 'index.html'; };
+    
+      targets.forEach(el => {
+        el.setAttribute('role', 'link');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('title', 'Accueil');
+        el.setAttribute('aria-label', 'Aller à l’accueil Altarys Capital');
+        el.style.webkitTapHighlightColor = 'transparent';
+    
+        el.addEventListener('click', goHome);
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            goHome();
+          }
+        });
+      });
+    })();
   </script>
 </body>
 </html>
