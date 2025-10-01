@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'ssl0.ovh.net';
         $mail->SMTPAuth = true;
         $mail->Username = 'guillaume.verliac@altarys-capital.fr';
-        $mail->Password = 'AltarysFortnite64';
+        $mail->Password = 'MOT DE PASSE';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
